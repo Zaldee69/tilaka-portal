@@ -1,17 +1,15 @@
 import createMiddleware from 'next-intl/middleware';
+import { locales, localePrefix } from './navigation';
 
 export default createMiddleware({
-  // A list of all locales that are supported
-  locales: ['en', 'id'],
-
   // Used when no locale matches
   defaultLocale: 'id',
 
-  // will not show default local pathname eg. /en/...
-  localePrefix: 'as-needed',
-
   // will use default local
-  localeDetection: false
+  localeDetection: false,
+  localePrefix,
+  // A list of all locales that are supported
+  locales
 });
 
 export const config = {

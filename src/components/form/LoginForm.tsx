@@ -12,12 +12,12 @@ import {
 } from '@/components/ui/form';
 import { Input } from '../ui/input';
 import { ChevronRight, EyeIcon, EyeOffIcon, X } from 'lucide-react';
-import Link from 'next/link';
 import { Button, buttonVariants } from '../ui/button';
 import { MailIcon, UserIcon } from '../../../public/icons/icons';
 import { useTranslations } from 'next-intl';
-import useSchema from '@/hooks/useSchema';
+import useSchema, { tilakaNameRegex } from '@/hooks/useSchema';
 import { z } from 'zod';
+import { Link } from '@/navigation';
 
 const LoginForm = () => {
   const { LoginSchema } = useSchema();
@@ -39,8 +39,8 @@ const LoginForm = () => {
   }>({
     from: { height: 0 },
     to: {
-      height: watchTilakaName.length >= 3 ? 'auto' : 0,
-      marginTop: watchTilakaName.length >= 3 ? 10 : 0
+      height: tilakaNameRegex.test(watchTilakaName) ? 'auto' : 0,
+      marginTop: tilakaNameRegex.test(watchTilakaName) ? 10 : 0
     },
     config: {
       duration: 350
@@ -101,7 +101,7 @@ const LoginForm = () => {
   );
 
   function renderMailIcon() {
-    return watchTilakaName.length < 1 ? (
+    return !tilakaNameRegex.test(watchTilakaName) ? (
       <MailIcon svgClassName="mt-3" />
     ) : (
       <X
@@ -146,9 +146,7 @@ const LoginForm = () => {
   function renderLink(text: string) {
     return (
       <Link href="#" className={getLinkClassName()}>
-        <p className="flex items-center">
-          {text} <ChevronRight size={16} />
-        </p>
+        <p className="flex items-center">{text} ?</p>
       </Link>
     );
   }

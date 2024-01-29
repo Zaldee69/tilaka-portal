@@ -2,6 +2,8 @@
 import { useTranslations } from 'next-intl';
 import { z } from 'zod';
 
+export const tilakaNameRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z_]{6,15}$/;
+
 const useSchema = () => {
   const loginMsg = useTranslations('Login');
   const validateEmailOrTilakaName = z
@@ -12,7 +14,6 @@ const useSchema = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const isValidEmail = emailRegex.test(value);
 
-        const tilakaNameRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z_]{6,15}$/;
         const isValidTilakaName = tilakaNameRegex.test(value);
 
         return isValidEmail || isValidTilakaName;
