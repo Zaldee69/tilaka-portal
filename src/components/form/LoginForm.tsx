@@ -15,7 +15,7 @@ import { ChevronRight, EyeIcon, EyeOffIcon, X } from 'lucide-react';
 import { Button, buttonVariants } from '../ui/button';
 import { MailIcon, UserIcon } from '../../../public/icons/icons';
 import { useTranslations } from 'next-intl';
-import useSchema, { tilakaNameRegex } from '@/hooks/useSchema';
+import useSchema, { emailRegex, tilakaNameRegex } from '@/hooks/useSchema';
 import { z } from 'zod';
 import { Link } from '@/navigation';
 
@@ -39,8 +39,16 @@ const LoginForm = () => {
   }>({
     from: { height: 0 },
     to: {
-      height: tilakaNameRegex.test(watchTilakaName) ? 'auto' : 0,
-      marginTop: tilakaNameRegex.test(watchTilakaName) ? 10 : 0
+      height:
+        tilakaNameRegex.test(watchTilakaName) ||
+        emailRegex.test(watchTilakaName)
+          ? 'auto'
+          : 0,
+      marginTop:
+        tilakaNameRegex.test(watchTilakaName) ||
+        emailRegex.test(watchTilakaName)
+          ? 10
+          : 0
     },
     config: {
       duration: 350
@@ -65,7 +73,6 @@ const LoginForm = () => {
                 <Input
                   placeholder={t('form.tilakaname.placeholder')}
                   autoComplete="off"
-                  autoFocus
                   {...field}
                   icon={renderMailIcon()}
                 />
