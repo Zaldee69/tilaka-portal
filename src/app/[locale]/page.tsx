@@ -56,6 +56,23 @@ export default function Home({
             )
           })}
         </p>
+        <p className="text-sm text-gray-3 absolute bottom-5 md:bottom-0">
+          {t.rich('contactUs', {
+            link: (chunks) => (
+              <Link
+                key={0}
+                href="https://cantikatnt.atlassian.net/servicedesk/customer/portal/2/group/8/create/27"
+                target="_blank"
+                className={buttonVariants({
+                  className: '!p-0 !text-primary font-bold',
+                  variant: 'ghost'
+                })}
+              >
+                {chunks}
+              </Link>
+            )
+          })}
+        </p>
       </div>
       {/* right side */}
       <div className="bg-login-banner object-cover bg-cover w-[55%] bg-no-repeat hidden md:block" />
