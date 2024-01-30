@@ -9,7 +9,13 @@ import { buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-export default function Home({ params }: { params: { locale: string } }) {
+export default function Home({
+  params,
+  searchParams
+}: {
+  params: { locale: string };
+  searchParams: {};
+}) {
   const t = useTranslations('Login');
 
   const messages = useMessages();
@@ -20,14 +26,14 @@ export default function Home({ params }: { params: { locale: string } }) {
       <div className="flex flex-col items-center mt-10 px-8 col-span-4 md:w-[45%] md:relative">
         <div className="flex justify-between items-center w-full">
           <Image
-            src="/images/logo-tilaka.svg"
+            src="/images/logo-tilaka.png"
             height={50}
             width={158}
             alt="Tilaka Logo"
             quality={100}
             priority
           />
-          <LanguageSwitcher />
+          <LanguageSwitcher searchparams={searchParams} />
         </div>
         <h2 className="text-gray-2 mt-28 md:mt-32">{t('title')}</h2>
         <p className="text-sm text-gray-3 pb-12 pt-3">{t('subtitle')}</p>

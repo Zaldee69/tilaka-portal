@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import { z } from 'zod';
 
 export const tilakaNameRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z_]{6,15}$/;
+export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const useSchema = () => {
   const loginMsg = useTranslations('Login');
@@ -11,7 +12,6 @@ const useSchema = () => {
     .min(1, { message: loginMsg('form.message.error.tilakaNameOrEmaildEmpty') })
     .refine(
       (value) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const isValidEmail = emailRegex.test(value);
 
         const isValidTilakaName = tilakaNameRegex.test(value);
@@ -29,6 +29,8 @@ const useSchema = () => {
       .string()
       .min(1, { message: loginMsg('form.message.error.passwordEmpty') })
   });
+
+  // return new schema here
   return { LoginSchema };
 };
 

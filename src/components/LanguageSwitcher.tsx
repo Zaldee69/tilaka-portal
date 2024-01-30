@@ -4,14 +4,20 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
+interface LanguageSwitcherProps extends React.HTMLAttributes<HTMLDivElement> {
+  searchparams: {};
+}
+
 const LanguageSwitcher = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  LanguageSwitcherProps
 >(({ className, ...props }, ref) => {
   const pathname = usePathname();
   const redirectPathname = pathname.split('/').slice(2).join('/');
   const locale = pathname.includes('id') ? 'en/' : 'id/';
-  const href = '/' + locale + (redirectPathname || '');
+  const queryString = new URLSearchParams(props.searchparams as {}).toString();
+
+  const href = '/' + locale + (redirectPathname || '') + '?' + queryString;
 
   const renderLink = (localeValue: string, label: string) => (
     <Link

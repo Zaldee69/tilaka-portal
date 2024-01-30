@@ -74,6 +74,26 @@ const LoginForm = () => {
                   placeholder={t('form.tilakaname.placeholder')}
                   autoComplete="off"
                   {...field}
+                  onChange={(e) => {
+                    const { value } = e.target;
+                    form.setValue('tilakaName', value);
+
+                    if (emailRegex.test(value) || tilakaNameRegex.test(value)) {
+                      form.clearErrors();
+                    } else {
+                      form.setError('tilakaName', {
+                        type: 'manual',
+                        message: t(
+                          'form.message.error.tilakaNameOrEmailNotValid'
+                        )
+                      });
+                    }
+
+                    // Clear errors when the value is empty
+                    if (value.length < 1) {
+                      form.clearErrors();
+                    }
+                  }}
                   icon={renderMailIcon()}
                 />
               </FormControl>
@@ -108,7 +128,8 @@ const LoginForm = () => {
   );
 
   function renderMailIcon() {
-    return !tilakaNameRegex.test(watchTilakaName) ? (
+    return !tilakaNameRegex.test(watchTilakaName) &&
+      !emailRegex.test(watchTilakaName) ? (
       <MailIcon svgClassName="mt-3" />
     ) : (
       <X
