@@ -37,7 +37,7 @@ const LanguageSwitcher = React.forwardRef<
       {...props}
       ref={ref}
       className={cn(
-        'flex items-center bg-primary rounded-full px-1 py-1 text-sm font-semibold',
+        'flex items-center bg-primary rounded-full px-1 py-1 text-xs font-semibold',
         className
       )}
     >
