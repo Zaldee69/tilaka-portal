@@ -1,0 +1,25 @@
+{
+  "Login": {
+    "title": "Welcome Back!",
+    "subtitle": "Use your Tilaka account to continue",
+    "forgotPasswordLink": "Forgot Password",
+    "forgotTilakanameLink": "Forgot Tilakaname",
+    "claimIdentityBtn": "Claim Identity",
+    "verifyPdf": "Verify your PDF <link>Here</link>",
+    "form": {
+      "tilakaname": {
+        "placeholder": "Tilakaname or Email"
+      },
+      "password": {},
+      "submit": "Sign In",
+      "message": {
+        "error": {
+          "tilakaNameOrEmaildEmpty": "Tilakaname or email is required",
+          "tilakaNameOrEmailNotValid": "Enter a valid tilakaname or email",
+          "passwordEmpty": "Password is required"
+        },
+        "success": {}
+      }
+    }
+  }
+}

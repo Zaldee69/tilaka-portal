@@ -1,0 +1,25 @@
+{
+  "Login": {
+    "title": "Selamat Datang!",
+    "subtitle": "Gunakan akun Tilaka Anda untuk masuk",
+    "forgotPasswordLink": "Lupa Password",
+    "forgotTilakanameLink": "Lupa Tilakaname",
+    "claimIdentityBtn": "Klaim Identitas",
+    "verifyPdf": "Verifikasi PDF Anda <link>Disini</link>",
+    "form": {
+      "tilakaname": {
+        "placeholder": "Tilakaname atau Email"
+      },
+      "password": {},
+      "submit": "Masuk",
+      "message": {
+        "error": {
+          "tilakaNameOrEmaildEmpty": "Tilakaname atau email tidak boleh kosong",
+          "tilakaNameOrEmailNotValid": "Masukkan Tilakaname atau email yang valid",
+          "passwordEmpty": "Password tidak boleh kosong"
+        },
+        "success": {}
+      }
+    }
+  }
+}
