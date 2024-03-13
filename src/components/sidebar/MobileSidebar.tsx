@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTrigger
@@ -19,11 +20,14 @@ export function MobileSidebar() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className="md:hidden" asChild>
+      <SheetTrigger className="lg:hidden" asChild>
         <AlignJustify className="text-gray-3" />
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
+          <SheetClose asChild>
+            <AlignJustify className="text-gray-3" />
+          </SheetClose>
           <div className="bg-primary rounded-full flex items-center justify-center w-12 h-12 mx-auto">
             <p className="text-white font-bold ">Y</p>
           </div>

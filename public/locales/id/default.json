@@ -31,7 +31,7 @@
   "Dashboard": {
     "sidebar": {
       "signPdfButton": "Tandatangan",
-      "dashboard": "Dashboard",
+      "dashboard": "Beranda",
       "document": "Dokumen",
       "verifyPdf": "Verifikasi PDF",
       "settings": "Pengaturan"
@@ -40,7 +40,7 @@
       "date": "Tanggal",
       "document": "Dokumen",
       "initiator": "Pembuat",
-      "signer": "Penandat...",
+      "signer": "Penandatangan",
       "status": "Status",
       "importantToday": "Penting Hari ini"
     },

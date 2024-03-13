@@ -40,11 +40,10 @@ const NavbarMenu = ({ searchParams }: { searchParams: {} }) => {
 
   useOnClickOutside(ref, handleClickOutside);
 
-  const { top } = useSpring({
-    from: { top: -200 },
-    to: {
-      top: showMenu !== null ? 64 : -200
-    },
+  const menuProps = useSpring({
+    height: showMenu === null ? 0 : showMenu === 'search' ? 80 : 270,
+    paddingTop: showMenu !== null ? 12 : 0,
+    paddingBottom: showMenu !== null ? 8 : 0,
     config: {
       duration: 250
     }
@@ -52,9 +51,8 @@ const NavbarMenu = ({ searchParams }: { searchParams: {} }) => {
 
   const menuPopUpWrapper = () => (
     <animated.div
-      style={{ top: top }}
-      ref={ref}
-      className="absolute right-0 md:right-5 top-10 !bg-white shadow-md pb-2 pt-3 rounded-b-xl w-full md:w-96"
+      style={menuProps}
+      className="absolute right-0 md:right-5 top-16 !bg-white shadow-md rounded-b-xl w-full md:w-96 overflow-hidden"
     >
       {showMenu === 'account-list' ? (
         <AccountListSelect logoutTitle={t('logout')} />
@@ -69,27 +67,41 @@ const NavbarMenu = ({ searchParams }: { searchParams: {} }) => {
     </animated.div>
   );
 
+  const openMenuHandler = (
+    menu: 'account-list' | 'notification' | 'search' | null
+  ) => {
+    if (menu === showMenu) {
+      setShowMenu(null);
+    } else {
+      setShowMenu(menu);
+    }
+  };
+
+  const iconFill = (menu: string | null) => {
+    return showMenu === menu ? '#0D5FB3' : '#323232';
+  };
+
   return (
-    <div>
+    <div ref={ref}>
       <div className="flex items-center gap-x-7">
         <Button
-          onClick={() => setShowMenu('search')}
+          onClick={() => openMenuHandler('search')}
           variant="ghost"
           className="h-fit w-fit p-0 md:hidden"
         >
-          <SearchIcon />
+          <SearchIcon fill={iconFill('search')} />
         </Button>
         <Button
-          onClick={() => setShowMenu('notification')}
+          onClick={() => openMenuHandler('notification')}
           variant="ghost"
           className="h-fit w-fit p-0"
         >
-          <BellIcon />
+          <BellIcon fill={iconFill('notification')} />
         </Button>
         <Button
-          onClick={() => setShowMenu('account-list')}
+          onClick={() => openMenuHandler('account-list')}
           variant="ghost"
-          className="h-fit w-fit p-0 justify-start"
+          className="h-fit w-fit p-0 justify-start hover:text-black"
         >
           <div className="flex items-center gap-2">
             <span className="p-2 bg-[#F2F9FF] rounded-xl">
@@ -104,7 +116,13 @@ const NavbarMenu = ({ searchParams }: { searchParams: {} }) => {
                 PT. John Doe Capital
               </p>
             </div>
-            <ChevronDown size={18} />
+            <ChevronDown
+              color={iconFill('account-list')}
+              className={cn('rotate-0 transition-transform duration-200', {
+                'rotate-180': showMenu === 'account-list'
+              })}
+              size={18}
+            />
           </div>
         </Button>
         <LanguageSwitcher
@@ -194,7 +212,7 @@ const AccountListSelect = ({ logoutTitle }: { logoutTitle: string }) => {
 };
 
 const NotificationList = ({ viewAllTitle }: { viewAllTitle: string }) => {
-  const iconClassname = 'mt-1 text-gray-400';
+  const iconClassname = 'mt-[3px] text-gray-400';
 
   const getIcon = (type: string) => {
     switch (type) {

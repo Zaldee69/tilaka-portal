@@ -32,12 +32,12 @@ const Sidebar = () => {
   return (
     <animated.div
       style={sidebarProps}
-      className={cn('col-span-2 relative hidden md:block')}
+      className={cn('col-span-2 relative hidden lg:block')}
     >
       <animated.div
         style={sidebarContentProps}
         className={cn(
-          'sidebar fixed top-0 left-0 z-20 bottom-0 hidden md:block'
+          'sidebar fixed top-0 left-0 z-20 bottom-0 hidden lg:block'
         )}
       >
         <Image

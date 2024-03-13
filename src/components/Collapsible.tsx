@@ -23,7 +23,7 @@ const Collapsible = ({ title, children, autoOpen }: Props) => {
 
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between p-3">
         <h4>{title}</h4>
         <Button
           onClick={() => setIsExpand(!isExpand)}

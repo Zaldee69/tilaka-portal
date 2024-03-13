@@ -12,7 +12,7 @@ const Navbar = ({ searchParams }: { searchParams: {} }) => {
   return (
     <nav className="p-5 bg-white shadow-sm md:shadow-none sticky top-0 z-10">
       <div className="flex items-center justify-between">
-        <div className=" items-center gap-6 w-4/12 hidden md:flex">
+        <div className=" items-center gap-6 w-4/12 hidden lg:flex">
           <SidebarCollpaseTrigger />
           <Input
             placeholder={t('searchDoc')}
@@ -28,7 +28,7 @@ const Navbar = ({ searchParams }: { searchParams: {} }) => {
             height={30}
             width={118}
             alt="Tilaka Logo"
-            className="md:hidden"
+            className="lg:hidden"
             quality={100}
             priority
           />

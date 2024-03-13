@@ -46,7 +46,7 @@ const QuotaCard = ({ children, className, Icon, ...props }: Props) => {
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-[8px] flex justify-center items-center gap-5 mt-3">
+      <div className="bg-white rounded-[8px] flex justify-around items-center mt-3 px-5">
         <Button variant="ghost" className="font-semibold text-primary px-0">
           <PlusCircle className="mr-2" />
           {props.plusbuttontitle}

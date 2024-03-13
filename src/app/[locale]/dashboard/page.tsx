@@ -37,14 +37,16 @@ const Page = () => {
 
   return (
     <div className="p-5 pb-10 relative flex flex-col xl:flex-row gap-3 w-full">
-      <div className="xl:w-[65%]">
-        <h1 className="text-gray-1 text">Dashboard</h1>
+      <div className="xl:w-[68%]">
+        <h1 className="text-gray-1 text">{t('sidebar.dashboard')}</h1>
         <div className="bg-[#FFFEE3] rounded-xl flex p-5 mt-5 md:mt-3 justify-between items-center">
           <div>
             <span className="flex items-center gap-2 ">
               <p className="text-sm md:text-base mt-1">Hai,</p>
-              <h3 className="font-medium md:hidden">Muhammad</h3>
-              <h2 className="font-medium hidden md:block">Muhammad John Doe</h2>
+              <h4 className="font-medium md:hidden text-[22px]">Muhammad</h4>
+              <h3 className="font-medium hidden md:block text-[24px]">
+                Muhammad John Doe
+              </h3>
             </span>
             <p className="text-sm md:text-base mt-2">{t('activity')}</p>
           </div>
@@ -146,7 +148,9 @@ const Page = () => {
                   <TableCell>
                     {' '}
                     <div className="flex items-center justify-between">
-                      <Badge className="w-fit bg-[#FFB951]">On Progress</Badge>
+                      <Badge className="w-fit flex-none bg-[#FFB951]">
+                        On Progress
+                      </Badge>
                       <Button variant="ghost" className="p-0 h-fit">
                         <MoreHorizontal />
                       </Button>
@@ -179,9 +183,9 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white custom-shadow md:shadow-none md:sticky top-20 rounded-2xl mt-5 md:mt-[52px] p-3 border border-gray-6 mb-10 xl:w-[35%] h-fit md:pb-5">
+      <div className="bg-white custom-shadow md:shadow-none md:sticky top-20 rounded-2xl mt-5 md:mt-[52px] border border-gray-6 mb-10 xl:w-[32%] h-fit md:pb-5">
         <Collapsible autoOpen title={t('mainAccount')}>
-          <div className="flex items-center gap-5 cursor-pointer my-3">
+          <div className="flex items-center gap-5 cursor-pointer px-3 my-3">
             <div className="p-2 bg-[#F2F9FF] rounded-lg">
               <CorporateIconBig />
             </div>
@@ -190,7 +194,7 @@ const Page = () => {
               <p className="text-sm text-gray-3">johndoe@yopmail.com</p>
             </div>
           </div>
-          <div className="bg-[#F8F9FF] custom-shadow rounded-xl mt-5 px-3 py-4">
+          <div className="bg-[#F8F9FF] custom-shadow rounded-xl mt-5 mx-3 px-3 py-4">
             <h5>{t('signing')}</h5>
             <div className="grid grid-cols-2 gap-3 mt-3">
               <div className="bg-white rounded-xl p-3">
@@ -236,50 +240,52 @@ const Page = () => {
             </div>
             <Button
               size="lg"
-              className="mt-3 w-full custom-shadow text-[#272B30] hover:text-[#272B30] bg-white font-semibold gap-2 py-5"
+              className="mt-3 w-full custom-shadow text-[#272B30] hover:text-[#272B30] bg-white font-semibold gap-2 py-5 hover:scale-105 transition-transform"
               variant="ghost"
             >
               <EditIcon />
               {t('changeSignature')}
             </Button>
           </div>
-          <Button
-            size="lg"
-            className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4"
-            variant="ghost"
-          >
-            <AccountCircleIcon fill="#BDBDBD" />
-            {t('changeMainAccount')}
-          </Button>
-          <Button
-            size="lg"
-            className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4"
-            variant="ghost"
-          >
-            <DocumentIcon fill="#BDBDBD" />
-            {t('viewAllDoc')}
-          </Button>
-          <Button
-            size="lg"
-            className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4"
-            variant="ghost"
-          >
-            <SecurityIcon fill="#BDBDBD" />
-            {t('authMethod')}
-          </Button>
-          <Link
-            href="https://cantikatnt.atlassian.net/servicedesk/customer/portal/2/group/8/create/27"
-            target="_blank"
-            className={buttonVariants({
-              className:
-                'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4',
-              size: 'lg',
-              variant: 'ghost'
-            })}
-          >
-            <CircleHelp fill="#BDBDBD" />
-            {t('help')}
-          </Link>
+          <div className="px-3">
+            <Button
+              size="lg"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              variant="ghost"
+            >
+              <AccountCircleIcon fill="#BDBDBD" />
+              {t('changeMainAccount')}
+            </Button>
+            <Button
+              size="lg"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              variant="ghost"
+            >
+              <DocumentIcon fill="#BDBDBD" />
+              {t('viewAllDoc')}
+            </Button>
+            <Button
+              size="lg"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              variant="ghost"
+            >
+              <SecurityIcon fill="#BDBDBD" />
+              {t('authMethod')}
+            </Button>
+            <Link
+              href="https://cantikatnt.atlassian.net/servicedesk/customer/portal/2/group/8/create/27"
+              target="_blank"
+              className={buttonVariants({
+                className:
+                  'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 !px-4 hover:scale-105 transition-transform z-10',
+                size: 'lg',
+                variant: 'ghost'
+              })}
+            >
+              <CircleHelp fill="#BDBDBD" />
+              {t('help')}
+            </Link>
+          </div>
         </Collapsible>
       </div>
       <div className="sticky bottom-5 flex justify-center md:hidden">
