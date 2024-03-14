@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl';
 const Navbar = ({ searchParams }: { searchParams: {} }) => {
   const t = useTranslations('Navbar');
   return (
-    <nav className="p-5 bg-white shadow-sm md:shadow-none sticky top-0 z-10">
+    <nav className="px-5 py-4 bg-white shadow-sm md:shadow-none sticky top-0 z-10">
       <div className="flex items-center justify-between">
         <div className=" items-center gap-6 w-4/12 hidden lg:flex">
           <SidebarCollpaseTrigger />

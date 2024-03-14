@@ -36,8 +36,8 @@ const Page = () => {
   const t = useTranslations('Dashboard');
 
   return (
-    <div className="p-5 pb-10 relative flex flex-col xl:flex-row gap-3 w-full">
-      <div className="xl:w-[68%]">
+    <div className="px-5 relative flex flex-col xl:flex-row gap-3 w-full ">
+      <div className="xl:w-[68%] pb-10">
         <h1 className="text-gray-1 text">{t('sidebar.dashboard')}</h1>
         <div className="bg-[#FFFEE3] rounded-xl flex p-5 mt-5 md:mt-3 justify-between items-center">
           <div>
@@ -158,6 +158,205 @@ const Page = () => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
+                  <TableCell>Mei 08, 2023 16:47</TableCell>
+                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
+                  <TableCell>John Doe</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit flex-none bg-[#FFB951]">
+                        On Progress
+                      </Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 08, 2023 16:47</TableCell>
+                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
+                  <TableCell>John Doe</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit flex-none bg-[#FFB951]">
+                        On Progress
+                      </Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 08, 2023 16:47</TableCell>
+                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
+                  <TableCell>John Doe</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit flex-none bg-[#FFB951]">
+                        On Progress
+                      </Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 08, 2023 16:47</TableCell>
+                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
+                  <TableCell>John Doe</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit flex-none bg-[#FFB951]">
+                        On Progress
+                      </Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 08, 2023 16:47</TableCell>
+                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
+                  <TableCell>John Doe</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit flex-none bg-[#FFB951]">
+                        On Progress
+                      </Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 10, 2024 12:47</TableCell>
+                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
+                  <TableCell>husen@gmail.com</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 10, 2024 12:47</TableCell>
+                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
+                  <TableCell>husen@gmail.com</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 10, 2024 12:47</TableCell>
+                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
+                  <TableCell>husen@gmail.com</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Mei 10, 2024 12:47</TableCell>
+                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
+                  <TableCell>husen@gmail.com</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2 items-center">
+                      {' '}
+                      <AccountCircleIcon svgClassName="h-5 w-5" />
+                      <p className="font-semibold">4</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    {' '}
+                    <div className="flex items-center justify-between">
+                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
+                      <Button variant="ghost" className="p-0 h-fit">
+                        <MoreHorizontal />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
                   <TableCell>Mei 10, 2024 12:47</TableCell>
                   <TableCell className="font-semibold">Johndoe.pdf</TableCell>
                   <TableCell>husen@gmail.com</TableCell>
@@ -183,7 +382,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white custom-shadow md:shadow-none md:sticky top-20 rounded-2xl mt-5 md:mt-[52px] border border-gray-6 mb-10 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
+      <div className="bg-white custom-shadow md:shadow-none right-0 md:sticky top-20 rounded-2xl mt-10 md:mt-[52px] border border-gray-6 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
         <Collapsible autoOpen title={t('mainAccount')}>
           <div className="flex items-center gap-5 cursor-pointer px-3 my-3">
             <div className="p-2 bg-[#F2F9FF] rounded-lg">
