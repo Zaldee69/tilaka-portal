@@ -36,9 +36,9 @@ const Page = () => {
   const t = useTranslations('Dashboard');
 
   return (
-    <div className="px-5 relative flex flex-col xl:flex-row gap-3 w-full mb-10 md:mb-0">
+    <div className="px-5 relative flex flex-col xl:flex-row gap-3 w-full mb-10 mt-5 md:mb-0">
       <div className="xl:w-[68%] pb-10">
-        <h1 className="text-gray-1 mt-3 md:mt-0">{t('sidebar.dashboard')}</h1>
+        <h1 className="text-gray-1">{t('sidebar.dashboard')}</h1>
         <div className="bg-[#FFFEE3] rounded-xl flex p-5 mt-5 md:mt-3 justify-between items-center">
           <div>
             <span className="flex items-center gap-2 ">
