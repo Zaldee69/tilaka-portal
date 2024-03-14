@@ -212,7 +212,7 @@ const AccountListSelect = ({ logoutTitle }: { logoutTitle: string }) => {
 };
 
 const NotificationList = ({ viewAllTitle }: { viewAllTitle: string }) => {
-  const iconClassname = 'mt-[3px] text-gray-400';
+  const iconClassname = ' text-gray-400';
 
   const getIcon = (type: string) => {
     switch (type) {

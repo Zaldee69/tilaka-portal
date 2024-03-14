@@ -134,7 +134,7 @@ const Page = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow className="bg-[#F3F3F3]">
+                <TableRow>
                   <TableCell>Mei 08, 2023 16:47</TableCell>
                   <TableCell className="font-semibold">BAST Kasuari</TableCell>
                   <TableCell>John Doe</TableCell>
@@ -183,7 +183,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white custom-shadow md:shadow-none md:sticky top-20 rounded-2xl mt-5 md:mt-[52px] border border-gray-6 mb-10 xl:w-[32%] h-fit md:pb-5">
+      <div className="bg-white custom-shadow md:shadow-none md:sticky top-20 rounded-2xl mt-5 md:mt-[52px] border border-gray-6 mb-10 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
         <Collapsible autoOpen title={t('mainAccount')}>
           <div className="flex items-center gap-5 cursor-pointer px-3 my-3">
             <div className="p-2 bg-[#F2F9FF] rounded-lg">
