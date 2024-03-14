@@ -36,9 +36,9 @@ const Page = () => {
   const t = useTranslations('Dashboard');
 
   return (
-    <div className="px-5 relative flex flex-col xl:flex-row gap-3 w-full ">
+    <div className="px-5 relative flex flex-col xl:flex-row gap-3 w-full mb-10 md:mb-0">
       <div className="xl:w-[68%] pb-10">
-        <h1 className="text-gray-1 text">{t('sidebar.dashboard')}</h1>
+        <h1 className="text-gray-1 mt-3 md:mt-0">{t('sidebar.dashboard')}</h1>
         <div className="bg-[#FFFEE3] rounded-xl flex p-5 mt-5 md:mt-3 justify-between items-center">
           <div>
             <span className="flex items-center gap-2 ">
@@ -382,7 +382,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white custom-shadow md:shadow-none right-0 md:sticky top-20 rounded-2xl mt-10 md:mt-[52px] border border-gray-6 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
+      <div className="bg-white custom-shadow md:shadow-none right-0 md:sticky top-20 rounded-2xl md:mt-[52px] border border-gray-6 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
         <Collapsible autoOpen title={t('mainAccount')}>
           <div className="flex items-center gap-5 cursor-pointer px-3 my-3">
             <div className="p-2 bg-[#F2F9FF] rounded-lg">
