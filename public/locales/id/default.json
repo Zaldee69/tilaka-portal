@@ -22,5 +22,46 @@
         "success": {}
       }
     }
+  },
+  "Navbar": {
+    "logout": "Keluar",
+    "searchDoc": "Cari dokumen",
+    "viewAll": "Lihat Semua"
+  },
+  "Dashboard": {
+    "sidebar": {
+      "signPdfButton": "Tandatangan",
+      "dashboard": "Beranda",
+      "document": "Dokumen",
+      "verifyPdf": "Verifikasi PDF",
+      "settings": "Pengaturan"
+    },
+    "table": {
+      "date": "Tanggal",
+      "document": "Dokumen",
+      "initiator": "Pembuat",
+      "signer": "Penandatangan",
+      "status": "Status",
+      "importantToday": "Penting Hari ini"
+    },
+    "sigantureBalance": "Kuota Tandatangan",
+    "usage": "Kuota Terpakai",
+    "history": "Riwayat",
+    "stampBalance": "Kuota e-Meterai",
+    "DocNeedTobeSigned": "Dokumen Perlu Ditandatangani",
+    "DocInProcess": "Dokumen Dalam Proses",
+    "DocCompleted": "Dokumen Selesai",
+    "mainAccount": "Akun Utama",
+    "signing": "Tandatangan",
+    "signature": "Tanda Tangan",
+    "initial": "Paraf",
+    "changeSignature": "Ubah Tandatangan",
+    "changeMainAccount": "Ganti Akun Utama",
+    "viewAllDoc": "Lihat Semua Dokumen",
+    "authMethod": "Metode Otentikasi",
+    "help": "Butuh Bantuan?",
+    "activity": "Berikut ringkasan aktivitasmu bersama Tilaka",
+    "validUntil": "Aktif sampai",
+    "floatingCTA": "Tandatangan Dokumen"
   }
 }

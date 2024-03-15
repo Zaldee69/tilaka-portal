@@ -5,12 +5,16 @@ import { cn } from '@/lib/utils';
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
+  iconPosition?: 'left' | 'right';
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, icon, ...props }, ref) => {
+  ({ className, type, icon, iconPosition = 'right', ...props }, ref) => {
     return (
-      <div className="relative">
+      <div className="relative w-full">
+        {iconPosition === 'left' && (
+          <div className="absolute left-3 top-0">{icon}</div>
+        )}
         <input
           type={type}
           className={cn(
@@ -20,7 +24,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        <div className="absolute right-5 top-0">{icon}</div>
+        {iconPosition === 'right' && (
+          <div className="absolute right-5 top-0">{icon}</div>
+        )}
       </div>
     );
   }

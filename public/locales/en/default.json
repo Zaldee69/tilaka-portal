@@ -22,5 +22,46 @@
         "success": {}
       }
     }
+  },
+  "Navbar": {
+    "logout": "Logout",
+    "searchDoc": "Search documents",
+    "viewAll": "View All"
+  },
+  "Dashboard": {
+    "sidebar": {
+      "signPdfButton": "Sign",
+      "dashboard": "Dashboard",
+      "document": "Documents",
+      "verifyPdf": "Verify PDF",
+      "settings": "Setting"
+    },
+    "table": {
+      "date": "Date",
+      "document": "Document",
+      "initiator": "Initiator",
+      "signer": "Signer",
+      "status": "Status",
+      "importantToday": "Important Today"
+    },
+    "sigantureBalance": "Signature Balance",
+    "usage": "Usage",
+    "history": "History",
+    "stampBalance": "e-Meterai Balance",
+    "DocNeedTobeSigned": "Documents to be Signed",
+    "DocInProcess": "Documents In Progress",
+    "DocCompleted": "Documents Completed",
+    "mainAccount": "Main Account",
+    "signing": "Signature",
+    "signature": "Signature",
+    "initial": "Initial",
+    "changeSignature": "Change Signature",
+    "changeMainAccount": "Change Main Account",
+    "viewAllDoc": "View All Documents",
+    "authMethod": "Authentication Method",
+    "help": "Need Help?",
+    "activity": "Here's your activity summary with Tilaka",
+    "validUntil": "Valid until",
+    "floatingCTA": "Sign Document"
   }
 }

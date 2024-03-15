@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { z } from 'zod';
 
 export const tilakaNameRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z_]{6,15}$/;
-export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const useSchema = () => {
   const loginMsg = useTranslations('Login');

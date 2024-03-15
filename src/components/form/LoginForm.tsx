@@ -15,9 +15,11 @@ import { ChevronRight, EyeIcon, EyeOffIcon, X } from 'lucide-react';
 import { Button, buttonVariants } from '../ui/button';
 import { MailIcon, UserIcon } from '../../../public/icons/icons';
 import { useTranslations } from 'next-intl';
-import useSchema, { emailRegex, tilakaNameRegex } from '@/hooks/useSchema';
+import useSchema, { tilakaNameRegex } from '@/hooks/useSchema';
 import { z } from 'zod';
 import { Link } from '@/navigation';
+
+export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const LoginForm = () => {
   const { LoginSchema } = useSchema();
@@ -76,7 +78,12 @@ const LoginForm = () => {
                   {...field}
                   onChange={(e) => {
                     const { value } = e.target;
-                    form.setValue('tilakaName', value);
+                    const noWhiteSpace = /\s/g;
+
+                    form.setValue(
+                      'tilakaName',
+                      value.replace(noWhiteSpace, '')
+                    );
 
                     if (emailRegex.test(value) || tilakaNameRegex.test(value)) {
                       form.clearErrors();

@@ -32,7 +32,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.8rem;
   }
 
   .dark {
@@ -75,7 +75,7 @@
   }
 
   h1 {
-    @apply text-[2rem] leading-10 font-bold;
+    @apply text-[1.375rem] md:text-[30px] leading-10 font-bold;
   }
 
   h2 {
@@ -91,10 +91,38 @@
   }
 
   h5 {
-    @apply text-base leading-5 font-bold;
+    @apply text-sm md:text-base leading-5 font-bold;
   }
 
   h6 {
-    @apply text-sm leading-[18px] font-bold;
+    @apply text-xs md:text-sm leading-[18px] font-bold;
   }
+}
+
+.custom-shadow {
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.09);
+}
+
+.sign-button-shadow {
+  box-shadow: 0px 4px 14px 0px #0d5fb33b;
+}
+
+.quota-card-bg-1 {
+  @apply bg-gradient-to-r from-[#168CBE] to-[#0D5FB3];
+  box-shadow: 0px 3px 14px 0px rgba(150, 153, 4, 0.05);
+  border: 2px solid rgba(255, 254, 227, 1);
+}
+
+.quota-card-bg-2 {
+  background: linear-gradient(87.48deg, #349ac6 3.55%, #62a9f2 125.81%);
+}
+
+.doc-card-bg-1 {
+  background: linear-gradient(125.17deg, #cde5fe 29.33%, #b9dcfe 104.17%);
+}
+
+.sidebar {
+  box-shadow: 6px 0px 16px 0px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(234, 234, 234, 1);
+  background: rgba(255, 255, 255, 1);
 }

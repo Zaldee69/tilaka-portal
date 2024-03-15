@@ -11,7 +11,12 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={cn('min-h-screen antialiased', dmSans.className)}>
+      <body
+        className={cn(
+          'lg:min-h-screen antialiased scroll-smooth',
+          dmSans.className
+        )}
+      >
         {children}
       </body>
     </html>

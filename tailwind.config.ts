@@ -22,6 +22,8 @@ const config = {
         'gray-1': '#333333',
         'gray-2': '#4F4F4F',
         'gray-3': '#828282',
+        'gray-4': '#BDBDBD',
+        'gray-6': '#F2F2F2',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -80,7 +82,7 @@ const config = {
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar-hide')]
 } satisfies Config;
 
 export default config;

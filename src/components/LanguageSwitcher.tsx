@@ -41,8 +41,8 @@ const LanguageSwitcher = React.forwardRef<
         className
       )}
     >
-      {renderLink('en', 'EN')}
       {renderLink('id', 'ID')}
+      {renderLink('en', 'EN')}
     </div>
   );
 });
