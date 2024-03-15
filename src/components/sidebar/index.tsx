@@ -1,6 +1,11 @@
 'use client';
 import React, { useContext } from 'react';
-import { BrushIcon, StampIcon, TilakaIcon } from '../../../public/icons/icons';
+import {
+  BrushIcon,
+  QuestionAnswerIcon,
+  StampIcon,
+  TilakaIcon
+} from '../../../public/icons/icons';
 import { Button } from '../ui/button';
 import Image from 'next/image';
 import SidebarLinks from './SidebarLinks';
@@ -8,6 +13,8 @@ import { SidebarContext } from './SidebarContextProvider';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import { useSpring, animated } from '@react-spring/web';
+import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
 
 const Sidebar = () => {
   const { state } = useContext(SidebarContext);
@@ -149,6 +156,33 @@ const Sidebar = () => {
           })}
         >
           <SidebarLinks />
+        </div>
+        <div
+          className={cn('absolute bottom-5 left-10', {
+            'left-5': !state.isOpen
+          })}
+        >
+          <Link
+            href="https://tilaka.id/ufaqs/"
+            target="_blank"
+            className="font-semibold flex gap-2 items-center"
+          >
+            <QuestionAnswerIcon fill="#828282" />
+            <div
+              className={cn('text-sm', {
+                hidden: !state.isOpen
+              })}
+            >
+              FAQ
+            </div>
+            <ExternalLink
+              height={18}
+              width={18}
+              className={cn('text-gray-4', {
+                hidden: !state.isOpen
+              })}
+            />
+          </Link>
         </div>
       </animated.div>
     </animated.div>

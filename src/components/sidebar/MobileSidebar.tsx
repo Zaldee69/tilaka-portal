@@ -8,10 +8,16 @@ import {
   SheetHeader,
   SheetTrigger
 } from '@/components/ui/sheet';
-import { AlignJustify } from 'lucide-react';
-import { BrushIcon, StampIcon, TilakaIcon } from '../../../public/icons/icons';
+import { AlignJustify, ExternalLink } from 'lucide-react';
+import {
+  BrushIcon,
+  QuestionAnswerIcon,
+  StampIcon,
+  TilakaIcon
+} from '../../../public/icons/icons';
 import SidebarLinks from './SidebarLinks';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 export function MobileSidebar() {
   const [open, setOpen] = React.useState(false);
@@ -54,6 +60,17 @@ export function MobileSidebar() {
         </div>
 
         <SidebarLinks setOpen={setOpen} />
+        <div className="absolute bottom-5 left-10">
+          <Link
+            href="https://tilaka.id/ufaqs/"
+            target="_blank"
+            className="font-semibold flex gap-2 items-center"
+          >
+            <QuestionAnswerIcon fill="#828282" />
+            <div className="text-sm">FAQ</div>
+            <ExternalLink height={18} width={18} className="text-gray-4" />
+          </Link>
+        </div>
       </SheetContent>
     </Sheet>
   );
