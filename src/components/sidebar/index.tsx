@@ -158,7 +158,7 @@ const Sidebar = () => {
           <SidebarLinks />
         </div>
         <div
-          className={cn('absolute bottom-5 left-10', {
+          className={cn('absolute bottom-5 left-8', {
             'left-5': !state.isOpen
           })}
         >
@@ -169,7 +169,7 @@ const Sidebar = () => {
           >
             <QuestionAnswerIcon fill="#828282" />
             <div
-              className={cn('text-sm', {
+              className={cn('text-sm ml-[5.5px] text-gray-1', {
                 hidden: !state.isOpen
               })}
             >

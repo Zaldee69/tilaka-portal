@@ -67,7 +67,7 @@ export function MobileSidebar() {
             className="font-semibold flex gap-2 items-center"
           >
             <QuestionAnswerIcon fill="#828282" />
-            <div className="text-sm">FAQ</div>
+            <div className="text-sm text-gray-1">FAQ</div>
             <ExternalLink height={18} width={18} className="text-gray-4" />
           </Link>
         </div>
