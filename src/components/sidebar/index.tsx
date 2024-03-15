@@ -52,7 +52,7 @@ const Sidebar = () => {
           height={!state.isOpen ? 32 : 50}
           width={!state.isOpen ? 34 : 158}
           className="block my-5 mx-auto"
-          alt="Tilaka Logo"
+          alt="Tilaka Logo Small"
           quality={100}
           priority
         />
