@@ -68,31 +68,108 @@ export const UserIcon = ({
 export const SearchIcon = ({
   svgClassName,
   pathClassName,
-  width = 24,
-  height = 24,
+  width = 50,
+  height = 50,
   fill = '#323232'
 }: IconProps) => {
   return (
     <svg
-      className={svgClassName}
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={svgClassName}
     >
-      <g clipPath="url(#clip0_1321_30035)">
+      <g clip-path="url(#clip0_1692_5063)">
         <path
-          d="M17.6987 15.9351H16.7698L16.4406 15.6176C17.8516 13.9714 18.5806 11.7255 18.1808 9.33855C17.6282 6.0697 14.9002 3.45932 11.6079 3.05953C6.63407 2.44809 2.44809 6.6341 3.05953 11.6079C3.45931 14.9003 6.06967 17.6283 9.3385 18.1809C11.7255 18.5807 13.9713 17.8517 15.6175 16.4407L15.935 16.7699V17.6988L18.8864 20.6384C19.3685 21.1205 20.1563 21.1205 20.6384 20.6384C21.1205 20.1563 21.1205 19.3685 20.6384 18.8864L17.6987 15.9351Z"
-          stroke={fill}
-          className={pathClassName}
+          d="M17.6987 16.4351H16.7698L16.4406 16.1176C17.8516 14.4714 18.5806 12.2255 18.1808 9.83855C17.6282 6.5697 14.9002 3.95932 11.6079 3.55953C6.63407 2.94809 2.44809 7.1341 3.05953 12.1079C3.45931 15.4003 6.06967 18.1283 9.3385 18.6809C11.7255 19.0807 13.9713 18.3517 15.6175 16.9407L15.935 17.2699V18.1988L18.8864 21.1384C19.3685 21.6205 20.1563 21.6205 20.6384 21.1384C21.1205 20.6563 21.1205 19.8685 20.6384 19.3864L17.6987 16.4351Z"
+          stroke="#323232"
+          stroke-width="1.5"
         />
       </g>
       <defs>
-        <clipPath id="clip0_1321_30035">
-          <rect width={width} height={height} fill="white" />
+        <clipPath id="clip0_1692_5063">
+          <rect
+            width="24"
+            height="24"
+            fill="white"
+            transform="translate(0 0.5)"
+          />
         </clipPath>
       </defs>
+    </svg>
+  );
+};
+
+export const FilterAltIcon = ({
+  svgClassName,
+  pathClassName,
+  width = 50,
+  height = 50,
+  fill = '#323232'
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="25"
+      viewBox="0 0 24 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={svgClassName}
+    >
+      <g clip-path="url(#clip0_1679_10294)">
+        <path
+          d="M4.25 6.11C6.57 9.09 10 13.5 10 13.5V18.5C10 19.6 10.9 20.5 12 20.5C13.1 20.5 14 19.6 14 18.5V13.5C14 13.5 17.43 9.09 19.75 6.11C20.26 5.45 19.79 4.5 18.95 4.5H5.04C4.21 4.5 3.74 5.45 4.25 6.11Z"
+          fill="#323232"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1679_10294">
+          <rect
+            width="24"
+            height="24"
+            fill="white"
+            transform="translate(0 0.5)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export const SortIcon = ({
+  svgClassName,
+  pathClassName,
+  width = 50,
+  height = 50,
+  fill = '#323232'
+}: IconProps) => {
+  return (
+    <svg
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={svgClassName}
+    >
+      <mask
+        id="mask0_485_10112"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="25"
+        height="25"
+      >
+        <rect width="25" height="25" fill="#C4C4C4" />
+      </mask>
+      <g mask="url(#mask0_485_10112)">
+        <path d="M3.75 5H21.25" stroke="black" stroke-width="1.5" />
+        <path d="M6.25 10H18.75" stroke="black" stroke-width="1.5" />
+        <path d="M8.75 15H16.25" stroke="black" stroke-width="1.5" />
+        <path d="M10 20H15" stroke="black" stroke-width="1.5" />
+      </g>
     </svg>
   );
 };
@@ -124,6 +201,88 @@ export const BellIcon = ({
         <clipPath id="clip0_1321_27802">
           <rect width={width} height={height} fill="white" />
         </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export const ContactIcon = ({
+  svgClassName,
+  pathClassName,
+  width = 24,
+  height = 24,
+  fill = '#323232'
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={svgClassName}
+    >
+      <g clip-path="url(#clip0_1679_12419)">
+        <path
+          d="M13.17 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8.83C20 8.3 19.79 7.79 19.41 7.42L14.58 2.59C14.21 2.21 13.7 2 13.17 2ZM12 10C13.1 10 14 10.9 14 12C14 13.1 13.1 14 12 14C10.9 14 10 13.1 10 12C10 10.9 10.9 10 12 10ZM16 18H8V17.43C8 16.62 8.48 15.9 9.22 15.58C10.07 15.21 11.01 15 12 15C12.99 15 13.93 15.21 14.78 15.58C15.52 15.9 16 16.62 16 17.43V18Z"
+          fill="#828282"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1679_12419">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export const CancelScheduleIcon = ({
+  svgClassName,
+  pathClassName,
+  width = 24,
+  height = 24,
+  fill = '#323232'
+}: IconProps) => {
+  return (
+    <svg
+      width="35"
+      height="33"
+      viewBox="0 0 31 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 7.99994C20.44 7.99994 19.8933 8.05327 19.3467 8.14661L2.19999 0.799941C1.31999 0.413274 0.346662 1.06661 0.346662 2.01327L0.333328 8.26661C0.333328 8.89327 0.773328 9.43994 1.37333 9.57327L12.3333 11.9999L1.37333 14.4399C0.773328 14.5733 0.333328 15.1066 0.333328 15.7333L0.346662 21.9733C0.346662 22.9333 1.31999 23.5733 2.19999 23.1999L11.1067 19.3866C11.7867 24.2533 15.9467 27.9999 21 27.9999C26.52 27.9999 31 23.5199 31 17.9999C31 12.4799 26.52 7.99994 21 7.99994ZM21 25.3333C16.96 25.3333 13.6667 22.0399 13.6667 17.9999C13.6667 13.9599 16.96 10.6666 21 10.6666C25.04 10.6666 28.3333 13.9599 28.3333 17.9999C28.3333 22.0399 25.04 25.3333 21 25.3333Z"
+        fill="url(#paint0_linear_1679_4569)"
+      />
+      <path
+        d="M23.8267 15.1733C23.56 14.9066 23.1467 14.9066 22.88 15.1733L21 17.0533L19.12 15.1733C18.8533 14.9066 18.44 14.9066 18.1733 15.1733C17.9067 15.4399 17.9067 15.8533 18.1733 16.1199L20.0533 17.9999L18.1733 19.8799C17.9067 20.1466 17.9067 20.5599 18.1733 20.8266C18.44 21.0933 18.8533 21.0933 19.12 20.8266L21 18.9466L22.88 20.8266C23.1467 21.0933 23.56 21.0933 23.8267 20.8266C24.0933 20.5599 24.0933 20.1466 23.8267 19.8799L21.9467 17.9999L23.8267 16.1199C24.0933 15.8533 24.0933 15.4266 23.8267 15.1733Z"
+        fill="url(#paint1_linear_1679_4569)"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_1679_4569"
+          x1="17.4359"
+          y1="0.686768"
+          x2="5.85399"
+          y2="27.5838"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#BD0505" />
+          <stop offset="1" stop-color="#840707" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_1679_4569"
+          x1="21.3492"
+          y1="14.9733"
+          x2="18.5801"
+          y2="20.7009"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#BD0505" />
+          <stop offset="1" stop-color="#840707" />
+        </linearGradient>
       </defs>
     </svg>
   );

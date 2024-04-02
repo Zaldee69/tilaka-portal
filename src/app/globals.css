@@ -107,6 +107,14 @@
   box-shadow: 0px 4px 14px 0px #0d5fb33b;
 }
 
+.popover-shadow {
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.15);
+}
+
+.modal-button-shadow {
+  box-shadow: 0px 0px 18px 0px rgba(27, 71, 130, 0.08);
+}
+
 .quota-card-bg-1 {
   @apply bg-gradient-to-r from-[#168CBE] to-[#0D5FB3];
   box-shadow: 0px 3px 14px 0px rgba(150, 153, 4, 0.05);
