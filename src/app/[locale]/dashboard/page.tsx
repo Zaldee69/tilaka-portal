@@ -107,77 +107,60 @@ const Page = () => {
         <div className="bg-white custom-shadow rounded-2xl mt-10 p-3 border border-gray-6">
           <h4>{t('table.importantToday')}</h4>
 
-          {/* MOBILE TABLE CARD */}
-          <div className="md:hidden ">
-            <MobileTableCard />
-            <MobileTableCard />
-            <MobileTableCard />
-            <MobileTableCard />
-            <MobileTableCard />
-            <Button
-              size="lg"
-              className="mt-5 w-full sign-button-shadow font-semibold"
-            >
-              Lihat Semua
-            </Button>
-          </div>
-
-          {/* DESKTOP TABLE */}
-          <div className="hidden md:block">
-            <DataTable
-              data={[
-                {
-                  date: 'Mei 08, 2023 16:47',
-                  name: 'BAST Kasuari',
-                  initiator: 'Husen',
-                  signer: [
-                    {
-                      tilaka_name: 'husen123',
-                      email: 'husen@kuru.com',
-                      status: 'signed'
-                    }
-                  ],
-                  status: 'on_progress'
-                },
-                {
-                  date: 'Mei 08, 2023 16:47',
-                  name: 'PKS Tilaka x PT. ABC',
-                  initiator: 'Saya',
-                  signer: [
-                    {
-                      tilaka_name: 'husen123',
-                      email: 'husen@kuru.com',
-                      status: 'signed'
-                    },
-                    {
-                      tilaka_name: 'husen123',
-                      email: 'menangkeri@kuru.com',
-                      status: 'signed'
-                    },
-                    {
-                      tilaka_name: 'husen123',
-                      email: 'awan@kmanten.com',
-                      status: 'signed'
-                    }
-                  ],
-                  status: 'draft'
-                },
-                {
-                  date: 'Mei 08, 2023 16:47',
-                  name: 'PKS Tilaka x PT. ABC',
-                  initiator: 'Husen',
-                  signer: [
-                    {
-                      tilaka_name: 'husen123',
-                      email: 'husen@kuru.com',
-                      status: 'signed'
-                    }
-                  ],
-                  status: 'done'
-                }
-              ]}
-            />
-          </div>
+          <DataTable
+            showSeeAllButton={true}
+            data={[
+              {
+                date: 'Mei 08, 2023 16:47',
+                name: 'BAST Kasuari',
+                initiator: 'Husen',
+                signer: [
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'husen@kuru.com',
+                    status: 'signed'
+                  }
+                ],
+                status: 'on_progress'
+              },
+              {
+                date: 'Mei 08, 2023 16:47',
+                name: 'PKS Tilaka x PT. ABC',
+                initiator: 'Saya',
+                signer: [
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'husen@kuru.com',
+                    status: 'signed'
+                  },
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'menangkeri@kuru.com',
+                    status: 'signed'
+                  },
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'awan@kmanten.com',
+                    status: 'signed'
+                  }
+                ],
+                status: 'draft'
+              },
+              {
+                date: 'Mei 08, 2023 16:47',
+                name: 'PKS Tilaka x PT. ABC',
+                initiator: 'Husen',
+                signer: [
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'husen@kuru.com',
+                    status: 'signed'
+                  }
+                ],
+                status: 'done'
+              }
+            ]}
+          />
         </div>
       </div>
       <div className="bg-white custom-shadow md:shadow-none right-0 md:sticky top-20 rounded-2xl md:mt-[52px] border border-gray-6 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
@@ -237,7 +220,7 @@ const Page = () => {
             </div>
             <Button
               size="lg"
-              className="mt-3 w-full custom-shadow text-[#272B30] hover:text-[#272B30] bg-white font-semibold gap-2 py-5 hover:scale-105 transition-transform"
+              className="mt-3 w-full custom-shadow text-[#272B30] hover:text-[#272B30] bg-white font-semibold gap-2 py-5 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <EditIcon />
@@ -247,7 +230,7 @@ const Page = () => {
           <div className="px-3">
             <Button
               size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <AccountCircleIcon fill="#BDBDBD" />
@@ -255,7 +238,7 @@ const Page = () => {
             </Button>
             <Button
               size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <DocumentIcon fill="#BDBDBD" />
@@ -263,7 +246,7 @@ const Page = () => {
             </Button>
             <Button
               size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <SecurityIcon fill="#BDBDBD" />
@@ -274,7 +257,7 @@ const Page = () => {
               target="_blank"
               className={buttonVariants({
                 className:
-                  'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 !px-4 hover:scale-105 transition-transform z-10',
+                  'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 !px-4 lg:hover:scale-105 transition-transform z-10',
                 size: 'lg',
                 variant: 'ghost'
               })}

@@ -62,7 +62,7 @@ const Pagination = ({
   useOnClickOutside(contentPerPageMenuRef, onClickOutsideContentPerPageMenu);
 
   return (
-    <div className="mt-6 flex justify-between items-center">
+    <div className="mt-6 flex md:flex-row flex-col items-start justify-between md:items-center">
       <div className="flex items-center gap-5">
         <div className="relative mt-2 md:mt-0">
           <Select>
@@ -122,11 +122,11 @@ const Pagination = ({
       <div className="flex items-center border rounded-xl mt-2 md:mt-0">
         <div className={['flex'].join(' ')}>
           <button
-            className="px-2 py-2 border border-neutral40 flex items-center justify-center cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 hover:bg-primary group rounded-l-xl"
+            className="px-2 py-2 flex items-center justify-center cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 group rounded-l-xl"
             disabled={currentPage === 1 || !isSuccess}
             onClick={() => setCurrentPage(currentPage - 1)}
           >
-            <ChevronLeft strokeWidth={1} className="group-hover:text-white" />
+            <ChevronLeft strokeWidth={1} />
           </button>
         </div>
         <div className="flex items-center">
@@ -152,11 +152,11 @@ const Pagination = ({
         </div>
         <div className={['flex'].join(' ')}>
           <button
-            className="flex items-center justify-center cursor-pointer px-2 py-2 group disabled:cursor-not-allowed disabled:opacity-50 hover:bg-primary rounded-r-xl"
+            className="flex items-center justify-center cursor-pointer px-2 py-2 group disabled:cursor-not-allowed disabled:opacity-50 rounded-r-xl"
             disabled={currentPage === totalPages || !isSuccess}
             onClick={() => setCurrentPage(currentPage + 1)}
           >
-            <ChevronRight strokeWidth={1} className="group-hover:text-white" />
+            <ChevronRight strokeWidth={1} />
           </button>
         </div>
       </div>

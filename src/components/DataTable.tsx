@@ -26,7 +26,9 @@ import { Input } from '@/components/ui/input';
 import {
   AccountCircleIcon,
   CancelScheduleIcon,
-  ContactIcon
+  ContactIcon,
+  PermIdentityIcon,
+  SupervisorAccountIcon
 } from '../../public/icons/icons';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -56,7 +58,15 @@ export type Document = {
   status: 'on_progress' | 'draft' | 'done' | 'denied';
 };
 
-const DataTable = ({ data }: { data: Document[] }) => {
+const DataTable = ({
+  data,
+  showPagination = false,
+  showSeeAllButton = false
+}: {
+  data: Document[];
+  showPagination?: boolean;
+  showSeeAllButton?: boolean;
+}) => {
   const d = useTranslations('Dashboard');
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -152,28 +162,52 @@ const DataTable = ({ data }: { data: Document[] }) => {
     <div>
       <RejectConfirmationModal />
 
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>{d('table.date')}</TableHead>
-            <TableHead>{d('table.document')}</TableHead>
-            <TableHead>{d('table.initiator')}</TableHead>
-            <TableHead>{d('table.signer')}</TableHead>
-            <TableHead>{d('table.status')}</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.length ? (
-            data.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell>{row.date}</TableCell>
-                <TableCell className="font-semibold">{row.name}</TableCell>
-                <TableCell>{row.initiator}</TableCell>
-                <TableCell>
+      <div className="md:hidden ">
+        {data.length
+          ? data.map((row) => (
+              <div
+                key={row.date}
+                className="border rounded-xl py-2 px-3 mt-3 border-gray-6 flex justify-between"
+              >
+                <div className="flex flex-col gap-2">
+                  <Badge
+                    className={`w-fit flex-none px-1.5 ${getBadgeLabelAndColor(row.status, 'row').color}`}
+                  >
+                    {getBadgeLabelAndColor(row.status, 'row').label}
+                  </Badge>
+                  <h5>{row.name}</h5>
+                  <p className="text-xs">{row.date}</p>
+                  <div className="flex gap-1 items-center">
+                    <PermIdentityIcon svgClassName="w-5 h-5" />
+                    <p className="text-xs">{row.initiator}</p>
+                  </div>
+                </div>
+                <div className="flex flex-col justify-between">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="cursor-pointer" asChild>
+                      <MoreHorizontal />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      className="rounded-[10px] p-2"
+                      align="end"
+                    >
+                      <DropdownMenuItem>Lihat</DropdownMenuItem>
+                      <DropdownMenuItem>Tandatangan</DropdownMenuItem>
+                      <DropdownMenuItem>Download</DropdownMenuItem>
+                      <DropdownMenuItem>Audit Trail</DropdownMenuItem>
+                      {row.initiator === 'Saya' ? (
+                        <DropdownMenuItem onClick={() => setIsOpen(true)}>
+                          Batalkan
+                        </DropdownMenuItem>
+                      ) : (
+                        <DropdownMenuItem>Tolak</DropdownMenuItem>
+                      )}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+
                   <Popover>
                     <PopoverTrigger className="flex gap-2 items-center">
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">{row.signer.length}</p>
+                      <SupervisorAccountIcon />
                     </PopoverTrigger>
                     <PopoverContent className="w-96">
                       <Input
@@ -208,58 +242,132 @@ const DataTable = ({ data }: { data: Document[] }) => {
                       ))}
                     </PopoverContent>
                   </Popover>
-                </TableCell>
-                <TableCell>
-                  <Badge
-                    className={`w-fit flex-none px-1.5 ${getBadgeLabelAndColor(row.status, 'row').color}`}
-                  >
-                    {getBadgeLabelAndColor(row.status, 'row').label}
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="cursor-pointer" asChild>
-                      <MoreHorizontal />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      className="rounded-[10px] p-2"
-                      align="end"
+                </div>
+              </div>
+            ))
+          : 'nothing'}
+        {showSeeAllButton ? (
+          <Button
+            size="lg"
+            className="mt-5 w-full sign-button-shadow font-semibold"
+          >
+            Lihat Semua
+          </Button>
+        ) : null}
+      </div>
+
+      <div className="hidden md:block">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>{d('table.date')}</TableHead>
+              <TableHead>{d('table.document')}</TableHead>
+              <TableHead>{d('table.initiator')}</TableHead>
+              <TableHead>{d('table.signer')}</TableHead>
+              <TableHead>{d('table.status')}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {data.length ? (
+              data.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell>{row.date}</TableCell>
+                  <TableCell className="font-semibold">{row.name}</TableCell>
+                  <TableCell>{row.initiator}</TableCell>
+                  <TableCell>
+                    <Popover>
+                      <PopoverTrigger className="flex gap-2 items-center">
+                        <AccountCircleIcon svgClassName="h-5 w-5" />
+                        <p className="font-semibold">{row.signer.length}</p>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-96">
+                        <Input
+                          autoFocus={false}
+                          placeholder={'Tilaka Name atau Email'}
+                          className="h-10 pl-3 w-full"
+                          icon={<ContactIcon svgClassName="mt-2" />}
+                        />
+                        {row.signer.map((signer) => (
+                          <div
+                            key={signer.email}
+                            className="rounded-md bg-[#F9F9F9] mt-3 px-3 py-2 flex justify-between items-center"
+                          >
+                            <div className="flex items-center gap-2">
+                              <p className="h-10 w-10 rounded-full bg-[#0D5FB31A] flex items-center justify-center font-semibold">
+                                {'S'}
+                              </p>
+                              <div>
+                                <h5>{signer.tilaka_name}</h5>
+                                <p className="text-sm">{signer.email}</p>
+                              </div>
+                            </div>
+                            <Badge
+                              className={`w-fit flex-none px-1.5 ${getBadgeLabelAndColor(signer.status, 'popover').color}`}
+                            >
+                              {
+                                getBadgeLabelAndColor(signer.status, 'popover')
+                                  .label
+                              }
+                            </Badge>
+                          </div>
+                        ))}
+                      </PopoverContent>
+                    </Popover>
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      className={`w-fit flex-none px-1.5 ${getBadgeLabelAndColor(row.status, 'row').color}`}
                     >
-                      <DropdownMenuItem>Lihat</DropdownMenuItem>
-                      <DropdownMenuItem>Tandatangan</DropdownMenuItem>
-                      <DropdownMenuItem>Download</DropdownMenuItem>
-                      <DropdownMenuItem>Audit Trail</DropdownMenuItem>
-                      {row.initiator === 'Saya' ? (
-                        <DropdownMenuItem onClick={() => setIsOpen(true)}>
-                          Batalkan
-                        </DropdownMenuItem>
-                      ) : (
-                        <DropdownMenuItem>Tolak</DropdownMenuItem>
-                      )}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                      {getBadgeLabelAndColor(row.status, 'row').label}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="cursor-pointer" asChild>
+                        <MoreHorizontal />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        className="rounded-[10px] p-2"
+                        align="end"
+                      >
+                        <DropdownMenuItem>Lihat</DropdownMenuItem>
+                        <DropdownMenuItem>Tandatangan</DropdownMenuItem>
+                        <DropdownMenuItem>Download</DropdownMenuItem>
+                        <DropdownMenuItem>Audit Trail</DropdownMenuItem>
+                        {row.initiator === 'Saya' ? (
+                          <DropdownMenuItem onClick={() => setIsOpen(true)}>
+                            Batalkan
+                          </DropdownMenuItem>
+                        ) : (
+                          <DropdownMenuItem>Tolak</DropdownMenuItem>
+                        )}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={12} className="h-24 text-center">
+                  No results.
                 </TableCell>
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={12} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+            )}
+          </TableBody>
+        </Table>
+      </div>
 
-      <Pagination
-        contentPerPage={contentPerPage}
-        setContentPerPage={setContentPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalElements={10}
-        totalPages={5}
-        isSuccess={true}
-      />
+      {showPagination ? (
+        <Pagination
+          contentPerPage={contentPerPage}
+          setContentPerPage={setContentPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalElements={10}
+          totalPages={5}
+          isSuccess={true}
+        />
+      ) : null}
     </div>
   );
 };

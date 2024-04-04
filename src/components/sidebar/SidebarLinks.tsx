@@ -41,7 +41,7 @@ const SidebarLinks: React.FC<Props> = ({ setOpen }) => {
           className={buttonVariants({
             variant: 'secondary',
             className: cn(
-              `w-full !justify-start font-semibold !px-3   ${checkPathname(item.href) ? 'bg-transparent !text-gray-1' : '!text-primary'} `,
+              `w-full !justify-start group font-semibold !px-3 hover:!text-primary hover:!bg-secondary   ${checkPathname(item.href) ? 'bg-transparent !text-gray-1' : '!text-primary'} `,
               { '!justify-center': !state.isOpen }
             )
           })}
@@ -52,7 +52,12 @@ const SidebarLinks: React.FC<Props> = ({ setOpen }) => {
             svgClassName={cn('flex-none mr-3', {
               'mr-0': !state.isOpen
             })}
-            fill={checkPathname(item.href) ? '#828282' : '#0D5FB3'}
+            pathClassName={cn(
+              'group-hover:fill-primary fill-[#828282] transition-colors',
+              {
+                'fill-primary': !checkPathname(item.href)
+              }
+            )}
           />
           {state.isOpen && t(`${item.title as keyof typeof sidebarMessages}`)}
         </Link>

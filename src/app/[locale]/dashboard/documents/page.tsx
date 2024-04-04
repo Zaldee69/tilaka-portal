@@ -17,6 +17,8 @@ import {
   SearchIcon,
   SortIcon
 } from '../../../../../public/icons/icons';
+import { Button } from '@/components/ui/button';
+import MobileFilter from './MobileFilter';
 
 type Signer = {
   tilaka_name: string;
@@ -109,7 +111,7 @@ export default function Page() {
     <div className="p-5 mx-auto">
       <h1 className="text-gray-1">{t('sidebar.document')}</h1>
       <div className="flex justify-between mt-7 mb-5">
-        <div className="flex gap-3">
+        <div className="flex gap-3 w-full md:w-fit">
           <Input
             placeholder={'Nama Dokumen'}
             className="h-10 pl-12 pr-2 w-full"
@@ -118,8 +120,8 @@ export default function Page() {
           />{' '}
           <Select>
             <SelectTrigger
-              icon={<FilterAltIcon />}
-              className="w-[280px] font-semibold"
+              icon={<FilterAltIcon fill="#000" />}
+              className="w-[280px] font-semibold hidden md:flex"
             >
               <SelectValue placeholder="Filter by status" />
             </SelectTrigger>
@@ -133,7 +135,7 @@ export default function Page() {
         <Select>
           <SelectTrigger
             icon={<SortIcon />}
-            className="w-[140px] font-semibold"
+            className="w-[140px] font-semibold hidden md:flex"
           >
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
@@ -143,7 +145,11 @@ export default function Page() {
           </SelectContent>
         </Select>
       </div>
-      <DataTable data={data} />
+      <DataTable showPagination data={data} />
+      <div className="pb-20 md:hidden" />
+      <div className="sticky bottom-5 flex justify-center md:hidden">
+        <MobileFilter />
+      </div>
     </div>
   );
 }
