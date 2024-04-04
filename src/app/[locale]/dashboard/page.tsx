@@ -16,19 +16,8 @@ import {
   TilakaIcon
 } from '../../../../public/icons/icons';
 import DocInformationCard from '@/components/card/DocInformationCard';
-import MobileTableCard from '@/components/card/MobileTableCard';
 import { Button, buttonVariants } from '@/components/ui/button';
-import { ChevronDown, MoreHorizontal } from 'lucide-react';
 import Link from 'next/link';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
 import { useTranslations } from 'next-intl';
 import Collapsible from '@/components/Collapsible';
 import DataTable from '@/components/DataTable';
@@ -164,7 +153,7 @@ const Page = () => {
         </div>
       </div>
       <div className="bg-white custom-shadow md:shadow-none right-0 md:sticky top-20 rounded-2xl md:mt-[52px] border border-gray-6 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
-        <Collapsible autoOpen title={t('mainAccount')}>
+        <Collapsible onlyShowOnMobile autoOpen title={t('mainAccount')}>
           <div className="flex items-center gap-5 cursor-pointer px-3 my-3">
             <div className="p-2 bg-secondary-1 rounded-lg">
               <CorporateIconBig />

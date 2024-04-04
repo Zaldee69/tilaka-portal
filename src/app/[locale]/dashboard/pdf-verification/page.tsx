@@ -8,9 +8,7 @@ const Page = () => {
     <div className="p-5 mx-auto">
       <h1 className="text-gray-1">{t('sidebar.verifyPdf')}</h1>
 
-      <div className="bg-[#F6F6F6] w-full mt-7 rounded-md h-80">
-        <UploadDropZone />
-      </div>
+      <UploadDropZone />
     </div>
   );
 };
