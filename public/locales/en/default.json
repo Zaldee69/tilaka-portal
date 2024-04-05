@@ -38,11 +38,29 @@
     },
     "table": {
       "date": "Date",
-      "document": "Document",
+      "document": "Document Name",
       "initiator": "Initiator",
       "signer": "Signer",
       "status": "Status",
-      "importantToday": "Important Today"
+      "importantToday": "Important Today",
+      "signerStatus": {
+        "signed": "Signed",
+        "waiting": "Waiting",
+        "sent": "Sent",
+        "denied": "Denied"
+      },
+      "actions": {
+        "view": "View",
+        "sign": "Sign",
+        "cancel": "Cancel Request",
+        "deny": "Deny"
+      },
+      "cancelDialog": {
+        "title": "Cancel Document",
+        "subtitle": "Signatures and documents will be canceled.",
+        "cancelButton": "Back",
+        "confirmButton": "Yes, Cancel It"
+      }
     },
     "sigantureBalance": "Signature Balance",
     "usage": "Usage",
@@ -63,5 +81,89 @@
     "activity": "Here's your activity summary with Tilaka",
     "validUntil": "Valid until",
     "floatingCTA": "Sign Document"
+  },
+  "VerifyPdf": {
+    "uploadZone": {
+      "uploading": {
+        "title": "Please wait during the document upload process",
+        "subtitle": "Uploading document"
+      },
+      "unuploading": {
+        "title": "Drag your document here, or click",
+        "subtitle": "Maximum file size 30MB without password",
+        "upload": "upload"
+      }
+    }
+  },
+  "Settings": {
+    "changePasswordButton": "Change Password",
+    "serialNumber": "Serial Number",
+    "revoke": "Revoke",
+    "certificate": "Certificate",
+    "dialog": {
+      "authMethod": {
+        "title": "Authentication",
+        "subtitle": "Select your Authentication method",
+        "method": {
+          "otp": "Send OTP via email",
+          "fr": "Verification via FR"
+        },
+        "cancelButton": "Cancel",
+        "confirmButton": "Submit"
+      },
+      "mfaChangeConfirmation": {
+        "title": "Change MFA Confirmation",
+        "subtitle": "Are you sure you want to change MFA to Face Recognition",
+        "confirm": "Submit",
+        "cancel": "Cancel"
+      },
+      "changePassword": {
+        "title": "Change Password",
+        "subtitle": "Password must be 10-40 characters, must contain lower case, upper case, number, and special characters (@#$%^&+=)",
+        "input": {
+          "currentPassword": {
+            "label": "Current Password",
+            "placeholder": "Enter current password",
+            "errorMessage": {
+              "empty": "Current password must not be empty"
+            }
+          },
+          "newPassword": {
+            "label": "New Password",
+            "placeholder": "Enter New password",
+            "errorMessage": {
+              "empty": "New password must not be empty",
+              "notValid": "Password is invalid",
+              "passMin": "New password must be at least 10 characters"
+            }
+          },
+          "confirmPassword": {
+            "label": "Confirm Password",
+            "placeholder": "Enter Confirm password",
+            "errorMessage": {
+              "empty": "Confirm password must not be empty",
+              "notMatch": "Password and confirm password do not match",
+              "notValid": "Confirm password is invalid",
+              "passMin": "Confirm password must be at least 10 characters"
+            }
+          }
+        },
+        "confirm": "Submit",
+        "cancel": "Cancel"
+      },
+      "fr": {
+        "title": "Change MFA Confirmation",
+        "subtitle": "Face towards the camera"
+      }
+    },
+    "certificateContent": {
+      "title": "Linked Account",
+      "subtitle": "To change Users Data, please contact Administrator",
+      "changeSignature": "Change Signature",
+      "seeCertificate": "See Certificate",
+      "loggedIn": "Logged In",
+      "mainAccount": "Main Account",
+      "setAsMainAccount": "Set as Main Account"
+    }
   }
 }

@@ -38,11 +38,29 @@
     },
     "table": {
       "date": "Tanggal",
-      "document": "Dokumen",
+      "document": "Nama Dokumen",
       "initiator": "Pembuat",
       "signer": "Penandatangan",
       "status": "Status",
-      "importantToday": "Penting Hari ini"
+      "importantToday": "Penting Hari ini",
+      "signerStatus": {
+        "signed": "Ditanda Tangani",
+        "waiting": "Menunggu",
+        "sent": "Terkirim",
+        "denied": "Ditolak"
+      },
+      "actions": {
+        "view": "Lihat",
+        "sign": "Tandatangan",
+        "cancel": "Cancel Request",
+        "deny": "Tolak"
+      },
+      "cancelDialog": {
+        "title": "Batalkan Dokumen",
+        "subtitle": "Tandatangan dan dokumen akan dibatalkan.",
+        "cancelButton": "Kembali",
+        "confirmButton": "Ya, Batalkan"
+      }
     },
     "sigantureBalance": "Kuota Tandatangan",
     "usage": "Kuota Terpakai",
@@ -63,5 +81,89 @@
     "activity": "Berikut ringkasan aktivitasmu bersama Tilaka",
     "validUntil": "Aktif sampai",
     "floatingCTA": "Tandatangan Dokumen"
+  },
+  "VerifyPdf": {
+    "uploadZone": {
+      "uploading": {
+        "title": "Mohon menunggu selama proses pengunggahan dokumen",
+        "subtitle": "Mengupload Dokumen"
+      },
+      "unuploading": {
+        "title": "Pilih dokumen Anda dan Tarik kesini, atau klik",
+        "subtitle": "Ukuran file maksimal 30MB tanpa kata sandi",
+        "upload": "upload"
+      }
+    }
+  },
+  "Settings": {
+    "changePasswordButton": "Ubah Kata Sandi",
+    "serialNumber": "Nomor Serial",
+    "revoke": "Cabut",
+    "certificate": "Sertifikat",
+    "dialog": {
+      "authMethod": {
+        "title": "Otentikasi",
+        "subtitle": "Pilih metode otentikasi Anda",
+        "method": {
+          "otp": "Kirim OTP via email",
+          "fr": "Verifikasi via FR"
+        },
+        "cancelButton": "Batal",
+        "confirmButton": "Simpan"
+      },
+      "mfaChangeConfirmation": {
+        "title": "Konfirmasi Penggantian MFA",
+        "subtitle": "Apakah Anda yakin mengubah metode otentikasi menjadi Face Recognition",
+        "confirm": "Simpan",
+        "cancel": "Batal"
+      },
+      "fr": {
+        "title": "Konfirmasi Penggantian MFA",
+        "subtitle": "Arahkan wajah Anda ke kamera"
+      },
+      "changePassword": {
+        "title": "Ubah Kata Sandi",
+        "subtitle": "Kata Sandi minimal 10 karakter, maksimal 40 karakter, harus mengandung huruf kecil, huruf besar, angka, dan karakter khusus (@#$%^&+=)",
+        "input": {
+          "currentPassword": {
+            "label": "Kata Sandi Sekarang",
+            "placeholder": "Masukkan kata sandi sekarang",
+            "errorMessage": {
+              "empty": "Kata sandi sekarang harus diisi"
+            }
+          },
+          "newPassword": {
+            "label": "Kata Sandi Baru",
+            "placeholder": "Tentukan kata sandi baru",
+            "errorMessage": {
+              "empty": "Kata sandi baru harus diisi",
+              "notValid": "Kata sandi baru tidak valid",
+              "passMin": "Kata sandi baru minimal 10 karakter"
+            }
+          },
+          "confirmPassword": {
+            "label": "Konfirmasi Kata Sandi Baru",
+            "placeholder": "Masukkan ulang kata sandi baru",
+            "errorMessage": {
+              "empty": "Kata sandi baru harus diisi",
+              "notMatch": "Konfirmasi kata sandi dan kata sandi baru tidak cocok",
+              "notValid": "Konfirmasi kata sandi baru tidak valid",
+              "passMin": "Konfirmasi kata sandi baru minimal 10 karakter"
+            }
+          }
+        },
+        "confirm": "Simpan",
+        "cancel": "Batal"
+      }
+    },
+    "certificateContent": {
+      "title": "Akun Tertaut",
+      "subtitle": "Untuk melakukan perubahan data pengguna, silahkan menghubungi Administrator Perusahaan",
+      "changeSignature": "Ubah Tandatangan",
+      "seeCertificate": "Lihat Sertifikat",
+      "loggedIn": "Sedang Login",
+      "mainAccount": "Akun Utama",
+      "setAsMainAccount": "Jadikan Akun Utama"
+    }
   }
 }

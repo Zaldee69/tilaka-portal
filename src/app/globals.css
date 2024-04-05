@@ -107,6 +107,14 @@
   box-shadow: 0px 4px 14px 0px #0d5fb33b;
 }
 
+.popover-shadow {
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.15);
+}
+
+.modal-button-shadow {
+  box-shadow: 0px 0px 18px 0px rgba(27, 71, 130, 0.08);
+}
+
 .quota-card-bg-1 {
   @apply bg-gradient-to-r from-[#168CBE] to-[#0D5FB3];
   box-shadow: 0px 3px 14px 0px rgba(150, 153, 4, 0.05);
@@ -125,4 +133,16 @@
   box-shadow: 6px 0px 16px 0px rgba(0, 0, 0, 0.05);
   border-right: 1px solid rgba(234, 234, 234, 1);
   background: rgba(255, 255, 255, 1);
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }

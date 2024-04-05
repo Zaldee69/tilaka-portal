@@ -4,31 +4,47 @@ import { Button } from './ui/button';
 import { ChevronDown } from 'lucide-react';
 import { useSpring, animated } from '@react-spring/web';
 import { cn } from '@/lib/utils';
+import useMeasure from 'react-use-measure';
 
-interface Props {
-  title: string;
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  title?: string;
   children: React.ReactNode;
+  header?: React.ReactNode;
   autoOpen: boolean;
+  onlyShowOnMobile?: boolean;
 }
 
-const Collapsible = ({ title, children, autoOpen }: Props) => {
+const Collapsible = ({
+  title,
+  children,
+  autoOpen,
+  onlyShowOnMobile = false,
+  className,
+  header
+}: Props) => {
   const [isExpand, setIsExpand] = useState<boolean>(autoOpen);
 
+  const [measureRef, { height }] = useMeasure();
+
   const collpaseProps = useSpring({
-    height: isExpand ? 570 : 0,
-    config: {
-      duration: 250
+    from: {
+      height: 0
+    },
+    to: {
+      height: isExpand ? height : 0
     }
   });
 
   return (
-    <div>
-      <div className="flex justify-between p-3">
-        <h4>{title}</h4>
+    <div className={className}>
+      <div className={cn('flex justify-between p-3 items-center')}>
+        {header ? header : <h4>{title}</h4>}
         <Button
           onClick={() => setIsExpand(!isExpand)}
           variant="ghost"
-          className="p-0 h-fit md:hidden focus:text-black"
+          className={cn('p-0 h-fit focus:text-black', {
+            'md:hidden': onlyShowOnMobile
+          })}
         >
           <ChevronDown
             className={cn('rotate-0 transition-transform duration-200', {
@@ -37,8 +53,13 @@ const Collapsible = ({ title, children, autoOpen }: Props) => {
           />
         </Button>
       </div>
-      <animated.div className="overflow-hidden" style={collpaseProps}>
-        {children}
+      <animated.div
+        className={cn('', {
+          'overflow-hidden': !isExpand
+        })}
+        style={collpaseProps}
+      >
+        <div ref={measureRef}>{children}</div>
       </animated.div>
     </div>
   );

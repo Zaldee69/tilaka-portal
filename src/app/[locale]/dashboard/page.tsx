@@ -16,21 +16,11 @@ import {
   TilakaIcon
 } from '../../../../public/icons/icons';
 import DocInformationCard from '@/components/card/DocInformationCard';
-import MobileTableCard from '@/components/card/MobileTableCard';
 import { Button, buttonVariants } from '@/components/ui/button';
-import { ChevronDown, MoreHorizontal } from 'lucide-react';
 import Link from 'next/link';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
 import { useTranslations } from 'next-intl';
 import Collapsible from '@/components/Collapsible';
+import DataTable from '@/components/DataTable';
 
 const Page = () => {
   const t = useTranslations('Dashboard');
@@ -106,286 +96,66 @@ const Page = () => {
         <div className="bg-white custom-shadow rounded-2xl mt-10 p-3 border border-gray-6">
           <h4>{t('table.importantToday')}</h4>
 
-          {/* MOBILE TABLE CARD */}
-          <div className="md:hidden ">
-            <MobileTableCard />
-            <MobileTableCard />
-            <MobileTableCard />
-            <MobileTableCard />
-            <MobileTableCard />
-            <Button
-              size="lg"
-              className="mt-5 w-full sign-button-shadow font-semibold"
-            >
-              Lihat Semua
-            </Button>
-          </div>
-
-          {/* DESKTOP TABLE */}
-          <div className="hidden md:block">
-            <Table className="mt-3">
-              <TableHeader className="!border-none">
-                <TableRow>
-                  <TableHead>{t('table.date')}</TableHead>
-                  <TableHead>{t('table.document')}</TableHead>
-                  <TableHead>{t('table.initiator')}</TableHead>
-                  <TableHead>{t('table.signer')}</TableHead>
-                  <TableHead>{t('table.status')}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Mei 08, 2023 16:47</TableCell>
-                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit flex-none bg-[#FFB951]">
-                        On Progress
-                      </Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 08, 2023 16:47</TableCell>
-                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit flex-none bg-[#FFB951]">
-                        On Progress
-                      </Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 08, 2023 16:47</TableCell>
-                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit flex-none bg-[#FFB951]">
-                        On Progress
-                      </Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 08, 2023 16:47</TableCell>
-                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit flex-none bg-[#FFB951]">
-                        On Progress
-                      </Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 08, 2023 16:47</TableCell>
-                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit flex-none bg-[#FFB951]">
-                        On Progress
-                      </Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 08, 2023 16:47</TableCell>
-                  <TableCell className="font-semibold">BAST Kasuari</TableCell>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit flex-none bg-[#FFB951]">
-                        On Progress
-                      </Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 10, 2024 12:47</TableCell>
-                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
-                  <TableCell>husen@gmail.com</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 10, 2024 12:47</TableCell>
-                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
-                  <TableCell>husen@gmail.com</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 10, 2024 12:47</TableCell>
-                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
-                  <TableCell>husen@gmail.com</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 10, 2024 12:47</TableCell>
-                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
-                  <TableCell>husen@gmail.com</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Mei 10, 2024 12:47</TableCell>
-                  <TableCell className="font-semibold">Johndoe.pdf</TableCell>
-                  <TableCell>husen@gmail.com</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2 items-center">
-                      {' '}
-                      <AccountCircleIcon svgClassName="h-5 w-5" />
-                      <p className="font-semibold">4</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <div className="flex items-center justify-between">
-                      <Badge className="w-fit bg-[#929292]">Draft</Badge>
-                      <Button variant="ghost" className="p-0 h-fit">
-                        <MoreHorizontal />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
+          <DataTable
+            showSeeAllButton={true}
+            data={[
+              {
+                date: 'Mei 08, 2023 16:47',
+                name: 'BAST Kasuari',
+                initiator: 'Husen',
+                signer: [
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'husen@kuru.com',
+                    status: 'signed'
+                  }
+                ],
+                status: 'on_progress'
+              },
+              {
+                date: 'Mei 08, 2023 16:47',
+                name: 'PKS Tilaka x PT. ABC',
+                initiator: 'Saya',
+                signer: [
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'husen@kuru.com',
+                    status: 'signed'
+                  },
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'menangkeri@kuru.com',
+                    status: 'signed'
+                  },
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'awan@kmanten.com',
+                    status: 'signed'
+                  }
+                ],
+                status: 'draft'
+              },
+              {
+                date: 'Mei 08, 2023 16:47',
+                name: 'PKS Tilaka x PT. ABC',
+                initiator: 'Husen',
+                signer: [
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'husen@kuru.com',
+                    status: 'signed'
+                  }
+                ],
+                status: 'done'
+              }
+            ]}
+          />
         </div>
       </div>
       <div className="bg-white custom-shadow md:shadow-none right-0 md:sticky top-20 rounded-2xl md:mt-[52px] border border-gray-6 lg:mb-0 xl:w-[32%] h-fit md:pb-5">
-        <Collapsible autoOpen title={t('mainAccount')}>
+        <Collapsible onlyShowOnMobile autoOpen title={t('mainAccount')}>
           <div className="flex items-center gap-5 cursor-pointer px-3 my-3">
-            <div className="p-2 bg-[#F2F9FF] rounded-lg">
+            <div className="p-2 bg-secondary-1 rounded-lg">
               <CorporateIconBig />
             </div>
             <div>
@@ -439,7 +209,7 @@ const Page = () => {
             </div>
             <Button
               size="lg"
-              className="mt-3 w-full custom-shadow text-[#272B30] hover:text-[#272B30] bg-white font-semibold gap-2 py-5 hover:scale-105 transition-transform"
+              className="mt-3 w-full custom-shadow text-[#272B30] hover:text-[#272B30] bg-white font-semibold gap-2 py-5 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <EditIcon />
@@ -449,7 +219,7 @@ const Page = () => {
           <div className="px-3">
             <Button
               size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <AccountCircleIcon fill="#BDBDBD" />
@@ -457,7 +227,7 @@ const Page = () => {
             </Button>
             <Button
               size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <DocumentIcon fill="#BDBDBD" />
@@ -465,7 +235,7 @@ const Page = () => {
             </Button>
             <Button
               size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 hover:scale-105 transition-transform"
+              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
               variant="ghost"
             >
               <SecurityIcon fill="#BDBDBD" />
@@ -476,7 +246,7 @@ const Page = () => {
               target="_blank"
               className={buttonVariants({
                 className:
-                  'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 !px-4 hover:scale-105 transition-transform z-10',
+                  'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 !px-4 lg:hover:scale-105 transition-transform z-10',
                 size: 'lg',
                 variant: 'ghost'
               })}
