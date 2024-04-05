@@ -24,6 +24,7 @@ import FRDialog from '@/components/FRDialog';
 
 const ChangeAutheticationModeDialog = () => {
   const t = useTranslations('Dashboard');
+  const s = useTranslations('Settings');
 
   const [openFrDialog, setOpenFrDialog] = useState<boolean>(false);
   const [openOtpConfirmationDialog, setOpenOtpConfirmationDialog] =
@@ -51,8 +52,8 @@ const ChangeAutheticationModeDialog = () => {
         open={openFrDialog}
         setOpen={setOpenFrDialog}
         callbackCaptureProcessor={() => console.log()}
-        title="Konfirmasi Penggantian MFA"
-        subtitle="Arahkan wajah Anda ke kamera"
+        title={s('dialog.fr.title')}
+        subtitle={s('dialog.fr.subtitle')}
       />
 
       <AlertDialog
@@ -61,14 +62,20 @@ const ChangeAutheticationModeDialog = () => {
       >
         <AlertDialogContent className="max-w-md">
           <AlertDialogHeader>
-            <AlertDialogTitle>Konfirmasi Penggantian MFA</AlertDialogTitle>
+            <AlertDialogTitle>
+              {s('dialog.mfaChangeConfirmation.title')}
+            </AlertDialogTitle>
             <AlertDialogDescription>
-              Apa Anda yakin mengubah metode otentikasi menjadi Face Recognition
+              {s('dialog.mfaChangeConfirmation.subtitle')}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogCancel>
+              {s('dialog.mfaChangeConfirmation.cancel')}
+            </AlertDialogCancel>
+            <AlertDialogAction>
+              {s('dialog.mfaChangeConfirmation.confirm')}
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -85,9 +92,9 @@ const ChangeAutheticationModeDialog = () => {
       </AlertDialogTrigger>
       <AlertDialogContent className="max-w-md">
         <AlertDialogHeader>
-          <AlertDialogTitle>Metode Otentikasi</AlertDialogTitle>
+          <AlertDialogTitle>{s('dialog.authMethod.title')}</AlertDialogTitle>
           <AlertDialogDescription className="text-black mb-3">
-            Pilih metode otentikasi anda
+            {s('dialog.authMethod.subtitle')}
           </AlertDialogDescription>
           <div>
             <Button
@@ -119,7 +126,7 @@ const ChangeAutheticationModeDialog = () => {
                     }
                   )}
                 >
-                  Kirim OTP melalui email
+                  {s('dialog.authMethod.method.otp')}
                 </p>
                 <p className="text-sm text-gray-3 font-medium">
                   isuwinxxx@gmail.com
@@ -155,7 +162,7 @@ const ChangeAutheticationModeDialog = () => {
                     }
                   )}
                 >
-                  Verifikasi via FR
+                  {s('dialog.authMethod.method.fr')}
                 </p>
                 <p className="text-sm text-gray-3 font-medium">
                   Bitometric Authentication
@@ -165,9 +172,11 @@ const ChangeAutheticationModeDialog = () => {
           </div>
         </AlertDialogHeader>
         <AlertDialogFooter className="!justify-between">
-          <AlertDialogCancel>Batal</AlertDialogCancel>
+          <AlertDialogCancel>
+            {s('dialog.authMethod.cancelButton')}
+          </AlertDialogCancel>
           <AlertDialogAction className="!m-0" onClick={onSaveHandler}>
-            Simpan
+            {s('dialog.authMethod.confirmButton')}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

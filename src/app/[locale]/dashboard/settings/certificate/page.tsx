@@ -11,7 +11,6 @@ import {
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -27,30 +26,32 @@ import { ArrowDownToLine } from 'lucide-react';
 
 const Page = () => {
   const t = useTranslations('Dashboard');
+  const s = useTranslations('Settings');
+
   return (
     <div className="p-5 mx-auto">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <Link className="font-medium" href="/dashboard/settings">
-              Settings
+              {t('sidebar.settings')}
             </Link>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbPage className="text-primary font-semibold">
-              Certificate
+              {s('certificate')}
             </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="text-gray-1 my-5">Certificate</h1>
+      <h1 className="text-gray-1 my-5">{s('certificate')}</h1>
       <Table className="hidden sm:block">
         <TableHeader>
           <TableRow className="!border-none">
-            <TableHead className="w-[700px]">No Serial</TableHead>
+            <TableHead className="w-[700px]">{s('serialNumber')}</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead className="text-left">Revoke</TableHead>
+            <TableHead className="text-left"></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -70,7 +71,7 @@ const Page = () => {
                     pathClassName="fill-destructive transition-colors group-hover:fill-white"
                     svgClassName="mr-1"
                   />
-                  Cabut
+                  {s('revoke')}
                 </Button>
                 <Button
                   variant="outline"
@@ -102,7 +103,7 @@ const Page = () => {
                 pathClassName="fill-destructive transition-colors group-hover:fill-white"
                 svgClassName="mr-1 flex-none"
               />
-              Cabut
+              {s('revoke')}
             </Button>
             <Button variant="outline" className="font-semibold group w-6/12">
               <ArrowDownToLine

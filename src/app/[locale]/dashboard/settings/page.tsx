@@ -16,6 +16,7 @@ const Page = ({
   searchParams: {};
 }) => {
   const t = useTranslations('Dashboard');
+  const s = useTranslations('Settings');
   return (
     <div className="p-5 mx-auto">
       <h1 className="text-gray-1">{t('sidebar.settings')}</h1>
@@ -40,10 +41,9 @@ const Page = ({
           />
         </div>
         <div className="xl:w-[68%] pb-10 bg-white custom-shadow p-5 rounded-2xl">
-          <h4>Akun Tertaut</h4>
+          <h4>{s('certificateContent.title')}</h4>
           <p className="text-sm text-[#272B30] mt-2">
-            Untuk melakukan perubahan data pengguna, silahkan menghubungi
-            Administrator Perusahaan
+            {s('certificateContent.subtitle')}
           </p>
 
           <div className="flex flex-col gap-4 mt-4">
@@ -51,7 +51,7 @@ const Page = ({
               <div className="absolute top-3 flex items-center">
                 <Dot strokeWidth={10} className="animate-pulse text-accent" />
                 <p className="text-sm text-accent  font-semibold">
-                  Sedang Login
+                  {s('certificateContent.loggedIn')}
                 </p>
               </div>
               <div className="flex xl:flex-row flex-col xl:gap-20 gap-4 xl:justify-between mt-8">
@@ -86,7 +86,7 @@ const Page = ({
                     <div className="flex gap-1 items-center">
                       <CertIcon fill="#0D5FB3" />
                       <p className="text-primary text-xs font-semibold">
-                        Lihat Sertifikat
+                        {s('certificateContent.seeCertificate')}
                       </p>
                     </div>
                   </Link>
@@ -100,7 +100,7 @@ const Page = ({
                         className="items-center gap-2 font-semibold text-primary p-0 h-0 hidden xl:flex"
                       >
                         <EditIcon fill="#0D5FB3" svgClassName="flex-none" />
-                        Ubah Tandatangan
+                        {s('certificateContent.changeSignature')}
                       </Button>
                     </div>
                     <div className="grid grid-cols-2 gap-3 mt-3">
@@ -158,7 +158,7 @@ const Page = ({
               </div>
               <Button className="font-semibold mt-5 xl:!w-fit xl:p-4 w-full">
                 <Check className="w-5 h-5 mr-2" />
-                Akun Utama
+                {s('certificateContent.mainAccount')}
               </Button>
             </div>
 
@@ -195,7 +195,7 @@ const Page = ({
                     <div className="flex gap-1 items-center">
                       <CertIcon fill="#0D5FB3" />
                       <p className="text-primary text-xs font-semibold">
-                        Lihat Sertifikat
+                        {s('certificateContent.seeCertificate')}
                       </p>
                     </div>
                   </Link>
@@ -209,7 +209,7 @@ const Page = ({
                         className="items-center gap-2 font-semibold text-primary p-0 h-0 hidden xl:flex"
                       >
                         <EditIcon fill="#0D5FB3" svgClassName="flex-none" />
-                        Ubah Tandatangan
+                        {s('certificateContent.changeSignature')}
                       </Button>
                     </div>
                     <div className="grid grid-cols-2 gap-3 mt-3">
@@ -269,7 +269,7 @@ const Page = ({
                 variant="outline"
                 className="font-semibold mt-5 xl:!w-fit xl:p-4 w-full"
               >
-                Jadikan Akun Utama
+                {s('certificateContent.setAsMainAccount')}
               </Button>
             </div>
           </div>

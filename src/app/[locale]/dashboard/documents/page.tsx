@@ -113,7 +113,7 @@ export default function Page() {
       <div className="flex justify-between mt-7 mb-5">
         <div className="flex gap-3 w-full md:w-fit">
           <Input
-            placeholder={'Nama Dokumen'}
+            placeholder={t('table.document')}
             className="h-10 pl-12 pr-2 w-full"
             icon={<SearchIcon svgClassName="mt-2" />}
             iconPosition="left"

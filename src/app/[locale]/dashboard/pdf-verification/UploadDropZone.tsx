@@ -7,21 +7,18 @@ import { useToast } from '../../../../components/ui/use-toast';
 import { Progress } from '../../../../components/ui/progress';
 import { Button } from '@/components/ui/button';
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import PdfViewer from './PdfViewer';
+import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 const UploadDropZone = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
-  const [uploadProgress, setUploadProgress] = useState<number>(100);
+  const [uploadProgress, setUploadProgress] = useState<number>(0);
 
   const { toast } = useToast();
+
+  const t = useTranslations('VerifyPdf');
 
   const onDrop = useCallback((acceptedFile: File[]) => {
     if (acceptedFile[0].type !== 'application/pdf') {
@@ -84,12 +81,23 @@ const UploadDropZone = () => {
       </Dialog>
 
       {uploadProgress === 100 ? (
+        <Button
+          onClick={() => setUploadProgress(0)}
+          className={cn(
+            'absolute right-5 top-[84px] hidden md:block font-semibold sign-button-shadow'
+          )}
+        >
+          Validasi PDF Baru
+        </Button>
+      ) : null}
+
+      {uploadProgress === 100 ? (
         <PdfViewer />
       ) : (
         <div className="bg-[#F6F6F6] w-full mt-7 rounded-md h-80">
           <Dropzone disabled={isUploading} multiple={false} onDrop={onDrop}>
             {({ getRootProps, getInputProps }) => (
-              <section className="flex h-full items-center justify-center px-">
+              <section className="flex h-full items-center justify-center px-5">
                 <div
                   {...getRootProps()}
                   className="border-2 h-64 border-dashed border-[#E6F1FC] border-spacing-4 rounded-lg bg-white md:selection:w-6/12 px-5 py-24"
@@ -108,14 +116,15 @@ const UploadDropZone = () => {
                     />
                     <h3 className="text-gray-2 mt-8">
                       {isUploading ? (
-                        'Uploading document'
+                        t('uploadZone.uploading.title')
                       ) : (
                         <>
                           {' '}
                           <p className="text-center ">
-                            Drag your document here, or click{' '}
+                            {t('uploadZone.unuploading.title')}
                             <span className="p-0 text-primary text-xl font-bold md:text-start inline">
-                              browse
+                              {' '}
+                              {t('uploadZone.unuploading.upload')}
                             </span>
                           </p>
                         </>
@@ -123,8 +132,8 @@ const UploadDropZone = () => {
                     </h3>
                     <p className="text-gray-3 mt-1 font-medium text-center md:text-start">
                       {isUploading
-                        ? 'Mohon menunggu selama proses pengunggahan dokumen'
-                        : 'Maximum file size 30MB without password'}
+                        ? t('uploadZone.uploading.subtitle')
+                        : t('uploadZone.unuploading.subtitle')}
                     </p>
                     {isUploading ? (
                       <div className="w-full mt-4 mx-auto flex gap-4 items-center">

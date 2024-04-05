@@ -27,43 +27,7 @@ import {
 } from '@/components/ui/form';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-
-const passwordRegex =
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[0-9a-zA-Z@#$%^&+=]{10,40}$/;
-
-const validatePassword = (str: string) => {
-  const isValidPassword = passwordRegex.test(str);
-
-  return isValidPassword;
-};
-
-const Schema = z.object({
-  oldPassword: z
-    .string()
-    .min(1, { message: 'Kata sandi sekarang tidak boleh kosong' }),
-  password: z
-    .string()
-    .min(10, { message: 'Kata sandi minimal 10 karakter' })
-    .refine(
-      (value) => {
-        validatePassword(value);
-      },
-      {
-        message: 'Kata sandi tidak valid'
-      }
-    ),
-  confirmPassword: z
-    .string()
-    .min(10, { message: 'Konfirmasi kata sandi minimal 10 karakter' })
-    .refine(
-      (value) => {
-        validatePassword(value);
-      },
-      {
-        message: 'Konfirmasi kata sandi tidak valid'
-      }
-    )
-});
+import useSchema, { passwordRegex } from '@/hooks/useSchema';
 
 const ChangePasswordDialog = () => {
   const [showChangePasswordDialog, setShowChangePasswordDialog] =
@@ -73,12 +37,14 @@ const ChangePasswordDialog = () => {
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
 
-  const form = useForm<z.infer<typeof Schema>>({
-    resolver: zodResolver(Schema),
+  const { CreateNewPasswordSchema } = useSchema();
+
+  const form = useForm<z.infer<typeof CreateNewPasswordSchema>>({
+    resolver: zodResolver(CreateNewPasswordSchema),
     defaultValues: { password: '', confirmPassword: '', oldPassword: '' }
   });
 
-  const t = useTranslations('Dashboard');
+  const s = useTranslations('Settings');
 
   const onSubmit = () => {};
 
@@ -107,16 +73,16 @@ const ChangePasswordDialog = () => {
             variant="ghost"
           >
             <KeyIcon fill="#000" />
-            Ubah Kata Sandi
+            {s('changePasswordButton')}
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent className="max-w-md">
           <AlertDialogHeader>
-            <AlertDialogTitle>Ubah Kata Sandi</AlertDialogTitle>
+            <AlertDialogTitle>
+              {s('dialog.changePassword.title')}
+            </AlertDialogTitle>
             <AlertDialogDescription className="text-black">
-              Kata Sandi minimal 10 karakter, maksimal 40 karakter, harus
-              mengandung huruf kecil, huruf besar, angka, dan karakter khusus
-              (@#$%^&+=)
+              {s('dialog.changePassword.subtitle')}
             </AlertDialogDescription>
             <Form {...form}>
               <form className="w-full max-w-md">
@@ -125,10 +91,14 @@ const ChangePasswordDialog = () => {
                   name="oldPassword"
                   render={({ field }) => (
                     <FormItem className="mt-4">
-                      <FormLabel>Kata Sandi Sekarang</FormLabel>
+                      <FormLabel>
+                        {s('dialog.changePassword.input.currentPassword.label')}
+                      </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Masukkan kata sandi sekarang"
+                          placeholder={s(
+                            'dialog.changePassword.input.currentPassword.placeholder'
+                          )}
                           autoComplete="off"
                           type={showOldPassword ? 'text' : 'password'}
                           {...field}
@@ -171,10 +141,14 @@ const ChangePasswordDialog = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem className="my-3">
-                      <FormLabel>Kata Sandi Baru</FormLabel>
+                      <FormLabel>
+                        {s('dialog.changePassword.input.newPassword.label')}
+                      </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Tentukan kata sandi baru"
+                          placeholder={s(
+                            'dialog.changePassword.input.newPassword.placeholder'
+                          )}
                           autoComplete="off"
                           type={showPassword ? 'text' : 'password'}
                           {...field}
@@ -192,7 +166,9 @@ const ChangePasswordDialog = () => {
                             } else {
                               form.setError('password', {
                                 type: 'manual',
-                                message: 'Kata sandi tidak valid'
+                                message: s(
+                                  'dialog.changePassword.input.newPassword.errorMessage.notValid'
+                                )
                               });
                             }
                           }}
@@ -222,10 +198,14 @@ const ChangePasswordDialog = () => {
                   name="confirmPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Konfirmasi Kata Sandi Baru</FormLabel>
+                      <FormLabel>
+                        {s('dialog.changePassword.input.confirmPassword.label')}
+                      </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Masukkan ulang kata sandi baru"
+                          placeholder={s(
+                            'dialog.changePassword.input.confirmPassword.placeholder'
+                          )}
                           autoComplete="off"
                           type={showConfirmPassword ? 'text' : 'password'}
                           {...field}
@@ -243,13 +223,16 @@ const ChangePasswordDialog = () => {
                             } else if (form.getValues('password') !== value) {
                               form.setError('confirmPassword', {
                                 type: 'manual',
-                                message:
-                                  'Kata sandi dan konfirmasi kata sandi tidak sama'
+                                message: s(
+                                  'dialog.changePassword.input.confirmPassword.errorMessage.notMatch'
+                                )
                               });
                             } else {
                               form.setError('confirmPassword', {
                                 type: 'manual',
-                                message: 'Konfirmasi kata sandi tidak valid'
+                                message: s(
+                                  'dialog.changePassword.input.confirmPassword.errorMessage.notValid'
+                                )
                               });
                             }
                           }}
@@ -287,13 +270,13 @@ const ChangePasswordDialog = () => {
                 setShowPassword(false);
               }}
             >
-              Batal
+              {s('dialog.changePassword.cancel')}
             </AlertDialogCancel>
             <AlertDialogAction
               className="!m-0"
               onClick={form.handleSubmit(onSubmit)}
             >
-              Simpan
+              {s('dialog.changePassword.confirm')}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -18,6 +18,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from './ui/alert-dialog';
+import { useTranslations } from 'next-intl';
 
 interface Constraint {
   width: number;
@@ -51,6 +52,8 @@ const FRDialog = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isUserMediaError, setIsUserMediaError] = useState<boolean>(false);
   const webcamRef = useRef<Webcam | null>(null);
+
+  const s = useTranslations('Settings');
 
   const onPlay = useCallback(() => {
     setIsPlaying(true);
@@ -133,8 +136,12 @@ const FRDialog = ({
           />
         </div>
         <AlertDialogFooter className="!justify-between">
-          <AlertDialogCancel>Batal</AlertDialogCancel>
-          <AlertDialogAction className="!m-0">Simpan</AlertDialogAction>
+          <AlertDialogCancel>
+            {s('dialog.authMethod.cancelButton')}
+          </AlertDialogCancel>
+          <AlertDialogAction className="!m-0">
+            {s('dialog.authMethod.confirmButton')}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

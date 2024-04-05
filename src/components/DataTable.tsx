@@ -83,19 +83,19 @@ const DataTable = ({
       switch (status) {
         case 'pending':
           badgeProps.color = 'bg-[#FFB951]';
-          badgeProps.label = 'Menunggu';
+          badgeProps.label = d('table.signerStatus.waiting');
           break;
         case 'sent':
           badgeProps.color = 'bg-[#929292]';
-          badgeProps.label = 'Terkirim';
+          badgeProps.label = d('table.signerStatus.sent');
           break;
         case 'signed':
           badgeProps.color = 'bg-[#3B9B1B]';
-          badgeProps.label = 'Ditanda Tangani';
+          badgeProps.label = d('table.signerStatus.signed');
           break;
         case 'denied':
           badgeProps.color = 'bg-[#BD0505]';
-          badgeProps.label = 'Denied';
+          badgeProps.label = d('table.signerStatus.denied');
           break;
 
         default:
@@ -137,8 +137,8 @@ const DataTable = ({
               <CancelScheduleIcon />
             </div>
             <DialogDescription className="text-center text-black">
-              <h4 className="mb-1 mt-4">Batalkan Dokumen</h4>
-              <p className="mb-3">Tandatangan dan dokumen akan dibatalkan.</p>
+              <h4 className="mb-1 mt-4"> {d('table.cancelDialog.title')}</h4>
+              <p className="mb-3">{d('table.cancelDialog.subtitle')}</p>
             </DialogDescription>
             <DialogFooter className="gap-3 justify-center">
               <Button
@@ -146,10 +146,10 @@ const DataTable = ({
                 variant="secondary"
                 className="bg-white modal-button-shadow px-14 font-semibold"
               >
-                Kembali
+                {d('table.cancelDialog.cancelButton')}
               </Button>
               <Button variant="destructive" className="font-semibold px-14">
-                Ya, Batalkan
+                {d('table.cancelDialog.confirmButton')}
               </Button>
             </DialogFooter>
           </DialogHeader>
@@ -191,16 +191,23 @@ const DataTable = ({
                       className="rounded-[10px] p-2"
                       align="end"
                     >
-                      <DropdownMenuItem>Lihat</DropdownMenuItem>
-                      <DropdownMenuItem>Tandatangan</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        {d('table.actions.view')}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        {d('table.actions.sign')}
+                      </DropdownMenuItem>
                       <DropdownMenuItem>Download</DropdownMenuItem>
                       <DropdownMenuItem>Audit Trail</DropdownMenuItem>
                       {row.initiator === 'Saya' ? (
                         <DropdownMenuItem onClick={() => setIsOpen(true)}>
-                          Batalkan
+                          {d('table.actions.cancel')}
                         </DropdownMenuItem>
                       ) : (
-                        <DropdownMenuItem>Tolak</DropdownMenuItem>
+                        <DropdownMenuItem>
+                          {' '}
+                          {d('table.actions.deny')}
+                        </DropdownMenuItem>
                       )}
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -330,16 +337,22 @@ const DataTable = ({
                         className="rounded-[10px] p-2"
                         align="end"
                       >
-                        <DropdownMenuItem>Lihat</DropdownMenuItem>
-                        <DropdownMenuItem>Tandatangan</DropdownMenuItem>
+                        <DropdownMenuItem>
+                          {d('table.actions.view')}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          {d('table.actions.sign')}
+                        </DropdownMenuItem>
                         <DropdownMenuItem>Download</DropdownMenuItem>
                         <DropdownMenuItem>Audit Trail</DropdownMenuItem>
                         {row.initiator === 'Saya' ? (
                           <DropdownMenuItem onClick={() => setIsOpen(true)}>
-                            Batalkan
+                            {d('table.actions.cancel')}
                           </DropdownMenuItem>
                         ) : (
-                          <DropdownMenuItem>Tolak</DropdownMenuItem>
+                          <DropdownMenuItem>
+                            {d('table.actions.deny')}
+                          </DropdownMenuItem>
                         )}
                       </DropdownMenuContent>
                     </DropdownMenu>
