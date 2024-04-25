@@ -10,6 +10,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   children: React.ReactNode;
   header?: React.ReactNode;
+  headerClassName?: string;
   autoOpen: boolean;
   onlyShowOnMobile?: boolean;
 }
@@ -18,6 +19,7 @@ const Collapsible = ({
   title,
   children,
   autoOpen,
+  headerClassName,
   onlyShowOnMobile = false,
   className,
   header
@@ -31,13 +33,15 @@ const Collapsible = ({
       height: 0
     },
     to: {
-      height: isExpand ? height : 0
+      height: isExpand ? height + 10 : 0
     }
   });
 
   return (
     <div className={className}>
-      <div className={cn('flex justify-between p-3 items-center')}>
+      <div
+        className={cn('flex justify-between p-3 items-center', headerClassName)}
+      >
         {header ? header : <h4>{title}</h4>}
         <Button
           onClick={() => setIsExpand(!isExpand)}

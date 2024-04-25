@@ -15,6 +15,7 @@ import { useTranslations } from 'next-intl';
 import { useSpring, animated } from '@react-spring/web';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
+import SigningModal from '../dialog/signing-dialog/SigningDialog';
 
 const Sidebar = () => {
   const { state } = useContext(SidebarContext);
@@ -128,27 +129,7 @@ const Sidebar = () => {
             'my-5 mx-auto': !state.isOpen
           })}
         >
-          <Button
-            className={cn(
-              'rounded-full w-full flex justify-center gap-3 font-semibold sign-button-shadow',
-              {
-                'p-3 w-fit': !state.isOpen
-              }
-            )}
-          >
-            <TilakaIcon
-              svgClassName={cn('flex-none', {
-                'h-5 w-5': !state.isOpen
-              })}
-            />{' '}
-            <h5
-              className={cn({
-                hidden: !state.isOpen
-              })}
-            >
-              {t('sidebar.signPdfButton')}
-            </h5>
-          </Button>
+          <SigningModal />
         </div>
         <div
           className={cn('px-5', {

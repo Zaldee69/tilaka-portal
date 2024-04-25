@@ -14,7 +14,7 @@ import { useTranslations } from 'next-intl';
 
 const UploadDropZone = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
-  const [uploadProgress, setUploadProgress] = useState<number>(0);
+  const [uploadProgress, setUploadProgress] = useState<number>(100);
 
   const { toast } = useToast();
 
