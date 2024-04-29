@@ -15,10 +15,12 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger
+  AlertDialogTitle
 } from './ui/alert-dialog';
+
 import { useTranslations } from 'next-intl';
+
+import { useResizeDetector } from 'react-resize-detector';
 
 interface Constraint {
   width: number;
@@ -48,6 +50,7 @@ const FRDialog = ({
   };
 
   const cameraPermission: TPermissionState = useCameraPermission();
+  const { width, height, ref } = useResizeDetector();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isUserMediaError, setIsUserMediaError] = useState<boolean>(false);
@@ -71,7 +74,7 @@ const FRDialog = ({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent className="max-w-md">
-        <div className="justify-center flex mb-3">
+        <div className="justify-center flex mb-3 ">
           <Image
             src="/images/fr.svg"
             height={69}
@@ -91,6 +94,7 @@ const FRDialog = ({
           <div className="absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center">
             <Image
               src="/images/camera-frame.svg"
+              className="md:w-56 w-44"
               height={220}
               width={220}
               alt="Tilaka Logo"
@@ -119,8 +123,7 @@ const FRDialog = ({
             </CountdownCircleTimer>
           </div>
           <Webcam
-            style={{ height: '400px', width: '400px', objectFit: 'cover' }}
-            className="rounded-[30px] sm:w-full md:w-full"
+            className="rounded-[30px] sm:w-full h-80 w-full md:h-96 md:w-96 object-cover"
             ref={webcamRef}
             audio={false}
             height={440}

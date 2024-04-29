@@ -13,7 +13,7 @@ const MobileTableCard = () => {
       <div className="flex flex-col gap-2">
         <Badge className="w-fit mt-2 bg-[#FFB951]">On Progress</Badge>
         <h5>BAST Kasuari</h5>
-        <p className="text-xs">Mei 23, 2023 16:53</p>
+        <p className="text-xs">23-05-2023 16:53</p>
         <div className="flex gap-1 items-center">
           <PermIdentityIcon svgClassName="w-5 h-5" />
           <p className="text-xs">Muhammad</p>
@@ -23,7 +23,9 @@ const MobileTableCard = () => {
         <Button variant="ghost" className="p-0 h-fit">
           <MoreHorizontal />
         </Button>
-        <SupervisorAccountIcon />
+        <div>
+          5<SupervisorAccountIcon />
+        </div>
       </div>
     </div>
   );

@@ -89,9 +89,9 @@
         "subtitle": "Uploading document"
       },
       "unuploading": {
-        "title": "Drag your document here, or click",
+        "title": "Drag your document here or click",
         "subtitle": "Maximum file size 30MB without password",
-        "upload": "upload"
+        "upload": "Upload"
       }
     }
   },
@@ -123,14 +123,14 @@
         "input": {
           "currentPassword": {
             "label": "Current Password",
-            "placeholder": "Enter current password",
+            "placeholder": "Current Password",
             "errorMessage": {
               "empty": "Current password must not be empty"
             }
           },
           "newPassword": {
             "label": "New Password",
-            "placeholder": "Enter New password",
+            "placeholder": "New Password",
             "errorMessage": {
               "empty": "New password must not be empty",
               "notValid": "Password is invalid",
@@ -138,8 +138,8 @@
             }
           },
           "confirmPassword": {
-            "label": "Confirm Password",
-            "placeholder": "Enter Confirm password",
+            "label": "Confirm New Password",
+            "placeholder": "Confirm New Password",
             "errorMessage": {
               "empty": "Confirm password must not be empty",
               "notMatch": "Password and confirm password do not match",
@@ -164,6 +164,17 @@
       "loggedIn": "Logged In",
       "mainAccount": "Main Account",
       "setAsMainAccount": "Set as Main Account"
+    },
+    "certificateDetails": {
+      "serialNumber": "Serial Number",
+      "download": "Download",
+      "action": "Action",
+      "active": "Active",
+      "registered": "Registered",
+      "enroll": "Enroll",
+      "revoke": "Revoke",
+      "error": "Error",
+      "expired": "Expired"
     }
   }
 }

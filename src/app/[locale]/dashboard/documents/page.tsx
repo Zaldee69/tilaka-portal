@@ -12,13 +12,10 @@ import {
 
 import { Input } from '@/components/ui/input';
 
-import {
-  FilterAltIcon,
-  SearchIcon,
-  SortIcon
-} from '../../../../../public/icons/icons';
-import { Button } from '@/components/ui/button';
+import { FilterAltIcon, SearchIcon } from '../../../../../public/icons/icons';
 import MobileFilter from './MobileFilter';
+import { DatePickerRange } from '@/components/DatePickerRange';
+import { Button } from '@/components/ui/button';
 
 type Signer = {
   tilaka_name: string;
@@ -38,20 +35,35 @@ function getData(): Document[] {
   // Fetch data from your API here.
   return [
     {
-      date: 'Mei 08, 2023 16:47',
-      name: 'BAST Kasuari',
-      initiator: 'Husen',
+      date: '08-05-2023 16:47',
+      name: 'PKS Tilaka x PT. ABC',
+      initiator: 'Saya',
       signer: [
         {
           tilaka_name: 'husen123',
           email: 'husen@kuru.com',
           status: 'signed'
+        },
+        {
+          tilaka_name: 'husen123',
+          email: 'menangkeri@kuru.com',
+          status: 'pending'
+        },
+        {
+          tilaka_name: 'husen123',
+          email: 'awan@kmanten.com',
+          status: 'sent'
+        },
+        {
+          tilaka_name: 'husen123',
+          email: 'awan@kmanten.com',
+          status: 'denied'
         }
       ],
       status: 'on_progress'
     },
     {
-      date: 'Mei 08, 2023 16:47',
+      date: '08-05-2023 16:47',
       name: 'PKS Tilaka x PT. ABC',
       initiator: 'Saya',
       signer: [
@@ -74,7 +86,7 @@ function getData(): Document[] {
       status: 'draft'
     },
     {
-      date: 'Mei 08, 2023 16:47',
+      date: '08-05-2023 16:47',
       name: 'PKS Tilaka x PT. ABC',
       initiator: 'Husen',
       signer: [
@@ -87,7 +99,7 @@ function getData(): Document[] {
       status: 'done'
     },
     {
-      date: 'Mei 08, 2023 16:47',
+      date: '08-05-2023 16:47',
       name: 'PKS PT. Aji Karya',
       initiator: 'Husen',
       signer: [
@@ -111,39 +123,53 @@ export default function Page() {
     <div className="p-5 mx-auto">
       <h1 className="text-gray-1">{t('sidebar.document')}</h1>
       <div className="flex justify-between mt-7 mb-5">
-        <div className="flex gap-3 w-full md:w-fit">
+        <div className="grid grid-cols-3 lg:grid-cols-5 md:grid-cols-4 gap-3 w-full md:w-fit">
+          <div className="hidden md:flex">
+            <DatePickerRange />
+          </div>
+          <div className="col-span-2 md:col-auto">
+            <Input
+              placeholder={t('table.document')}
+              className="h-10 pl-12 pr-2 w-full"
+              icon={<SearchIcon svgClassName="mt-2" />}
+              iconPosition="left"
+            />{' '}
+          </div>
+          <div className="flex gap-2 md:hidden">
+            {' '}
+            <Button className="p-4 font-semibold h-10">Filter</Button>
+            <Button className="p-0 font-semibold" variant="ghost">
+              Reset
+            </Button>
+          </div>
           <Input
-            placeholder={t('table.document')}
-            className="h-10 pl-12 pr-2 w-full"
-            icon={<SearchIcon svgClassName="mt-2" />}
+            placeholder="Pembuat"
+            className="h-10 pl-12 pr-2 hidden md:flex"
+            icon={<SearchIcon svgClassName="mt-2 hidden md:block" />}
             iconPosition="left"
           />{' '}
           <Select>
             <SelectTrigger
               icon={<FilterAltIcon fill="#000" />}
-              className="w-[280px] font-semibold hidden md:flex"
+              className=" font-semibold hidden md:flex"
             >
-              <SelectValue placeholder="Filter by status" />
+              <SelectValue placeholder="Status" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Date</SelectItem>
-              <SelectItem value="dark">Initiator</SelectItem>
-              <SelectItem value="system">Signer</SelectItem>
+            <SelectContent className="hidden md:flex">
+              <SelectItem value="light">On Progress</SelectItem>
+              <SelectItem value="dark">Draft</SelectItem>
+              <SelectItem value="system">Done</SelectItem>
+              <SelectItem value="denied">Denied</SelectItem>
             </SelectContent>
           </Select>
+          <div className="hidden col-span-1 md:flex gap-2">
+            {' '}
+            <Button className="px-7 font-semibold h-10">Filter</Button>
+            <Button className="p-0 font-semibold" variant="ghost">
+              Reset
+            </Button>
+          </div>
         </div>
-        <Select>
-          <SelectTrigger
-            icon={<SortIcon />}
-            className="w-[140px] font-semibold hidden md:flex"
-          >
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">ASC</SelectItem>
-            <SelectItem value="dark">DESC</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
       <DataTable showPagination data={data} />
       <div className="pb-20 md:hidden" />

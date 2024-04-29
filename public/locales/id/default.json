@@ -44,7 +44,7 @@
       "status": "Status",
       "importantToday": "Penting Hari ini",
       "signerStatus": {
-        "signed": "Ditanda Tangani",
+        "signed": "Ditandatangani",
         "waiting": "Menunggu",
         "sent": "Terkirim",
         "denied": "Ditolak"
@@ -52,7 +52,7 @@
       "actions": {
         "view": "Lihat",
         "sign": "Tandatangan",
-        "cancel": "Cancel Request",
+        "cancel": "Batalkan",
         "deny": "Tolak"
       },
       "cancelDialog": {
@@ -89,9 +89,9 @@
         "subtitle": "Mengupload Dokumen"
       },
       "unuploading": {
-        "title": "Pilih dokumen Anda dan Tarik kesini, atau klik",
+        "title": "Tarik dokumen anda kesini atau klik",
         "subtitle": "Ukuran file maksimal 30MB tanpa kata sandi",
-        "upload": "upload"
+        "upload": "Upload"
       }
     }
   },
@@ -103,7 +103,7 @@
     "dialog": {
       "authMethod": {
         "title": "Otentikasi",
-        "subtitle": "Pilih metode otentikasi Anda",
+        "subtitle": "Pilih metode Otentikasi Anda",
         "method": {
           "otp": "Kirim OTP via email",
           "fr": "Verifikasi via FR"
@@ -123,18 +123,18 @@
       },
       "changePassword": {
         "title": "Ubah Kata Sandi",
-        "subtitle": "Kata Sandi minimal 10 karakter, maksimal 40 karakter, harus mengandung huruf kecil, huruf besar, angka, dan karakter khusus (@#$%^&+=)",
+        "subtitle": "Kata Sandi harus 10-40 karakter, mengandung huruf kecil, huruf besar, angka, dan karakter khusus (@#$%^&+=)",
         "input": {
           "currentPassword": {
             "label": "Kata Sandi Sekarang",
-            "placeholder": "Masukkan kata sandi sekarang",
+            "placeholder": "Kata Sandi Sekarang",
             "errorMessage": {
               "empty": "Kata sandi sekarang harus diisi"
             }
           },
           "newPassword": {
             "label": "Kata Sandi Baru",
-            "placeholder": "Tentukan kata sandi baru",
+            "placeholder": "Kata Sandi Baru",
             "errorMessage": {
               "empty": "Kata sandi baru harus diisi",
               "notValid": "Kata sandi baru tidak valid",
@@ -143,7 +143,7 @@
           },
           "confirmPassword": {
             "label": "Konfirmasi Kata Sandi Baru",
-            "placeholder": "Masukkan ulang kata sandi baru",
+            "placeholder": "Konfirmasi Kata Sandi Baru",
             "errorMessage": {
               "empty": "Kata sandi baru harus diisi",
               "notMatch": "Konfirmasi kata sandi dan kata sandi baru tidak cocok",
@@ -164,6 +164,17 @@
       "loggedIn": "Sedang Login",
       "mainAccount": "Akun Utama",
       "setAsMainAccount": "Jadikan Akun Utama"
+    },
+    "certificateDetails": {
+      "serialNumber": "Nomor Serial",
+      "download": "Unduh",
+      "action": "Aksi",
+      "active": "Aktif",
+      "registered": "Registered",
+      "enroll": "Enroll",
+      "revoke": "Cabut",
+      "error": "Error",
+      "expired": "Kedaluwarsa"
     }
   }
 }

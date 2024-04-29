@@ -5,12 +5,10 @@ import UploadDropZone from './UploadDropZone';
 const Page = () => {
   const t = useTranslations('Dashboard');
   return (
-    <div>
-      <h1 className="text-gray-1 pt-5 px-5">{t('sidebar.verifyPdf')}</h1>
+    <div className="p-5 mx-auto">
+      <h1 className="text-gray-1">{t('sidebar.verifyPdf')}</h1>
 
-      <div className="lg:px-5">
-        <UploadDropZone />
-      </div>
+      <UploadDropZone />
     </div>
   );
 };

@@ -17,10 +17,12 @@ import {
 } from '../../../../public/icons/icons';
 import DocInformationCard from '@/components/card/DocInformationCard';
 import { Button, buttonVariants } from '@/components/ui/button';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import Collapsible from '@/components/Collapsible';
 import DataTable from '@/components/DataTable';
+import { Link as CustomLink } from '@/navigation';
+import NextLink from 'next/link';
+import ChangeAutheticationModeDialog from '@/components/dialog/ChangeAutheticationMode';
 
 const Page = () => {
   const t = useTranslations('Dashboard');
@@ -94,26 +96,26 @@ const Page = () => {
         </div>
 
         <div className="bg-white custom-shadow rounded-2xl mt-10 p-3 border border-gray-6">
-          <h4>{t('table.importantToday')}</h4>
+          <h4 className="mb-3">{t('table.importantToday')}</h4>
 
           <DataTable
             showSeeAllButton={true}
             data={[
               {
-                date: 'Mei 08, 2023 16:47',
+                date: '08-05-2023 16:47',
                 name: 'BAST Kasuari',
                 initiator: 'Husen',
                 signer: [
                   {
                     tilaka_name: 'husen123',
                     email: 'husen@kuru.com',
-                    status: 'signed'
+                    status: 'pending'
                   }
                 ],
-                status: 'on_progress'
+                status: 'draft'
               },
               {
-                date: 'Mei 08, 2023 16:47',
+                date: '08-05-2023 16:47',
                 name: 'PKS Tilaka x PT. ABC',
                 initiator: 'Saya',
                 signer: [
@@ -125,18 +127,23 @@ const Page = () => {
                   {
                     tilaka_name: 'husen123',
                     email: 'menangkeri@kuru.com',
-                    status: 'signed'
+                    status: 'pending'
                   },
                   {
                     tilaka_name: 'husen123',
                     email: 'awan@kmanten.com',
-                    status: 'signed'
+                    status: 'sent'
+                  },
+                  {
+                    tilaka_name: 'husen123',
+                    email: 'awan@kmanten.com',
+                    status: 'denied'
                   }
                 ],
-                status: 'draft'
+                status: 'on_progress'
               },
               {
-                date: 'Mei 08, 2023 16:47',
+                date: '08-05-2023 16:47',
                 name: 'PKS Tilaka x PT. ABC',
                 initiator: 'Husen',
                 signer: [
@@ -217,31 +224,35 @@ const Page = () => {
             </Button>
           </div>
           <div className="px-3">
-            <Button
-              size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
-              variant="ghost"
+            <CustomLink
+              href="/dashboard/settings"
+              className={buttonVariants({
+                className:
+                  'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 !px-4 lg:hover:scale-105 transition-transform z-10',
+                size: 'lg',
+                variant: 'ghost'
+              })}
             >
               <AccountCircleIcon fill="#BDBDBD" />
               {t('changeMainAccount')}
-            </Button>
-            <Button
-              size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
-              variant="ghost"
+            </CustomLink>
+            <CustomLink
+              href="/dashboard/documents"
+              className={buttonVariants({
+                className:
+                  'mt-4 w-full !justify-start custom-shadow text-gray-1 hover:!text-gray-1 bg-white font-semibold gap-2 border border-gray-6 !px-4 lg:hover:scale-105 transition-transform z-10',
+                size: 'lg',
+                variant: 'ghost'
+              })}
             >
               <DocumentIcon fill="#BDBDBD" />
               {t('viewAllDoc')}
-            </Button>
-            <Button
-              size="lg"
-              className="mt-4 w-full justify-start custom-shadow text-gray-1 hover:text-gray-1 bg-white font-semibold gap-2 border border-gray-6 px-4 lg:hover:scale-105 transition-transform"
-              variant="ghost"
-            >
-              <SecurityIcon fill="#BDBDBD" />
-              {t('authMethod')}
-            </Button>
-            <Link
+            </CustomLink>
+            <ChangeAutheticationModeDialog
+              triggerClassName="custom-shadow border border-gray-6"
+              iconFill="#BDBDBD"
+            />
+            <NextLink
               href="https://cantikatnt.atlassian.net/servicedesk/customer/portal/2/group/8/create/27"
               target="_blank"
               className={buttonVariants({
@@ -253,7 +264,7 @@ const Page = () => {
             >
               <CircleHelp fill="#BDBDBD" />
               {t('help')}
-            </Link>
+            </NextLink>
           </div>
         </Collapsible>
       </div>

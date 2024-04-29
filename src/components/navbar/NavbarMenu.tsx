@@ -18,13 +18,14 @@ import {
   ExternalLink,
   XCircle
 } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button, buttonVariants } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { Separator } from '../ui/separator';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../LanguageSwitcher';
+import { Link } from '@/navigation';
 
 const NavbarMenu = ({ searchParams }: { searchParams: {} }) => {
   const [showMenu, setShowMenu] = useState<
@@ -203,10 +204,16 @@ const AccountListSelect = ({ logoutTitle }: { logoutTitle: string }) => {
           ))}
         </RadioGroup>
       </ScrollArea>
-      <Button className="w-fit px-5 group mt-2" variant="ghost">
+      <Link
+        href="/"
+        className={buttonVariants({
+          className: '!w-fit !px-4 group mt-2',
+          variant: 'ghost'
+        })}
+      >
         <ExternalLink size={22} className="text-gray-400" />
         <p className="font-semibold ml-2">{logoutTitle}</p>
-      </Button>
+      </Link>
     </div>
   );
 };
