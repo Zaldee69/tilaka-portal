@@ -181,7 +181,7 @@ const ChangeAutheticationModeDialog = ({
           </div>
         </AlertDialogHeader>
         <AlertDialogFooter className="!justify-between">
-          <AlertDialogCancel>
+          <AlertDialogCancel className="custom-shadow">
             {s('dialog.authMethod.cancelButton')}
           </AlertDialogCancel>
           <AlertDialogAction className="!m-0" onClick={onSaveHandler}>

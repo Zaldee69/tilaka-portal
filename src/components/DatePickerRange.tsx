@@ -1,61 +1,45 @@
 'use client';
 
 import * as React from 'react';
-import { format, addDays } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { DateRange } from 'react-day-picker';
 
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslations } from 'next-intl';
 
 export function DatePickerRange() {
-  const [date, setDate] = React.useState<DateRange | undefined>();
+  const t = useTranslations('Dashboard');
+
+  const [date, setDate] = React.useState<{
+    begin: Date | null;
+    end: Date | null;
+  }>({
+    begin: null,
+    end: null
+  });
+
+  const onChangeHandler = (dates: [Date | null, Date | null]) => {
+    const [start, end] = dates;
+    setDate({
+      begin: start,
+      end: end
+    });
+  };
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant="ghost"
-          className={cn(
-            'font-normal border border-input justify-start px-4 h-10 w-full rounded-md',
-            !date
-              ? 'text-[#BDBDBD] hover:text-[#BDBDBD]'
-              : 'text-black hover:text-black'
-          )}
-        >
-          <CalendarIcon className="mr-2 h-4 w-4 flex-none text-black" />
-          <p className="overflow-hidden">
-            {date?.from ? (
-              date.to ? (
-                <>
-                  {format(date.from, 'dd/MM/yyyy')} -{' '}
-                  {format(date.to, 'dd/MM/yyyy')}
-                </>
-              ) : (
-                format(date.from, 'dd/MM/yyyy')
-              )
-            ) : (
-              <span>Tanggal</span>
-            )}
-          </p>
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
-        <Calendar
-          initialFocus
-          mode="range"
-          defaultMonth={date?.from}
-          selected={date}
-          onSelect={setDate}
-          numberOfMonths={1}
-        />
-      </PopoverContent>
-    </Popover>
+    <div className="relative flex !w-full flex-col">
+      <CalendarIcon className="mr-2 h-5 w-5 flex-none text-black absolute top-2.5 left-3 z-10" />
+      <DatePicker
+        name="date_created"
+        selected={date.begin}
+        startDate={date.begin}
+        endDate={date.end}
+        placeholderText={t('table.date')}
+        onChange={onChangeHandler}
+        selectsRange
+        className=" h-10 pr-2 !w-full rounded-md border focus-visible:shadow focus-visible:shadow-primary/25 border-input bg-background pl-10 text-sm placeholder:text-[#BDBDBD] focus-visible:outline-none focus-visible:border-primary"
+        autoComplete="off"
+      />
+    </div>
   );
 }

@@ -262,6 +262,7 @@ const ChangePasswordDialog = () => {
           </AlertDialogHeader>
           <AlertDialogFooter className="!justify-between">
             <AlertDialogCancel
+              className="custom-shadow"
               onClick={() => {
                 form.clearErrors();
                 form.reset();

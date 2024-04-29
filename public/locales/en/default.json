@@ -42,6 +42,8 @@
       "initiator": "Initiator",
       "signer": "Signer",
       "status": "Status",
+      "from": "from",
+      "search": "Search",
       "importantToday": "Important Today",
       "signerStatus": {
         "signed": "Signed",
@@ -174,7 +176,9 @@
       "enroll": "Enroll",
       "revoke": "Revoke",
       "error": "Error",
-      "expired": "Expired"
+      "expired": "Expired",
+      "validTo": "Valid to",
+      "validFrom": "Valid from"
     }
   }
 }

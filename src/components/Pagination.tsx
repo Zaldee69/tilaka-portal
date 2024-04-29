@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   contentPerPage: number;
@@ -48,9 +49,13 @@ const Pagination = ({
     '(max-width: 1024px)'
   );
 
+  const t = useTranslations('Dashboard.table');
+
   const [showContentPerPageMenu, setShowContentPerPageMenu] =
     useState<boolean>(false);
-  const [rangeDisplayed, setRangeDisplayed] = useState<number>(7);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  const rangeDisplayed = 5;
 
   const onClickOutsideContentPerPageMenu = () => {
     setShowContentPerPageMenu(false);
@@ -58,9 +63,9 @@ const Pagination = ({
 
   useEffect(() => {
     if (shouldChangeRangeDisplayed) {
-      setRangeDisplayed(5);
+      setIsMobile(true);
     } else {
-      setRangeDisplayed(7);
+      setIsMobile(false);
     }
   }, [shouldChangeRangeDisplayed]);
 
@@ -92,7 +97,8 @@ const Pagination = ({
             {generateArrayOfPageNumber(
               totalPages,
               currentPage,
-              rangeDisplayed
+              rangeDisplayed,
+              isMobile
             ).map((page, i) => (
               <button
                 key={i}
@@ -143,7 +149,7 @@ const Pagination = ({
       <div className="flex items-center gap-5">
         <p className="text-sm text-neutral800 font-normal md:mr-5">
           {contentPerPage * currentPage - (contentPerPage - 1)}-
-          {contentPerPage * currentPage} dari {totalElements} data
+          {contentPerPage * currentPage} {t('from')} {totalElements} data
         </p>
       </div>
     </div>

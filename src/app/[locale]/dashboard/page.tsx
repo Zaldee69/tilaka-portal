@@ -20,8 +20,9 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 import Collapsible from '@/components/Collapsible';
 import DataTable from '@/components/DataTable';
-import { Link as CustomLink } from '@/navigation';
+import { Link as CustomLink, Link } from '@/navigation';
 import NextLink from 'next/link';
+import { SquareArrowOutUpRight } from 'lucide-react';
 import ChangeAutheticationModeDialog from '@/components/dialog/ChangeAutheticationMode';
 
 const Page = () => {
@@ -31,7 +32,7 @@ const Page = () => {
     <div className="px-5 relative flex flex-col xl:flex-row gap-3 w-full mb-10 mt-5 md:mb-0">
       <div className="xl:w-[68%] pb-10">
         <h1 className="text-gray-1">{t('sidebar.dashboard')}</h1>
-        <div className="bg-[#FFFEE3] rounded-xl flex p-5 mt-5 md:mt-3 justify-between items-center">
+        <div className="bg-[#EBF9FF] rounded-xl flex p-5 mt-5 md:mt-3 justify-between items-center">
           <div>
             <span className="flex items-center gap-2 ">
               <p className="text-sm md:text-base mt-1">Hai,</p>
@@ -100,11 +101,19 @@ const Page = () => {
 
           <DataTable
             showSeeAllButton={true}
+            actions={
+              <Link className="w-fit" href="/dashboard/documents">
+                <SquareArrowOutUpRight className="text-primary h-5 w-5 " />
+              </Link>
+            }
             data={[
               {
                 date: '08-05-2023 16:47',
                 name: 'BAST Kasuari',
-                initiator: 'Husen',
+                initiator: {
+                  tilaka_name: 'wahab1',
+                  email: 'wahab1@gmail.com'
+                },
                 signer: [
                   {
                     tilaka_name: 'husen123',
@@ -117,7 +126,10 @@ const Page = () => {
               {
                 date: '08-05-2023 16:47',
                 name: 'PKS Tilaka x PT. ABC',
-                initiator: 'Saya',
+                initiator: {
+                  tilaka_name: 'wahab2',
+                  email: 'wahab2@gmail.com'
+                },
                 signer: [
                   {
                     tilaka_name: 'husen123',
@@ -145,7 +157,10 @@ const Page = () => {
               {
                 date: '08-05-2023 16:47',
                 name: 'PKS Tilaka x PT. ABC',
-                initiator: 'Husen',
+                initiator: {
+                  tilaka_name: 'wahab3',
+                  email: 'wahab3@gmail.com'
+                },
                 signer: [
                   {
                     tilaka_name: 'husen123',

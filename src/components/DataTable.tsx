@@ -43,29 +43,18 @@ import { MoreHorizontal } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import Pagination from './Pagination';
-
-type Signer = {
-  tilaka_name: string;
-  email: string;
-  status: 'signed' | 'pending' | 'sent' | 'denied';
-};
-
-export type Document = {
-  date: string;
-  name: string;
-  initiator: string;
-  signer: Signer[];
-  status: 'on_progress' | 'draft' | 'done' | 'denied';
-};
+import { Document } from '@/app/[locale]/dashboard/documents/page';
 
 const DataTable = ({
   data,
   showPagination = false,
-  showSeeAllButton = false
+  showSeeAllButton = false,
+  actions
 }: {
   data: Document[];
   showPagination?: boolean;
   showSeeAllButton?: boolean;
+  actions?: React.ReactNode;
 }) => {
   const d = useTranslations('Dashboard');
 
@@ -179,42 +168,46 @@ const DataTable = ({
                   <p className="text-xs">{row.date}</p>
                   <div className="flex gap-1 items-center">
                     <PermIdentityIcon svgClassName="w-5 h-5" />
-                    <p className="text-xs">{row.initiator}</p>
+                    <p className="text-xs">{row.initiator.email}</p>
                   </div>
                 </div>
-                <div className="flex flex-col justify-between">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="cursor-pointer" asChild>
-                      <MoreHorizontal />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      className="rounded-[10px] p-2"
-                      align="end"
-                    >
-                      <DropdownMenuItem>
-                        {d('table.actions.view')}
-                      </DropdownMenuItem>
-                      {row.status !== 'done' && (
+                <div className="flex flex-col justify-between items-end">
+                  {actions ? (
+                    actions
+                  ) : (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="cursor-pointer" asChild>
+                        <MoreHorizontal />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        className="rounded-[10px] p-2"
+                        align="end"
+                      >
                         <DropdownMenuItem>
-                          {d('table.actions.sign')}
+                          {d('table.actions.view')}
                         </DropdownMenuItem>
-                      )}
-                      <DropdownMenuItem>Download</DropdownMenuItem>
-                      <DropdownMenuItem>Audit Trail</DropdownMenuItem>
-                      {row.initiator === 'Saya' ? (
-                        <DropdownMenuItem onClick={() => setIsOpen(true)}>
-                          {d('table.actions.cancel')}
-                        </DropdownMenuItem>
-                      ) : (
-                        row.status !== 'done' && (
+                        {row.status !== 'done' && (
                           <DropdownMenuItem>
-                            {' '}
-                            {d('table.actions.deny')}
+                            {d('table.actions.sign')}
                           </DropdownMenuItem>
-                        )
-                      )}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                        )}
+                        <DropdownMenuItem>Download</DropdownMenuItem>
+                        <DropdownMenuItem>Audit Trail</DropdownMenuItem>
+                        {row.initiator.email === 'wahab1@gmail.com' ? (
+                          <DropdownMenuItem onClick={() => setIsOpen(true)}>
+                            {d('table.actions.cancel')}
+                          </DropdownMenuItem>
+                        ) : (
+                          row.status !== 'done' && (
+                            <DropdownMenuItem>
+                              {' '}
+                              {d('table.actions.deny')}
+                            </DropdownMenuItem>
+                          )
+                        )}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  )}
 
                   <Popover>
                     <PopoverTrigger className="flex gap-1 items-center">
@@ -297,7 +290,7 @@ const DataTable = ({
               </TableHead>
               <TableHead>{d('table.document')}</TableHead>
               <TableHead>{d('table.initiator')}</TableHead>
-              <TableHead>{d('table.signer')}</TableHead>
+              <TableHead className="w-[50px]">{d('table.signer')}</TableHead>
               <TableHead>{d('table.status')}</TableHead>
               <TableHead></TableHead>
             </TableRow>
@@ -308,7 +301,7 @@ const DataTable = ({
                 <TableRow key={row.name}>
                   <TableCell>{row.date}</TableCell>
                   <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.initiator}</TableCell>
+                  <TableCell>{row.initiator.email}</TableCell>
                   <TableCell>
                     <Popover>
                       <PopoverTrigger className="flex gap-2 items-center">
@@ -351,44 +344,53 @@ const DataTable = ({
                   </TableCell>
                   <TableCell>
                     <Badge
-                      className={`w-fit flex-none px-1.5 ${getBadgeLabelAndColor(row.status, 'row').color}`}
+                      className={`w-fit text-nowrap px-1.5 ${getBadgeLabelAndColor(row.status, 'row').color}`}
                     >
                       {getBadgeLabelAndColor(row.status, 'row').label}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger className="cursor-pointer" asChild>
-                        <MoreHorizontal />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        className="rounded-[10px] p-2"
-                        align="end"
-                      >
-                        <DropdownMenuItem>
-                          {d('table.actions.view')}
-                        </DropdownMenuItem>
-                        {row.status !== 'done' && (
-                          <DropdownMenuItem>
-                            {d('table.actions.sign')}
-                          </DropdownMenuItem>
-                        )}
-                        <DropdownMenuItem>Download</DropdownMenuItem>
-                        <DropdownMenuItem>Audit Trail</DropdownMenuItem>
-                        {row.initiator === 'Saya' ? (
-                          <DropdownMenuItem onClick={() => setIsOpen(true)}>
-                            {d('table.actions.cancel')}
-                          </DropdownMenuItem>
-                        ) : (
-                          row.status !== 'done' && (
-                            <DropdownMenuItem>
-                              {' '}
-                              {d('table.actions.deny')}
-                            </DropdownMenuItem>
-                          )
-                        )}
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                    {actions ? (
+                      actions
+                    ) : (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger className="cursor-pointer" asChild>
+                          <MoreHorizontal />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          className="rounded-[10px] p-2"
+                          align="end"
+                        >
+                          {row.status !== 'denied' && (
+                            <>
+                              <DropdownMenuItem>
+                                {d('table.actions.view')}
+                              </DropdownMenuItem>
+                              {row.status !== 'done' && (
+                                <DropdownMenuItem>
+                                  {d('table.actions.sign')}
+                                </DropdownMenuItem>
+                              )}
+                              <DropdownMenuItem>Download</DropdownMenuItem>
+                              {row.initiator.email === 'wahab1@gmail.com' ? (
+                                <DropdownMenuItem
+                                  onClick={() => setIsOpen(true)}
+                                >
+                                  {d('table.actions.cancel')}
+                                </DropdownMenuItem>
+                              ) : (
+                                row.status !== 'done' && (
+                                  <DropdownMenuItem>
+                                    {d('table.actions.deny')}
+                                  </DropdownMenuItem>
+                                )
+                              )}
+                            </>
+                          )}
+                          <DropdownMenuItem>Audit Trail</DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    )}
                   </TableCell>
                 </TableRow>
               ))

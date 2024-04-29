@@ -9,7 +9,6 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import Webcam from 'react-webcam';
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -19,8 +18,7 @@ import {
 } from './ui/alert-dialog';
 
 import { useTranslations } from 'next-intl';
-
-import { useResizeDetector } from 'react-resize-detector';
+import { useMediaQuery } from 'usehooks-ts';
 
 interface Constraint {
   width: number;
@@ -50,7 +48,6 @@ const FRDialog = ({
   };
 
   const cameraPermission: TPermissionState = useCameraPermission();
-  const { width, height, ref } = useResizeDetector();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isUserMediaError, setIsUserMediaError] = useState<boolean>(false);
@@ -61,6 +58,8 @@ const FRDialog = ({
   const onPlay = useCallback(() => {
     setIsPlaying(true);
   }, []);
+
+  const shouldChangeRingWidth: boolean = useMediaQuery('(max-width: 768px)');
 
   const capture = useCallback(async () => {
     const imageSrc = webcamRef?.current?.getScreenshot();
@@ -104,7 +103,7 @@ const FRDialog = ({
           </div>
           <div
             id="countdown-timer-fr"
-            className="absolute text-white bottom-5 left-0 right-0 flex justify-center"
+            className="absolute text-white top-5 right-5 md:right-10 flex justify-center"
           >
             <CountdownCircleTimer
               onComplete={() => {
@@ -114,7 +113,7 @@ const FRDialog = ({
                 };
               }}
               isPlaying={isPlaying}
-              size={45}
+              size={shouldChangeRingWidth ? 35 : 45}
               strokeWidth={2}
               duration={5}
               colors="#fff"
@@ -138,13 +137,10 @@ const FRDialog = ({
             onUserMediaError={() => setIsUserMediaError(true)}
           />
         </div>
-        <AlertDialogFooter className="!justify-between">
-          <AlertDialogCancel>
+        <AlertDialogFooter className="!justify-center">
+          <AlertDialogCancel className="mt-2 h-fit text-base">
             {s('dialog.authMethod.cancelButton')}
           </AlertDialogCancel>
-          <AlertDialogAction className="!m-0">
-            {s('dialog.authMethod.confirmButton')}
-          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

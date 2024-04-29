@@ -42,6 +42,8 @@
       "initiator": "Pembuat",
       "signer": "Penandatangan",
       "status": "Status",
+      "from": "dari",
+      "search": "Cari",
       "importantToday": "Penting Hari ini",
       "signerStatus": {
         "signed": "Ditandatangani",
@@ -174,7 +176,9 @@
       "enroll": "Enroll",
       "revoke": "Cabut",
       "error": "Error",
-      "expired": "Kedaluwarsa"
+      "expired": "Kedaluwarsa",
+      "validTo": "Berlaku hingga",
+      "validFrom": "Berlaku dari"
     }
   }
 }

@@ -102,10 +102,7 @@ const UploadDropZone = () => {
                   {...getRootProps()}
                   className="border-[3px] md:min-w-[578px] h-72 cursor-pointer border-dashed border-[#E6F1FC] border-spacing-4 rounded-lg bg-white md:selection:w-6/12 px-5 py-24"
                 >
-                  <label
-                    htmlFor="dropzone-file"
-                    className="flex flex-col justify-center cursor-pointer items-center h-full"
-                  >
+                  <div className="flex flex-col justify-center cursor-pointer items-center h-full">
                     <Image
                       src="/images/upload.svg"
                       height={56}
@@ -145,7 +142,7 @@ const UploadDropZone = () => {
                         <p className="text-xs text-gray-3">{uploadProgress}%</p>
                       </div>
                     ) : null}
-                  </label>
+                  </div>
                   <input
                     className="bg-black z-10"
                     type="file"

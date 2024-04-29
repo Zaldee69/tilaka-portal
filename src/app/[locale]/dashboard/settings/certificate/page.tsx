@@ -29,7 +29,9 @@ const certificates = [
   {
     serial: '43hh9jdjhsau3e3bee34348778828bb2',
     status: 'active',
-    title: 'certificateDetails.active'
+    title: 'certificateDetails.active',
+    valid_from: '01-01-2024 12:30',
+    valid_to: '04-02-2024 12:30'
   },
   {
     serial: '43hh9jdjhsau3e3bee34348778828bb2',
@@ -80,11 +82,17 @@ const Page = () => {
         </BreadcrumbList>
       </Breadcrumb>
       <h1 className="text-gray-1 my-5">{s('certificate')}</h1>
-      <Table className="hidden sm:block">
+      <Table className="hidden sm:block w-full">
         <TableHeader>
           <TableRow className="!border-none">
-            <TableHead className="w-[700px] text-base">
+            <TableHead className="w-[300px] text-base">
               {s('serialNumber')}
+            </TableHead>
+            <TableHead className="w-[200px] text-base">
+              {s('certificateDetails.validFrom')}
+            </TableHead>
+            <TableHead className="w-[200px] text-base">
+              {s('certificateDetails.validTo')}
             </TableHead>
             <TableHead className="text-base">Status</TableHead>
             <TableHead className="text-left text-base">
@@ -96,6 +104,8 @@ const Page = () => {
           {certificates.map((cert) => (
             <TableRow key={cert.status} className="bg-[#FBFBFB]">
               <TableCell>{cert.serial}</TableCell>
+              <TableCell>{cert.valid_from ? cert.valid_from : '-'}</TableCell>
+              <TableCell>{cert.valid_to ? cert.valid_to : '-'}</TableCell>
               <TableCell>
                 <Badge
                   className={cn('bg-[#BD0505]', {
@@ -152,6 +162,20 @@ const Page = () => {
               {' '}
               <h5 className="font-semibold text-gray-1">{s('serialNumber')}</h5>
               <p>{cert.serial}</p>
+            </div>
+            <div>
+              {' '}
+              <h5 className="font-semibold text-gray-1">
+                {s('certificateDetails.validFrom')}
+              </h5>
+              <p>{cert.valid_from ? cert.valid_from : '-'}</p>
+            </div>
+            <div>
+              {' '}
+              <h5 className="font-semibold text-gray-1">
+                {s('certificateDetails.validTo')}
+              </h5>
+              <p>{cert.valid_to ? cert.valid_to : '-'}</p>
             </div>
             <div>
               {' '}
