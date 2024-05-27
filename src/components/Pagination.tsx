@@ -55,7 +55,7 @@ const Pagination = ({
     useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  const rangeDisplayed = 5;
+  const rangeDisplayed = 7;
 
   const onClickOutsideContentPerPageMenu = () => {
     setShowContentPerPageMenu(false);
@@ -105,10 +105,10 @@ const Pagination = ({
                 disabled={page === 0 || !isSuccess}
                 onClick={() => setCurrentPage(page)}
                 className={[
-                  'md:px-4 px-3 text-sm md:text-base py-2 flex items-center justify-center',
+                  'md:px-4 px-3 text-sm md:text-base py-2 flex items-center justify-center md:hover:bg-primary md:hover:font-semibold md:hover:text-white',
                   currentPage === page
                     ? 'text-white bg-primary font-semibold'
-                    : 'text-primary0 bg-white hover:bg-primary hover:font-semibold hover:text-white'
+                    : ''
                 ].join(' ')}
               >
                 {page === 0 ? '...' : page}

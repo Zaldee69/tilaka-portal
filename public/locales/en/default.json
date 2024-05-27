@@ -45,6 +45,7 @@
       "status": "Status",
       "from": "from",
       "search": "Search",
+      "or": "or",
       "importantToday": "Important Today",
       "signerStatus": {
         "signed": "Signed",
@@ -79,6 +80,7 @@
     "changeSignature": "Change Signature",
     "changeMainAccount": "Change Main Account",
     "viewAllDoc": "View All Documents",
+    "viewAll": "View All",
     "authMethod": "Authentication Method",
     "help": "Need Help?",
     "activity": "Here's your activity summary with Tilaka",
@@ -105,11 +107,11 @@
     "certificate": "Certificate",
     "dialog": {
       "authMethod": {
-        "title": "Authentication",
+        "title": "Authentication Method",
         "subtitle": "Select your Authentication method",
         "method": {
-          "otp": "Send OTP via email",
-          "fr": "Verification via FR"
+          "otp": "OTP via email",
+          "fr": "Face Recognition (FR)"
         },
         "cancelButton": "Cancel",
         "confirmButton": "Submit"

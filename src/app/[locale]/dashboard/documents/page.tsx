@@ -145,7 +145,7 @@ export default function Page() {
   return (
     <div className="p-5 mx-auto">
       <h1 className="text-gray-1">{t('sidebar.document')}</h1>
-      <div className="flex justify-between mt-7 mb-5">
+      <div className="flex justify-between mt-7 mb-2">
         <div className="grid grid-cols-3 lg:grid-cols-5 md:grid-cols-4 md:gap-x-3 gap-x-2 gap-y-4 w-full md:w-fit">
           <div className="hidden md:flex">
             <DatePickerRange />

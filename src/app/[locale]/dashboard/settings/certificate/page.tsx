@@ -85,7 +85,7 @@ const Page = () => {
       <Table className="hidden sm:block w-full">
         <TableHeader>
           <TableRow className="!border-none">
-            <TableHead className="w-[300px] text-base">
+            <TableHead className="w-[350px] text-base">
               {s('serialNumber')}
             </TableHead>
             <TableHead className="w-[200px] text-base">

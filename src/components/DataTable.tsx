@@ -28,7 +28,7 @@ import {
   PermIdentityIcon,
   SupervisorAccountIcon
 } from '../../public/icons/icons';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
   DropdownMenu,
@@ -163,7 +163,7 @@ const DataTable = ({
           ? data.map((row) => (
               <div
                 key={row.date}
-                className="border rounded-xl py-2 px-3 mt-3 border-gray-6 flex justify-between"
+                className="border rounded-xl py-2 px-3 border-gray-6 flex justify-between"
               >
                 <div className="flex flex-col gap-2">
                   <Badge
@@ -192,29 +192,33 @@ const DataTable = ({
                         className="rounded-[10px] p-2"
                         align="end"
                       >
-                        <DropdownMenuItem>
-                          <Link href="/dashboard/documents/detail">
-                            {d('table.actions.view')}
-                          </Link>
-                        </DropdownMenuItem>
-                        {row.status !== 'done' && (
-                          <DropdownMenuItem>
-                            {d('table.actions.sign')}
-                          </DropdownMenuItem>
+                        {row.status !== 'denied' && (
+                          <>
+                            <Link href="/dashboard/documents/detail">
+                              <DropdownMenuItem>
+                                {d('table.actions.view')}
+                              </DropdownMenuItem>
+                            </Link>
+                            {row.status !== 'done' && (
+                              <DropdownMenuItem>
+                                {d('table.actions.sign')}
+                              </DropdownMenuItem>
+                            )}
+                            <DropdownMenuItem>Download</DropdownMenuItem>
+                            {row.initiator.email === 'wahab1@gmail.com' ? (
+                              <DropdownMenuItem onClick={() => setIsOpen(true)}>
+                                {d('table.actions.cancel')}
+                              </DropdownMenuItem>
+                            ) : (
+                              row.status !== 'done' && (
+                                <DropdownMenuItem>
+                                  {d('table.actions.deny')}
+                                </DropdownMenuItem>
+                              )
+                            )}
+                          </>
                         )}
-                        <DropdownMenuItem>Download</DropdownMenuItem>
                         <DropdownMenuItem>Audit Trail</DropdownMenuItem>
-                        {row.initiator.email === 'wahab1@gmail.com' ? (
-                          <DropdownMenuItem onClick={() => setIsOpen(true)}>
-                            {d('table.actions.cancel')}
-                          </DropdownMenuItem>
-                        ) : (
-                          row.status !== 'done' && (
-                            <DropdownMenuItem>
-                              {d('table.actions.deny')}
-                            </DropdownMenuItem>
-                          )
-                        )}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   )}
@@ -229,7 +233,7 @@ const DataTable = ({
                     <PopoverContent className="w-96">
                       <Input
                         autoFocus={false}
-                        placeholder={'Tilaka Name atau Email'}
+                        placeholder={`Tilaka Name ${d('table.or')} Email`}
                         className="h-10 pl-3 w-full"
                         icon={<ContactIcon svgClassName="mt-2" />}
                       />
@@ -267,12 +271,15 @@ const DataTable = ({
             ))
           : 'nothing'}
         {showSeeAllButton ? (
-          <Button
-            size="lg"
-            className="mt-5 w-full sign-button-shadow font-semibold"
+          <Link
+            href="/dashboard/documents"
+            className={buttonVariants({
+              className: 'mt-5 w-full sign-button-shadow font-semibold',
+              size: 'lg'
+            })}
           >
-            Lihat Semua
-          </Button>
+            {d('viewAll')}
+          </Link>
         ) : null}
       </div>
 
@@ -303,7 +310,7 @@ const DataTable = ({
               </TableHead>
               <TableHead>{d('table.document')}</TableHead>
               <TableHead>{d('table.initiator')}</TableHead>
-              <TableHead className="w-[50px]">{d('table.signer')}</TableHead>
+              <TableHead>{d('table.signer')}</TableHead>
               <TableHead>{d('table.status')}</TableHead>
               <TableHead></TableHead>
             </TableRow>
@@ -324,7 +331,7 @@ const DataTable = ({
                       <PopoverContent className="w-96">
                         <Input
                           autoFocus={false}
-                          placeholder={'Tilaka Name atau Email'}
+                          placeholder={`Tilaka Name ${d('table.or')} Email`}
                           className="h-10 pl-3 w-full"
                           icon={<ContactIcon svgClassName="mt-2" />}
                         />

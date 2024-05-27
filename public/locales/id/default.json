@@ -44,6 +44,7 @@
       "signer": "Penandatangan",
       "status": "Status",
       "from": "dari",
+      "or": "atau",
       "search": "Cari",
       "importantToday": "Penting Hari ini",
       "signerStatus": {
@@ -79,6 +80,7 @@
     "changeSignature": "Ubah Tandatangan",
     "changeMainAccount": "Ganti Akun Utama",
     "viewAllDoc": "Lihat Semua Dokumen",
+    "viewAll": "Lihat Semua",
     "authMethod": "Metode Otentikasi",
     "help": "Butuh Bantuan?",
     "activity": "Berikut ringkasan aktivitasmu bersama Tilaka",
@@ -105,11 +107,11 @@
     "certificate": "Sertifikat",
     "dialog": {
       "authMethod": {
-        "title": "Otentikasi",
-        "subtitle": "Pilih metode Otentikasi Anda",
+        "title": "Metode Otentikasi",
+        "subtitle": "Pilih Metode Otentikasi Anda",
         "method": {
-          "otp": "Kirim OTP via email",
-          "fr": "Verifikasi via FR"
+          "otp": "OTP melalui email",
+          "fr": "Face Recognition (FR)"
         },
         "cancelButton": "Batal",
         "confirmButton": "Simpan"
@@ -179,7 +181,7 @@
       "error": "Error",
       "expired": "Kedaluwarsa",
       "validTo": "Berlaku hingga",
-      "validFrom": "Berlaku dari"
+      "validFrom": "Berlaku mulai"
     }
   },
   "SigningDialog": {

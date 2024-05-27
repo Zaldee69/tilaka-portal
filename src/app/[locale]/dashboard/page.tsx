@@ -21,7 +21,7 @@ import Collapsible from '@/components/Collapsible';
 import DataTable from '@/components/DataTable';
 import { Link as CustomLink, Link } from '@/navigation';
 import NextLink from 'next/link';
-import { SquareArrowOutUpRight } from 'lucide-react';
+import { CircleArrowRight, SquareArrowOutUpRight } from 'lucide-react';
 import ChangeAutheticationModeDialog from '@/components/dialog/ChangeAutheticationMode';
 import SigningDialog from '@/components/dialog/signing-dialog/SigningDialog';
 
