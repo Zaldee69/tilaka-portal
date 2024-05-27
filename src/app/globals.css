@@ -66,6 +66,36 @@
   }
 }
 
+@font-face {
+  font-family: Adine-Kirnberg;
+  src: url('/public/fonts/Adine-Kirnberg.ttf');
+}
+
+@font-face {
+  font-family: champignonaltswash !important;
+  src: url('/public/fonts/champignonaltswash.ttf');
+}
+
+@font-face {
+  font-family: FormalScript;
+  src: url('/public/fonts/FormalScript.ttf');
+}
+
+@font-face {
+  font-family: HerrVonMuellerhoff-Regular;
+  src: url('/public/fonts/HerrVonMuellerhoff-Regular.ttf');
+}
+
+@font-face {
+  font-family: MrsSaintDelafield-Regular;
+  src: url('/public/fonts/MrsSaintDelafield-Regular.ttf');
+}
+
+@font-face {
+  font-family: SCRIPTIN;
+  src: url('/public/fonts/SCRIPTIN.ttf');
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -107,6 +137,10 @@
   box-shadow: 0px 4px 14px 0px #0d5fb33b;
 }
 
+.drawer-shadow {
+  box-shadow: 0px -10px 14px 0px #79797940;
+}
+
 .popover-shadow {
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.15);
 }
@@ -145,4 +179,19 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+}
+
+.canvas-full {
+  width: 98% !important;
+  height: auto !important;
+}
+
+.canvas {
+  width: 50% !important;
+  height: auto !important;
+}
+
+.stamp-icon {
+  width: 90% !important;
+  height: 90% !important;
 }

@@ -19,7 +19,6 @@ import { DatePickerRange } from '@/components/DatePickerRange';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Settings2 } from 'lucide-react';
 
 type Signer = {
   tilaka_name: string;

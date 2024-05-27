@@ -34,7 +34,8 @@
       "dashboard": "Beranda",
       "document": "Dokumen",
       "verifyPdf": "Verifikasi PDF",
-      "settings": "Pengaturan"
+      "settings": "Pengaturan",
+      "documentDetails": "Dokumen Detail"
     },
     "table": {
       "date": "Tanggal",
@@ -180,5 +181,125 @@
       "validTo": "Berlaku hingga",
       "validFrom": "Berlaku dari"
     }
+  },
+  "SigningDialog": {
+    "navbar": {
+      "title": "Tandatangan Dokumen",
+      "uploadDocument": "Upload Dokumen",
+      "setSignature": "Atur Posisi Tandatangan",
+      "sign": "Tandatangan",
+      "completed": "Selesai"
+    },
+    "step1": {
+      "uploadDocument": "Upload Dokumen",
+      "dragYourDoc": "Tarik dokumen Anda kesini, atau",
+      "maxFileSize": "Ukuran file maksimal 30MB dan tidak terproteksi (di-password)",
+      "recipient": "Penerima",
+      "selfSign": "Tandatangan Sendiri",
+      "addSigner": "Tambahkan Penandatangan atau Penerima",
+      "input": "Masukkan Tilaka Name atau Email",
+      "info": "Tilaka name atau email yang ditambahkan dapat berperan sebagai Penandatangan atau Penerima (hanya lihat)",
+      "role": "Peran",
+      "signer": "Penandatangan",
+      "viewOnly": "Penerima (Hanya Lihat)",
+      "delete": "Hapus",
+      "message": "Pesan",
+      "emailSubject": "Subjek Email",
+      "subject": "Subjek",
+      "emailContent": "Isi Email",
+      "characters": "Karakter",
+      "remainingCharacter": "Sisa karakter"
+    },
+    "step2": {
+      "header": "Kamu telah meposisikan <signature></signature> tempat Tandatangan untuk <signers></signers> Penandatangan",
+      "header2": "Atur posisi tandatangan pada dokumen untuk setiap penandatangan",
+      "setSignature": "Atur Tandatangan",
+      "set": "Atur",
+      "signature": "Tandatangan",
+      "initials": "Paraf",
+      "signatureSetting": "Pengaturan Tanda Tangan",
+      "displaySignature": "Tampilkan Tanda Tangan",
+      "displayName": "Tampilkan Nama",
+      "displayQR": "Tampilkan QR",
+      "displayLogo": "Tampilkan Logo",
+      "back": "Kembali",
+      "page": "Halaman",
+      "continue": "Lanjut",
+      "button": {
+        "signature": "Tanda Tangan",
+        "initials": "Paraf"
+      },
+      "sendDocModal": {
+        "title": "Kirim Permintaan Tandatangan",
+        "subtitle": "Permintaan tanda tangan akan dikirim sesuai dengan penandatanganan dan posisi tanda tangan yang telah ditentukan",
+        "cancel": "Batal",
+        "send": "Kirim"
+      },
+      "signDocConfirmationModal": {
+        "title": "Permintaan Tandatangan Berhasil",
+        "subtitle": "Klik 'Tandatangani Dokumen' untuk melakukan penandatanganan",
+        "signNow": "Tandatangani Dokumen",
+        "signLater": "Nanti Saja"
+      }
+    },
+    "reviewDoc": "Silahkan review dokumen dan tandatangan sesuai tempat yang tersedia",
+    "viewDoc": "Lihat Dokumen",
+    "startSigning": "Mulai Tandatangan",
+    "signingOptionModal": {
+      "title": "Pilihan Tandatangan",
+      "subtitle": "Berikut ringkasan yang perlu diselesaikan pada dokumen ini",
+      "button1": "Tandatangan Satu Persatu",
+      "button2": "Tandatangan Sekaligus"
+    },
+    "signingDoneDrawer": {
+      "title": "Semua selesai!",
+      "subtitle": "Periksa lagi dokumen dan tanda tangan anda, kemudian pilih <br></br> 'Selesai' untuk menyelesaikan proses tandatangan",
+      "done": "Selesai"
+    },
+    "otpDialog": {
+      "title": "Konfirmasi Tandatangan",
+      "subtitle": "Masukkan 6-digit kode OTP yang telah dikirim ke <br></br>isuwinxxx@gmail.com",
+      "didntReceiveOTP": "Tidak menerima kode OTP?",
+      "send": "Kirim",
+      "cancel": "Batal",
+      "useFRAuth": "Gunakan Otentikasi FR",
+      "loading": "Proses Verifikasi"
+    },
+    "frDialog": {
+      "title": "Konfirmasi Tandatangan",
+      "subtitle": "Arahkan wajah Anda ke kamera",
+      "useOTP": "Gunakan Otentikasi OTP"
+    },
+    "signingSuccessToast": {
+      "title": "Tandatangan Berhasil",
+      "subtitle": "Dokumen telah ditandatangani dan dibagikan ke email tujuan"
+    },
+    "signingAuthenticationDialog": "Pilih metode otentikasi Anda untuk melanjutkan proses penandatangan dokumen",
+    "authentication": "Otentikasi",
+    "setAs": "Tetapkan sebagai metode otentikasi",
+    "signHere": "Tandatangan Disini"
+  },
+  "PdfVerification": {
+    "docInformation": "Informasi Dokumen",
+    "signer": "Penandatangan",
+    "sigFormat": "Format Tanda Tangan",
+    "certifChain": "Rantai Sertifikat",
+    "claimTime": "Waktu Klaim",
+    "signingTime": "Waktu Tanda Tangan Valid",
+    "signaturePosition": "Posisi Tanda Tangan",
+    "validationDetails": "Rincian Validasi",
+    "of": "Dari"
+  },
+  "documentDetail": {
+    "uploadDate": "Tanggal Unggah",
+    "numberOfPage": "Jumlah Halaman",
+    "signer": "Penandatangan",
+    "pages": "Halaman",
+    "name": "Nama",
+    "history": "Riwayat",
+    "action": "Aksi",
+    "time": "Waktu",
+    "download": "Unduh Dokumen",
+    "document": "Dokumen"
   }
 }

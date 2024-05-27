@@ -20,7 +20,7 @@ const DashboarLayout = ({
           <div className="flex">
             <Sidebar />
             <div className="w-full">
-              <Navbar searchParams={searchParams} />
+              <Navbar params={params} searchParams={searchParams} />
               <div>{children}</div>
             </div>
           </div>

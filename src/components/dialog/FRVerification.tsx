@@ -15,10 +15,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle
-} from './ui/alert-dialog';
+} from '@/components/ui/alert-dialog';
 
 import { useTranslations } from 'next-intl';
 import { useMediaQuery } from 'usehooks-ts';
+import { Button } from '../ui/button';
+import { MailOutlineIcon } from '../../../public/icons/icons';
 
 interface Constraint {
   width: number;
@@ -31,15 +33,19 @@ interface Props {
   title: string;
   subtitle: string;
   open: boolean;
+  showOTPButton?: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenOTPDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const FRDialog = ({
+const FRVerification = ({
   callbackCaptureProcessor,
   setOpen,
+  setOpenOTPDialog,
   open,
   title,
-  subtitle
+  subtitle,
+  showOTPButton = true
 }: Props) => {
   const constraint: Constraint = {
     width: 1280,
@@ -54,6 +60,7 @@ const FRDialog = ({
   const webcamRef = useRef<Webcam | null>(null);
 
   const s = useTranslations('Settings');
+  const d = useTranslations('SigningDialog');
 
   const onPlay = useCallback(() => {
     setIsPlaying(true);
@@ -64,6 +71,7 @@ const FRDialog = ({
   const capture = useCallback(async () => {
     const imageSrc = webcamRef?.current?.getScreenshot();
     callbackCaptureProcessor(imageSrc);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -137,14 +145,33 @@ const FRDialog = ({
             onUserMediaError={() => setIsUserMediaError(true)}
           />
         </div>
-        <AlertDialogFooter className="!justify-center">
-          <AlertDialogCancel className="mt-2 h-fit text-base">
-            {s('dialog.authMethod.cancelButton')}
-          </AlertDialogCancel>
-        </AlertDialogFooter>
+        <div className="flex flex-col ">
+          <AlertDialogFooter className="!justify-center">
+            <AlertDialogCancel className="mt-2 h-fit text-base">
+              {s('dialog.authMethod.cancelButton')}
+            </AlertDialogCancel>
+          </AlertDialogFooter>
+
+          {showOTPButton ? (
+            <Button
+              onClick={() => {
+                setOpen(false);
+                setOpenOTPDialog(true);
+              }}
+              variant="ghost"
+              className="!w-fit px-0 mx-auto hover:text-gray-2 text-gray-2 font-semibold my-1"
+            >
+              <MailOutlineIcon
+                pathClassName="fill-[#494949]"
+                svgClassName="mr-2"
+              />
+              {d('frDialog.useOTP')}
+            </Button>
+          ) : null}
+        </div>
       </AlertDialogContent>
     </AlertDialog>
   );
 };
 
-export default FRDialog;
+export default FRVerification;

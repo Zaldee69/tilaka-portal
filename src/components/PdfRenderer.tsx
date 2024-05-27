@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useResizeDetector } from 'react-resize-detector';
@@ -12,13 +12,19 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 interface PdfRendererProps {
   url?: string;
+  currentPage?: number;
+  numPages: number;
+  scale?: number;
+  multiple?: boolean;
+  setNumPages: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const PdfRenderer = ({ url }: PdfRendererProps) => {
-  const [numPages, setNumPages] = useState<number>();
-  const [currentPage, setCurrentPage] = useState<number>();
-  const [scale, setScale] = useState<number>(1);
-
+const PdfRenderer = ({
+  url,
+  currentPage = 1,
+  scale = 1,
+  setNumPages
+}: PdfRendererProps) => {
   const { width, ref } = useResizeDetector();
 
   return (
@@ -26,8 +32,12 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
       <div className="flex-1 max-h-screen">
         <div ref={ref}>
           <Document
-            file={url ? url : 'https://pdfobject.com/pdf/sample.pdf'}
-            onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+            file={url}
+            onLoadSuccess={({ numPages }) => {
+              setTimeout(() => {
+                setNumPages(numPages);
+              }, 200);
+            }}
             loading={
               <div className="flex justify-center items-center h-full">
                 <Loader2 className="my-24 h-6 w-6 animate-spin text-primary" />
@@ -36,11 +46,11 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
           >
             <Page
               loading={
-                <div className="flex justify-center ">
-                  <Loader2 className="my-24 h-6 w-6 animate-spin text-primary" />
+                <div className="flex justify-center z-10">
+                  <Loader2 className="my-24 h-6 w-6 animate-spin text-primary z-[9999]" />
                 </div>
               }
-              pageNumber={numPages}
+              pageNumber={currentPage}
               scale={scale}
               width={width ? width : 1}
             />

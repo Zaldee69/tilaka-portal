@@ -11,7 +11,7 @@ const Step4 = () => {
       <div className="custom-shadow p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-end gap-4">
         <Button
           variant="secondary"
-          className="!font-bold sign-button-shadow"
+          className="!font-bold custom-shadow bg-white"
           onClick={() => previousStep()}
         >
           Kembali

@@ -1,7 +1,7 @@
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/components/ui/sonner';
 
 const dmSans = DM_Sans({ subsets: ['latin'] });
 
@@ -18,7 +18,7 @@ export default function RootLayout({
           dmSans.className
         )}
       >
-        <Toaster />
+        <Toaster richColors visibleToasts={10} />
         {children}
       </body>
     </html>

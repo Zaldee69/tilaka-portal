@@ -20,7 +20,7 @@ import {
 } from '../../../public/icons/icons';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import FRDialog from '@/components/FRDialog';
+import FRDialog from '@/components/dialog/FRVerification';
 
 const ChangeAutheticationModeDialog = ({
   triggerClassName,
@@ -55,6 +55,8 @@ const ChangeAutheticationModeDialog = ({
   return (
     <AlertDialog>
       <FRDialog
+        showOTPButton={false}
+        setOpenOTPDialog={setOpenOtpConfirmationDialog}
         open={openFrDialog}
         setOpen={setOpenFrDialog}
         callbackCaptureProcessor={() => console.log()}

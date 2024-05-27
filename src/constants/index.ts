@@ -97,7 +97,8 @@ export const sidebarLinks = [
   {
     title: 'sidebar.document',
     Icons: DocumentIcon,
-    path: '/dashboard/documents'
+    path: '/dashboard/documents',
+    subPath: '/detail'
   },
   {
     title: 'sidebar.verifyPdf',

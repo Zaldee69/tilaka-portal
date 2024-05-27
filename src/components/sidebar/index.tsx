@@ -129,7 +129,29 @@ const Sidebar = () => {
             'my-5 mx-auto': !state.isOpen
           })}
         >
-          <SigningModal />
+          <SigningModal>
+            <Button
+              className={cn(
+                'rounded-full w-full flex justify-center gap-3 font-semibold sign-button-shadow',
+                {
+                  'p-3 w-fit': !state.isOpen
+                }
+              )}
+            >
+              <TilakaIcon
+                svgClassName={cn('flex-none', {
+                  'h-5 w-5': !state.isOpen
+                })}
+              />{' '}
+              <h5
+                className={cn({
+                  hidden: !state.isOpen
+                })}
+              >
+                {t('sidebar.signPdfButton')}
+              </h5>
+            </Button>
+          </SigningModal>
         </div>
         <div
           className={cn('px-5', {
