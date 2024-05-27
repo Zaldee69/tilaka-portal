@@ -7,7 +7,13 @@ import { SearchIcon } from '../../../public/icons/icons';
 import SidebarCollpaseTrigger from '../sidebar/SidebarCollpaseTrigger';
 import { useTranslations } from 'next-intl';
 
-const Navbar = ({ searchParams }: { searchParams: {} }) => {
+const Navbar = ({
+  searchParams,
+  params
+}: {
+  searchParams: {};
+  params: { locale: string };
+}) => {
   const t = useTranslations('Navbar');
   return (
     <nav className="px-5 py-4 bg-white shadow-sm md:shadow-none sticky top-0 z-10">

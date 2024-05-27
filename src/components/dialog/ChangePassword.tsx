@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
-import { KeyIcon, SecurityIcon } from '../../../../../../public/icons/icons';
+import { KeyIcon, SecurityIcon } from '../../../public/icons/icons';
 import { useTranslations } from 'next-intl';
 import {
   AlertDialog,
@@ -262,6 +262,7 @@ const ChangePasswordDialog = () => {
           </AlertDialogHeader>
           <AlertDialogFooter className="!justify-between">
             <AlertDialogCancel
+              className="custom-shadow"
               onClick={() => {
                 form.clearErrors();
                 form.reset();

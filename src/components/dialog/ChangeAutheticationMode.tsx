@@ -17,12 +17,18 @@ import {
   CameraFrontIcon,
   MailOutlineIcon,
   SecurityIcon
-} from '../../../../../../public/icons/icons';
+} from '../../../public/icons/icons';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import FRDialog from '@/components/FRDialog';
+import FRDialog from '@/components/dialog/FRVerification';
 
-const ChangeAutheticationModeDialog = () => {
+const ChangeAutheticationModeDialog = ({
+  triggerClassName,
+  iconFill = '#000'
+}: {
+  triggerClassName?: string;
+  iconFill?: string;
+}) => {
   const t = useTranslations('Dashboard');
   const s = useTranslations('Settings');
 
@@ -49,6 +55,8 @@ const ChangeAutheticationModeDialog = () => {
   return (
     <AlertDialog>
       <FRDialog
+        showOTPButton={false}
+        setOpenOTPDialog={setOpenOtpConfirmationDialog}
         open={openFrDialog}
         setOpen={setOpenFrDialog}
         callbackCaptureProcessor={() => console.log()}
@@ -83,10 +91,13 @@ const ChangeAutheticationModeDialog = () => {
       <AlertDialogTrigger asChild>
         <Button
           size="lg"
-          className="mt-4 w-full justify-start border-[#E0E0E0] hover:text-black bg-white font-semibold gap-2 border px-4 lg:hover:scale-105 transition-transform"
+          className={cn(
+            'mt-4 w-full justify-start border-[#E0E0E0] hover:text-black bg-white font-semibold gap-2 border px-4 lg:hover:scale-105 transition-transform',
+            triggerClassName
+          )}
           variant="ghost"
         >
-          <SecurityIcon fill="#000" />
+          <SecurityIcon fill={iconFill} />
           {t('authMethod')}
         </Button>
       </AlertDialogTrigger>
@@ -165,14 +176,14 @@ const ChangeAutheticationModeDialog = () => {
                   {s('dialog.authMethod.method.fr')}
                 </p>
                 <p className="text-sm text-gray-3 font-medium">
-                  Bitometric Authentication
+                  Biometric Authentication
                 </p>
               </div>
             </Button>
           </div>
         </AlertDialogHeader>
         <AlertDialogFooter className="!justify-between">
-          <AlertDialogCancel>
+          <AlertDialogCancel className="custom-shadow">
             {s('dialog.authMethod.cancelButton')}
           </AlertDialogCancel>
           <AlertDialogAction className="!m-0" onClick={onSaveHandler}>

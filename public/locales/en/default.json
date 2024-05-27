@@ -34,7 +34,8 @@
       "dashboard": "Dashboard",
       "document": "Documents",
       "verifyPdf": "Verify PDF",
-      "settings": "Setting"
+      "settings": "Setting",
+      "documentDetails": "Document Details"
     },
     "table": {
       "date": "Date",
@@ -42,6 +43,9 @@
       "initiator": "Initiator",
       "signer": "Signer",
       "status": "Status",
+      "from": "from",
+      "search": "Search",
+      "or": "or",
       "importantToday": "Important Today",
       "signerStatus": {
         "signed": "Signed",
@@ -76,6 +80,7 @@
     "changeSignature": "Change Signature",
     "changeMainAccount": "Change Main Account",
     "viewAllDoc": "View All Documents",
+    "viewAll": "View All",
     "authMethod": "Authentication Method",
     "help": "Need Help?",
     "activity": "Here's your activity summary with Tilaka",
@@ -89,9 +94,9 @@
         "subtitle": "Uploading document"
       },
       "unuploading": {
-        "title": "Drag your document here, or click",
+        "title": "Drag your document here or click",
         "subtitle": "Maximum file size 30MB without password",
-        "upload": "upload"
+        "upload": "Upload"
       }
     }
   },
@@ -102,11 +107,11 @@
     "certificate": "Certificate",
     "dialog": {
       "authMethod": {
-        "title": "Authentication",
+        "title": "Authentication Method",
         "subtitle": "Select your Authentication method",
         "method": {
-          "otp": "Send OTP via email",
-          "fr": "Verification via FR"
+          "otp": "OTP via email",
+          "fr": "Face Recognition (FR)"
         },
         "cancelButton": "Cancel",
         "confirmButton": "Submit"
@@ -123,14 +128,14 @@
         "input": {
           "currentPassword": {
             "label": "Current Password",
-            "placeholder": "Enter current password",
+            "placeholder": "Current Password",
             "errorMessage": {
               "empty": "Current password must not be empty"
             }
           },
           "newPassword": {
             "label": "New Password",
-            "placeholder": "Enter New password",
+            "placeholder": "New Password",
             "errorMessage": {
               "empty": "New password must not be empty",
               "notValid": "Password is invalid",
@@ -138,8 +143,8 @@
             }
           },
           "confirmPassword": {
-            "label": "Confirm Password",
-            "placeholder": "Enter Confirm password",
+            "label": "Confirm New Password",
+            "placeholder": "Confirm New Password",
             "errorMessage": {
               "empty": "Confirm password must not be empty",
               "notMatch": "Password and confirm password do not match",
@@ -164,6 +169,139 @@
       "loggedIn": "Logged In",
       "mainAccount": "Main Account",
       "setAsMainAccount": "Set as Main Account"
+    },
+    "certificateDetails": {
+      "serialNumber": "Serial Number",
+      "download": "Download",
+      "action": "Action",
+      "active": "Active",
+      "registered": "Registered",
+      "enroll": "Enroll",
+      "revoke": "Revoke",
+      "error": "Error",
+      "expired": "Expired",
+      "validTo": "Valid to",
+      "validFrom": "Valid from"
     }
+  },
+  "SigningDialog": {
+    "navbar": {
+      "title": "Sign Document",
+      "uploadDocument": "Upload Document",
+      "setSignature": "Set Signature",
+      "sign": "Sign",
+      "completed": "Completed"
+    },
+    "step1": {
+      "uploadDocument": "Upload Document",
+      "dragYourDoc": "Drag your document here, or",
+      "maxFileSize": "Maximum file size 30MB without password",
+      "recipient": "Recipient",
+      "selfSign": "Self Sign",
+      "addSigner": "Add Signer / Recipient",
+      "input": "Input Tilaka Name or Email",
+      "info": "Tilaka name atau email yang ditambahkan dapat berperan sebagai Penandatangan atau Penerima (hanya lihat)",
+      "role": "Role",
+      "signer": "Signer",
+      "viewOnly": "Recipient (View Only)",
+      "delete": "Delete",
+      "message": "Message",
+      "emailSubject": "Email Subject",
+      "subject": "Subject",
+      "emailContent": "Email Content",
+      "characters": "Characters",
+      "remainingCharacter": "Remaining characters"
+    },
+    "step2": {
+      "header": "You have placed <signature></signature> Signature area for <signers></signers> Signers",
+      "header2": "Set the signature position on the document for each signer",
+      "setSignature": "Set Signature",
+      "set": "Set",
+      "signature": "Signature",
+      "initials": "Initials",
+      "signatureSetting": "Signature Setting",
+      "displaySignature": "Display Signature",
+      "displayName": "Display Name",
+      "displayQR": "Display QR",
+      "displayLogo": "Display Logo",
+      "page": "Page",
+      "button": {
+        "signature": "Signature",
+        "initials": "Initials"
+      },
+      "back": "Back",
+      "continue": "Continue",
+      "sendDocModal": {
+        "title": "Send Signing Request",
+        "subtitle": "The signing request will be sent according to <br></br> pre-defined signer(s) and their respective signature position(s)",
+        "cancel": "Cancel",
+        "send": "Send"
+      },
+      "signDocConfirmationModal": {
+        "title": "Signing Request successful",
+        "subtitle": "Click 'Sign Document' to sign",
+        "signNow": "Sign Document",
+        "signLater": "Sign Later"
+      }
+    },
+    "reviewDoc": "Please review the document below and sign it accordingly",
+    "viewDoc": "View Document",
+    "startSigning": "Start Signing",
+    "signingOptionModal": {
+      "title": "Signing Option",
+      "subtitle": "Here is the signature summary for this document",
+      "button1": "Sign one by one (per signature)",
+      "button2": "Sign all signature"
+    },
+    "signingDoneDrawer": {
+      "title": "All done!",
+      "subtitle": "Double check your document and signature, and click 'Done to complete signing process",
+      "done": "Done"
+    },
+    "otpDialog": {
+      "title": "Signing Confirmation",
+      "subtitle": "Input 6-digit OTP code that has been sent to <br></br>isuwinxxx@gmail.com",
+      "didntReceiveOTP": "Did't receive OTP?",
+      "send": "Send",
+      "cancel": "Cancel",
+      "useFRAuth": "Use FR authentication",
+      "loading": "Verification Process"
+    },
+    "frDialog": {
+      "title": "Signing Confirmation",
+      "subtitle": "Face towards the camera for authentication",
+      "useOTP": "Use OTP authentication"
+    },
+    "signingSuccessToast": {
+      "title": "Signing Success",
+      "subtitle": "Document(s) has been signed and forwarded to the next signer and signer"
+    },
+    "signingAuthenticationDialog": "Select your authentication method to continue the document signing process",
+    "authentication": "Authentication",
+    "setAs": "Set as authentication method",
+    "signHere": "Sign Here"
+  },
+  "PdfVerification": {
+    "docInformation": "Document Information",
+    "signer": "Signers",
+    "sigFormat": "Signature Format",
+    "certifChain": "Certificate Chain",
+    "claimTime": "Claim Time",
+    "signingTime": "Valid Signature Time",
+    "signaturePosition": "Signature Position",
+    "validationDetails": "Validation Details",
+    "of": "Of"
+  },
+  "documentDetail": {
+    "uploadDate": "Upload Date",
+    "numberOfPage": "Number Of Page(s)",
+    "signer": "Signer",
+    "pages": "Page(s)",
+    "name": "Name",
+    "history": "History",
+    "action": "Action",
+    "time": "Time",
+    "download": "Download Document",
+    "document": "Document"
   }
 }

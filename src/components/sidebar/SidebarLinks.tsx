@@ -1,12 +1,12 @@
 'use client';
+import React, { useContext } from 'react';
 import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
-import React, { useContext } from 'react';
-import { buttonVariants } from '../ui/button';
 import { usePathname } from 'next/navigation';
 import { sidebarLinks } from '@/constants';
 import { SidebarContext } from './SidebarContextProvider';
 import { cn } from '@/lib/utils';
+import { buttonVariants } from '../ui/button';
 
 const sidebarMessages = {
   'sidebar.dashboard': 'Dashboard',
@@ -15,22 +15,27 @@ const sidebarMessages = {
   'sidebar.settings': 'Pengaturan'
 };
 
-interface Props {
+const SidebarLinks: React.FC<{
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const SidebarLinks: React.FC<Props> = ({ setOpen }) => {
+}> = ({ setOpen }) => {
   const t = useTranslations('Dashboard');
   const path = usePathname();
-
   const { state } = useContext(SidebarContext);
 
   const checkPathname = (href: string) => {
-    return !path
-      ?.split('/')
-      [
-        path?.split('/').length - 1
-      ]?.includes(href?.split('/')[href.split('/').length - 1]);
+    const lastPathSegment = path?.split('/').pop();
+    const hrefLastSegment = href?.split('/').pop();
+    const isSubPath =
+      lastPathSegment &&
+      hrefLastSegment &&
+      lastPathSegment.includes(hrefLastSegment);
+    const isMatchingSubPath = sidebarLinks.find(
+      (link) =>
+        link.path === href &&
+        link.subPath &&
+        `/${lastPathSegment}` === link.subPath
+    );
+    return !isSubPath && !isMatchingSubPath;
   };
 
   return (
@@ -41,11 +46,11 @@ const SidebarLinks: React.FC<Props> = ({ setOpen }) => {
           className={buttonVariants({
             variant: 'secondary',
             className: cn(
-              `w-full !justify-start group font-semibold !px-3 hover:!text-primary hover:!bg-secondary   ${checkPathname(item.href) ? 'bg-transparent !text-gray-1' : '!text-primary'} `,
+              `w-full !justify-start group font-semibold !px-3 hover:!text-primary hover:!bg-secondary   ${checkPathname(item.path) ? 'bg-transparent !text-gray-1' : '!text-primary'} `,
               { '!justify-center': !state.isOpen }
             )
           })}
-          href={item.href}
+          href={item.path}
           key={item.title}
         >
           <item.Icons
@@ -55,7 +60,7 @@ const SidebarLinks: React.FC<Props> = ({ setOpen }) => {
             pathClassName={cn(
               'group-hover:fill-primary fill-[#828282] transition-colors',
               {
-                'fill-primary': !checkPathname(item.href)
+                'fill-primary': !checkPathname(item.path)
               }
             )}
           />

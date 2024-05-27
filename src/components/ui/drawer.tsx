@@ -5,6 +5,11 @@ import { Drawer as DrawerPrimitive } from 'vaul';
 
 import { cn } from '@/lib/utils';
 
+interface IDrawer
+  extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> {
+  drawerClassName?: string;
+}
+
 const Drawer = ({
   shouldScaleBackground = true,
   ...props
@@ -36,10 +41,10 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  IDrawer
+>(({ className, children, drawerClassName, ...props }, ref) => (
   <DrawerPortal>
-    <DrawerOverlay />
+    <DrawerOverlay className={drawerClassName} />
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(

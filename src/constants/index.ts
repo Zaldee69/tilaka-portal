@@ -92,21 +92,23 @@ export const sidebarLinks = [
   {
     title: 'sidebar.dashboard',
     Icons: DashboardIcon,
-    href: '/dashboard'
+    path: '/dashboard'
   },
   {
     title: 'sidebar.document',
     Icons: DocumentIcon,
-    href: '/dashboard/documents'
+    path: '/dashboard/documents',
+    subPath: '/detail'
   },
   {
     title: 'sidebar.verifyPdf',
     Icons: VerifiedIcon,
-    href: '/dashboard/pdf-verification'
+    path: '/dashboard/pdf-verification'
   },
   {
     title: 'sidebar.settings',
     Icons: SettingsIcon,
-    href: '/dashboard/settings'
+    path: '/dashboard/settings',
+    subPath: '/certificate'
   }
 ];

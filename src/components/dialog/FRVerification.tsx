@@ -9,16 +9,18 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import Webcam from 'react-webcam';
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger
-} from './ui/alert-dialog';
+  AlertDialogTitle
+} from '@/components/ui/alert-dialog';
+
 import { useTranslations } from 'next-intl';
+import { useMediaQuery } from 'usehooks-ts';
+import { Button } from '../ui/button';
+import { MailOutlineIcon } from '../../../public/icons/icons';
 
 interface Constraint {
   width: number;
@@ -31,15 +33,19 @@ interface Props {
   title: string;
   subtitle: string;
   open: boolean;
+  showOTPButton?: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenOTPDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const FRDialog = ({
+const FRVerification = ({
   callbackCaptureProcessor,
   setOpen,
+  setOpenOTPDialog,
   open,
   title,
-  subtitle
+  subtitle,
+  showOTPButton = true
 }: Props) => {
   const constraint: Constraint = {
     width: 1280,
@@ -54,14 +60,18 @@ const FRDialog = ({
   const webcamRef = useRef<Webcam | null>(null);
 
   const s = useTranslations('Settings');
+  const d = useTranslations('SigningDialog');
 
   const onPlay = useCallback(() => {
     setIsPlaying(true);
   }, []);
 
+  const shouldChangeRingWidth: boolean = useMediaQuery('(max-width: 768px)');
+
   const capture = useCallback(async () => {
     const imageSrc = webcamRef?.current?.getScreenshot();
     callbackCaptureProcessor(imageSrc);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -71,7 +81,7 @@ const FRDialog = ({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent className="max-w-md">
-        <div className="justify-center flex mb-3">
+        <div className="justify-center flex mb-3 ">
           <Image
             src="/images/fr.svg"
             height={69}
@@ -91,6 +101,7 @@ const FRDialog = ({
           <div className="absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center">
             <Image
               src="/images/camera-frame.svg"
+              className="md:w-56 w-44"
               height={220}
               width={220}
               alt="Tilaka Logo"
@@ -100,7 +111,7 @@ const FRDialog = ({
           </div>
           <div
             id="countdown-timer-fr"
-            className="absolute text-white bottom-5 left-0 right-0 flex justify-center"
+            className="absolute text-white top-5 right-5 md:right-10 flex justify-center"
           >
             <CountdownCircleTimer
               onComplete={() => {
@@ -110,7 +121,7 @@ const FRDialog = ({
                 };
               }}
               isPlaying={isPlaying}
-              size={45}
+              size={shouldChangeRingWidth ? 35 : 45}
               strokeWidth={2}
               duration={5}
               colors="#fff"
@@ -119,8 +130,7 @@ const FRDialog = ({
             </CountdownCircleTimer>
           </div>
           <Webcam
-            style={{ height: '400px', width: '400px', objectFit: 'cover' }}
-            className="rounded-[30px] sm:w-full md:w-full"
+            className="rounded-[30px] sm:w-full h-80 w-full md:h-96 md:w-96 object-cover"
             ref={webcamRef}
             audio={false}
             height={440}
@@ -135,17 +145,33 @@ const FRDialog = ({
             onUserMediaError={() => setIsUserMediaError(true)}
           />
         </div>
-        <AlertDialogFooter className="!justify-between">
-          <AlertDialogCancel>
-            {s('dialog.authMethod.cancelButton')}
-          </AlertDialogCancel>
-          <AlertDialogAction className="!m-0">
-            {s('dialog.authMethod.confirmButton')}
-          </AlertDialogAction>
-        </AlertDialogFooter>
+        <div className="flex flex-col ">
+          <AlertDialogFooter className="!justify-center">
+            <AlertDialogCancel className="mt-2 h-fit text-base">
+              {s('dialog.authMethod.cancelButton')}
+            </AlertDialogCancel>
+          </AlertDialogFooter>
+
+          {showOTPButton ? (
+            <Button
+              onClick={() => {
+                setOpen(false);
+                setOpenOTPDialog(true);
+              }}
+              variant="ghost"
+              className="!w-fit px-0 mx-auto hover:text-gray-2 text-gray-2 font-semibold my-1"
+            >
+              <MailOutlineIcon
+                pathClassName="fill-[#494949]"
+                svgClassName="mr-2"
+              />
+              {d('frDialog.useOTP')}
+            </Button>
+          ) : null}
+        </div>
       </AlertDialogContent>
     </AlertDialog>
   );
 };
 
-export default FRDialog;
+export default FRVerification;
