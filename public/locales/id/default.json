@@ -228,8 +228,9 @@
       "page": "Halaman",
       "continue": "Lanjut",
       "button": {
-        "signature": "Tanda Tangan",
-        "initials": "Paraf"
+        "signature": "Tambah Tanda Tangan",
+        "initials": "Tambah Paraf",
+        "stamp": "Tambah e-Meterai"
       },
       "sendDocModal": {
         "title": "Kirim Permintaan Tandatangan",
@@ -263,6 +264,7 @@
       "subtitle": "Masukkan 6-digit kode OTP yang telah dikirim ke <br></br>isuwinxxx@gmail.com",
       "didntReceiveOTP": "Tidak menerima kode OTP?",
       "send": "Kirim",
+      "resend": "Kirim Ulang",
       "cancel": "Batal",
       "useFRAuth": "Gunakan Otentikasi FR",
       "loading": "Proses Verifikasi"

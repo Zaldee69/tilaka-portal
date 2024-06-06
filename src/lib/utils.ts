@@ -86,13 +86,14 @@ export const fileToBase64 = (file: File): Promise<string> => {
 export function getFileSize(size: number) {
   const fSExt = ['Bytes', 'KB', 'MB', 'GB'];
   let i = 0;
+  console.log(size);
   while (size > 900) {
     size /= 1024;
     i++;
   }
   if (i > 1) {
     // If the size is in MB or GB
-    return `${Math.floor(size)} ${fSExt[i]}`;
+    return `${size.toFixed(size)} ${fSExt[i]}`;
   } else {
     // If the size is in Bytes or KB
     return `${size.toFixed(2)} ${fSExt[i]}`;

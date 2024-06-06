@@ -203,7 +203,7 @@ const CollapsibleSigner = (props: CollapsibleSignerProps) => {
             variant="ghost"
             className="md:mt-3 border-2 w-full border-[#A1CCF8] bg-[#EFF7FF] border-dashed font-semibold gap-2 py-5 text-primary !justify-start px-4"
           >
-            <SmallStampIcon pathClassName="fill-primary" /> e-Meterai
+            <SmallStampIcon pathClassName="fill-primary" /> {t('button.stamp')}
           </Button>
 
           <Separator orientation="vertical" className="h-10 lg:hidden " />

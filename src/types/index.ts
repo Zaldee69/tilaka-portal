@@ -9,6 +9,7 @@ export interface Signature {
   width: number;
   height: number;
   page: string;
+  image?: string;
 }
 
 export interface Signer {

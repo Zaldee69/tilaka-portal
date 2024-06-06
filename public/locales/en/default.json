@@ -226,8 +226,9 @@
       "displayLogo": "Display Logo",
       "page": "Page",
       "button": {
-        "signature": "Signature",
-        "initials": "Initials"
+        "signature": "Add Signature",
+        "initials": "Initial",
+        "stamp": "Add E-Meterai"
       },
       "back": "Back",
       "continue": "Continue",
@@ -263,6 +264,7 @@
       "subtitle": "Input 6-digit OTP code that has been sent to <br></br>isuwinxxx@gmail.com",
       "didntReceiveOTP": "Did't receive OTP?",
       "send": "Send",
+      "resend": "Resend",
       "cancel": "Cancel",
       "useFRAuth": "Use FR authentication",
       "loading": "Verification Process"

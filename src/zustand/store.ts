@@ -54,6 +54,7 @@ interface SigningState {
     userId: string
   ) => void;
   changeIsOnlyForMe: (value: boolean) => void;
+  changeSignatureImage: (image: string, id: string, userId: string) => void;
   resetSignatureDraft: () => void;
 }
 
@@ -121,7 +122,8 @@ const useSigningStore = create<SigningState>()(
                   y: 0
                 },
                 height: 60,
-                width: 128
+                width: 128,
+                image: ''
               }; // Create new signature
               if (!updatedSigners[signerIndex].signatures) {
                 // Initialize signatures object with default values
@@ -388,6 +390,27 @@ const useSigningStore = create<SigningState>()(
               is_only_for_me: value
             };
           }),
+        changeSignatureImage: (image: string, id: string, userId: string) => {
+          set((state) => ({
+            signers: state.signers.map((signer) => {
+              if (signer.id === userId) {
+                return {
+                  ...signer,
+                  signatures: {
+                    ...signer.signatures,
+                    signature: signer.signatures.signature.map((signature) => {
+                      if (signature.id === id) {
+                        return { ...signature, image };
+                      }
+                      return signature;
+                    })
+                  }
+                };
+              }
+              return signer;
+            })
+          }));
+        },
         is_only_for_me: false,
         messages: {
           body: '',
