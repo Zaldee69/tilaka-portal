@@ -27,6 +27,7 @@ import { toast } from 'sonner';
 import useSigningStore from '@/zustand/store';
 import { useRouter } from '@/navigation';
 import { useTranslations } from 'next-intl';
+import { cn } from '@/lib/utils';
 
 interface Props {
   callbackCaptureProcessor: (base64Img: string | null | undefined) => void;
@@ -97,16 +98,49 @@ const OTPVerification = (props: Props) => {
         <div className="flex justify-center">
           <InputOTP
             value={value}
-            onChange={(value) => setValue(value)}
+            onChange={(val) => {
+              setValue(val);
+              console.log(value);
+            }}
             maxLength={6}
           >
             <InputOTPGroup className="gap-1">
-              <InputOTPSlot index={0} />
-              <InputOTPSlot index={1} />
-              <InputOTPSlot index={2} />
-              <InputOTPSlot index={3} />
-              <InputOTPSlot index={4} />
-              <InputOTPSlot index={5} />
+              <InputOTPSlot
+                className={cn({
+                  'border-[#547496] bg-[#EFF7FF]': value.length >= 1
+                })}
+                index={0}
+              />
+              <InputOTPSlot
+                className={cn({
+                  'border-[#547496] bg-[#EFF7FF]': value.length >= 2
+                })}
+                index={1}
+              />
+              <InputOTPSlot
+                className={cn({
+                  'border-[#547496] bg-[#EFF7FF]': value.length >= 3
+                })}
+                index={2}
+              />
+              <InputOTPSlot
+                className={cn({
+                  'border-[#547496] bg-[#EFF7FF]': value.length >= 4
+                })}
+                index={3}
+              />
+              <InputOTPSlot
+                className={cn({
+                  'border-[#547496] bg-[#EFF7FF]': value.length >= 5
+                })}
+                index={4}
+              />
+              <InputOTPSlot
+                className={cn({
+                  'border-[#547496] bg-[#EFF7FF]': value.length >= 6
+                })}
+                index={5}
+              />
             </InputOTPGroup>
           </InputOTP>
         </div>
@@ -121,7 +155,8 @@ const OTPVerification = (props: Props) => {
               }}
               className="font-medium text-primary cursor-pointer"
             >
-              {d('otpDialog.send')}
+              {' '}
+              {d('otpDialog.resend')}
             </span>
           ) : (
             <span className="text-primary font-medium"> 0:{count}</span>
@@ -154,6 +189,7 @@ const OTPVerification = (props: Props) => {
           </Button>
         </AlertDialogFooter>
         <Button
+          disabled={isLoading}
           onClick={() => {
             props.setOpen(false);
             props.setOpenFRDialog(true);

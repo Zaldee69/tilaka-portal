@@ -51,7 +51,7 @@ const Navbar = () => {
       })}
     >
       <div className="flex px-4 justify-between flex-col lg:flex-row lg:items-center lg:pb-4 bg-white">
-        <p className="text-sm text-gray-2">{t('title')}</p>
+        <p className="text-base font-semibold text-gray-1">{t('title')}</p>
         <Breadcrumb className="justify-center items-center flex flex-col mt-2 md:mt-0">
           <BreadcrumbList className="w-full max-[380px]:!justify-between justify-center max-[360px]:px-3">
             <BreadcrumbItem
@@ -135,7 +135,7 @@ const Navbar = () => {
                   : 'Selesai'}
           </p>
         </Breadcrumb>
-        <div className="hidden invisible min-[700px]:block text-sm">
+        <div className="hidden invisible min-[700px]:block text-base font-semibold">
           Tanda Tangan Dokumen
         </div>
       </div>

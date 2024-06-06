@@ -42,10 +42,19 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip';
+
 import Image from 'next/image';
 import { OpenDialogContext } from '../SigningDialog';
 import { useTranslations } from 'next-intl';
 import { useResizeDetector } from 'react-resize-detector';
+import { useRouter } from '@/navigation';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -61,7 +70,10 @@ const Step2: React.FC<Step2Props> = () => {
 
   const { setOpen } = useContext(OpenDialogContext);
 
+  const router = useRouter();
+
   const t = useTranslations('SigningDialog.step2');
+  const d = useTranslations('Dashboard');
 
   const {
     signers,
@@ -69,7 +81,8 @@ const Step2: React.FC<Step2Props> = () => {
     is_only_for_me,
     deleteSignature,
     changeSignaturePosition,
-    changeSignatureSize
+    changeSignatureSize,
+    resetSignatureDraft
   } = useSigningStore();
 
   // Check if at least one signer with 'signer' privilege has at least one signature
@@ -86,6 +99,10 @@ const Step2: React.FC<Step2Props> = () => {
         signer.signatures.stamp.length > 0
       );
     });
+
+  const loggedSigner = signers.filter(
+    (signer) => signer.name === 'johndoe21'
+  )[0];
 
   return (
     <Fragment>
@@ -108,35 +125,60 @@ const Step2: React.FC<Step2Props> = () => {
                 alt="Document Sent"
               />
               <div className="text-center lg:text-start">
-                <p className="text-sm font-medium">
+                <p className="text-base font-semibold">
                   {t('signDocConfirmationModal.title')}
                 </p>
-                <p className="font-semibold text-sm mt-3">
-                  {t('signDocConfirmationModal.subtitle')}
-                </p>
-                <div className="flex flex-col lg:flex-row gap-2 items-center mt-6">
+
+                {loggedSigner?.privilege === 'read_only' ? (
                   <Button
                     onClick={() => {
                       setOpenSignConfirmationDialog(false);
-                      nextStep();
+                      setOpen();
+                      router.push('/dashboard?');
+                      resetSignatureDraft();
                     }}
                     size="lg"
-                    className="!font-bold sign-button-shadow px-8 gap-2 w-full lg:w-auto"
+                    className="!font-bold sign-button-shadow px-12 gap-2 h-11 w-full lg:w-auto mt-6"
                   >
-                    <BrushIcon
-                      pathClassName="fill-white"
-                      strokeClassName="stroke-white"
-                    />
-                    {t('signDocConfirmationModal.signNow')}
+                    {d('sidebar.dashboard')}
                   </Button>
-                  <Button
-                    size="lg"
-                    variant="secondary"
-                    className="!font-bold px-6 bg-white"
-                  >
-                    {t('signDocConfirmationModal.signLater')}
-                  </Button>
-                </div>
+                ) : (
+                  <>
+                    {' '}
+                    <p className="font-bold text-base mt-3">
+                      {t('signDocConfirmationModal.subtitle')}
+                    </p>
+                    <div className="flex flex-col lg:flex-row gap-2 items-center mt-6">
+                      <Button
+                        onClick={() => {
+                          setOpenSignConfirmationDialog(false);
+                          nextStep();
+                        }}
+                        size="lg"
+                        className="!font-bold sign-button-shadow px-8 gap-2 w-full lg:w-auto"
+                      >
+                        <BrushIcon
+                          pathClassName="fill-white"
+                          strokeClassName="stroke-white"
+                        />
+                        {t('signDocConfirmationModal.signNow')}
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          setOpenSignConfirmationDialog(false);
+                          resetSignatureDraft();
+                          setOpen();
+                          router.push('/dashboard?');
+                        }}
+                        size="lg"
+                        variant="secondary"
+                        className="!font-bold px-6 bg-white"
+                      >
+                        {t('signDocConfirmationModal.signLater')}
+                      </Button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -150,9 +192,9 @@ const Step2: React.FC<Step2Props> = () => {
           {/* Signature Setting Section */}
           <div className="flex flex-col lg:flex-row justify-between">
             {/* Left sidebar */}
-            <div className="bg-white lg:sticky px-4 py-6 border-r w-full lg:max-w-xs border-r-gray-6 lg:h-[calc(100vh-3.5rem)] scrollbar-hide overflow-y-scroll lg:pb-32">
+            <div className="bg-white lg:sticky px-4 py-6 border-r w-full lg:max-w-xs border-r-gray-6 lg:h-[calc(100vh-3.5rem)] overflow-y-auto lg:pb-32">
               <div className=" items-center justify-between gap-20 hidden lg:flex">
-                <h5>{t('setSignature')}</h5>
+                <h5 className="whitespace-nowrap">{t('setSignature')}</h5>
                 <div className="flex items-center gap-x-3">
                   <PeopleIcon pathClassName="fill-primary" />{' '}
                   <h6 className="text-primary ">{t('set')}</h6>
@@ -208,7 +250,7 @@ const Step2: React.FC<Step2Props> = () => {
 
             {/* PDF Viewer Section */}
             <div className="lg:h-[calc(100vh-3.5rem)] overflow-y-scroll lg:pb-24 scrollbar-hide lg:px-20 px-4 pb-20 w-full lg:max-w-3xl">
-              <div className="lg:mt-10 lg:pb-20 relative">
+              <div className="lg:mt-10 lg:pb-10 relative">
                 <div className="border canvas-wrapper">
                   <PdfRenderer
                     currentPage={currentPage}
@@ -247,7 +289,30 @@ const Step2: React.FC<Step2Props> = () => {
                 <Collapsible
                   key={pdf.id}
                   headerClassName="border-b px-0"
-                  header={<h5 className="!font-medium">{pdf.name}</h5>}
+                  header={
+                    <>
+                      {pdf.name.length > 30 ? (
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <p className="font-semibold text-sm my-1">
+                                {pdf.name
+                                  .split('')
+                                  .splice(0, 15)
+                                  .join('')
+                                  .concat('...pdf')}
+                              </p>
+                            </TooltipTrigger>
+                            <TooltipContent align="start" side="left">
+                              <p>{pdf.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      ) : (
+                        <p className="font-semibold text-sm my-1">{pdf.name}</p>
+                      )}
+                    </>
+                  }
                   autoOpen={false}
                   className={cn({
                     'mt-3': idx !== 0
@@ -262,7 +327,7 @@ const Step2: React.FC<Step2Props> = () => {
         </div>
       </div>
       {/* Footer Buttons */}
-      <div className="custom-shadow p-5 px-20 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center lg:justify-end gap-4 z-40 w-full">
+      <div className="custom-shadow p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center lg:justify-end gap-4 z-40 w-full">
         <Button
           variant="secondary"
           className="!font-bold custom-shadow bg-white max-[460px]:px-14"
@@ -305,20 +370,7 @@ const Step2: React.FC<Step2Props> = () => {
               </AlertDialogCancel>
               <AlertDialogAction
                 className="h-[50px]"
-                onClick={() => {
-                  const loggedSigner = signers.filter(
-                    (signer) => signer.name === 'johndoe21'
-                  )[0];
-
-                  if (loggedSigner.privilege === 'read_only') {
-                    setOpen();
-                    toast.success('Dokumen Terkirim', {
-                      description: 'Dokumen telah dibagikan ke email tujuan'
-                    });
-                  } else {
-                    setOpenSignConfirmationDialog(true);
-                  }
-                }}
+                onClick={() => setOpenSignConfirmationDialog(true)}
               >
                 {t('sendDocModal.send')}
               </AlertDialogAction>

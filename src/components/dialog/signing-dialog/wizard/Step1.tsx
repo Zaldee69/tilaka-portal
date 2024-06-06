@@ -28,6 +28,14 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip';
+
 import { Textarea } from '@/components/ui/textarea';
 import { useWizard } from 'react-use-wizard';
 import Navbar from './Navbar';
@@ -67,7 +75,7 @@ const Step1 = () => {
   }, [signers.length, pdf_file.length, loggedSigner?.privilege]);
 
   return (
-    <div className="w-full flex flex-col items-center h-[calc(100vh-3.5rem) gap-10 pb-32">
+    <div className="w-full flex flex-col items-center h-[calc(100vh-3.5rem) gap-10 pb-32 overflow-scroll">
       <Navbar />
       <UploadDropZone />
       <RecipientCollapsible
@@ -77,7 +85,7 @@ const Step1 = () => {
         setForm={setForm}
       />
       <MessageCollapsible />
-      <div className="custom-shadow p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-end">
+      <div className="custom-shadow border p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-end">
         <Button
           disabled={isShouldDisabled}
           className="!font-bold sign-button-shadow w-full md:w-fit"
@@ -117,21 +125,25 @@ const UploadDropZone = () => {
       };
 
       acceptedFile.map(async (file) => {
+        const SIZE = getFileSize(file.size);
+        const SplittedSize = SIZE.split(' ');
         if (file.type !== 'application/pdf') {
           toast.error('Gagal mengunggah file', {
             description: `File ${file.name} bukan PDF`
           });
+        } else if (Number(SplittedSize[0]) > 30 && SplittedSize[1] === 'MB') {
+          toast.error('Gagal mengunggah file', {
+            description: `Ukuran File ${file.name} lebih dari 30MB`
+          });
         } else {
           const NAME = file.name;
-          const SIZE = getFileSize(file.size);
           const ID = randomid;
           const FILE = await convertFile(file);
 
           // Update state to include the new document
           addDocuments(ID, NAME, FILE, SIZE);
-
-          setIsUploading(false);
         }
+        setIsUploading(false);
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -181,7 +193,27 @@ const UploadDropZone = () => {
                       </Button>
                     </div>
                   </div>
-                  <p className="font-semibold text-sm my-1">{doc.name}</p>
+                  {doc.name.length > 30 ? (
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <p className="font-semibold text-sm my-1">
+                            {doc.name
+                              .split('')
+                              .splice(0, 20)
+                              .join('')
+                              .concat('...pdf')}
+                          </p>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{doc.name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  ) : (
+                    <p className="font-semibold text-sm my-1">{doc.name}</p>
+                  )}
+
                   <p className="text-xs text-gray-3">
                     {numPages} Pages - {doc.size}
                   </p>
@@ -300,49 +332,56 @@ const RecipientCollapsible = ({
             onCheckedChange={(e) => changeIsOnlyForMe(e)}
             id="only-me"
           />
-          <Label htmlFor="only-me" className="font-semibold text-gray-2">
+          <Label htmlFor="only-me" className="font-semibold text-gray-1">
             {t('selfSign')}
           </Label>
         </div>
         {is_only_for_me ? null : (
           <div className="my-4">
-            <Label htmlFor="add-signer" className="font-normal text-gray-2">
-              {t('addSigner')}
-            </Label>
-            <Input
-              id="add-signer"
-              placeholder={t('input')}
-              className="mt-2"
-              autoComplete="off"
-              type="text"
-              onChange={onChangeHandler}
-              value={form}
-              icon={
-                <ContactIcon svgClassName="mt-3" pathClassName="fill-gray-2" />
-              }
-            />
-            {signer.length > 1 ? (
-              <Button
-                onClick={onAddSigner}
-                variant="ghost"
-                size="lg"
-                className="flex border !py-9 !px-4 border-input mt-1 rounded-md w-full justify-start hover:!text-black"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary rounded-full flex items-center justify-center w-10 h-10">
-                    <p className="font-bold text-white uppercase ">
-                      {signer?.split('')[0]}
-                    </p>
+            <form>
+              <Label htmlFor="add-signer" className="font-normal text-gray-1">
+                {t('addSigner')}
+              </Label>
+              <Input
+                id="add-signer"
+                placeholder={t('input')}
+                className="mt-2"
+                autoComplete="off"
+                type="text"
+                onChange={onChangeHandler}
+                value={form}
+                icon={
+                  <ContactIcon
+                    svgClassName="mt-3"
+                    pathClassName="fill-gray-2"
+                  />
+                }
+              />
+              {signer.length > 1 ? (
+                <Button
+                  onClick={onAddSigner}
+                  variant="ghost"
+                  type="submit"
+                  size="lg"
+                  className="flex border !py-9 !px-4 border-input mt-1 rounded-md w-full justify-start hover:!text-black"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="bg-primary rounded-full flex items-center justify-center w-10 h-10">
+                      <p className="font-bold text-white uppercase ">
+                        {signer?.split('')[0]}
+                      </p>
+                    </div>
+                    <p className="text-sm">{signer}</p>
                   </div>
-                  <p className="text-sm">{signer}</p>
-                </div>
-              </Button>
-            ) : null}
+                </Button>
+              ) : null}
+            </form>
+
             {signers.length >= 1 ? (
               <div className="mt-4">
                 <div className="grid-cols-7 hidden md:grid">
-                  <p className="text-sm col-span-3 text-gray-2">Tilaka Name</p>
-                  <p className="text-sm col-span-3 text-gray-2">{t('role')}</p>
+                  <p className="text-sm col-span-3 text-gray-1">Tilaka Name</p>
+                  <p className="text-sm col-span-3 text-gray-1">{t('role')}</p>
                 </div>
 
                 {signers.map((signer) => (
@@ -385,17 +424,18 @@ const RecipientCollapsible = ({
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="col-span-1 flex justify-start md:justify-end">
-                      <Button
-                        disabled={signer.name === 'johndoe21'}
-                        onClick={() => deleteSigner(signer.id)}
-                        className="!p-0 !w-fit md:ml-3 disabled:!cursor-not-allowed"
-                        variant="ghost"
-                      >
-                        <DeleteIcon width={30} height={30} />
-                        <p className="md:hidden">{t('delete')}</p>
-                      </Button>
-                    </div>
+                    {signer.name === 'johndoe21' ? null : (
+                      <div className="col-span-1 flex justify-start md:justify-end">
+                        <Button
+                          onClick={() => deleteSigner(signer.id)}
+                          className="!p-0 !w-fit md:ml-3 disabled:!cursor-not-allowed"
+                          variant="ghost"
+                        >
+                          <DeleteIcon width={30} height={30} />
+                          <p className="md:hidden">{t('delete')}</p>
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

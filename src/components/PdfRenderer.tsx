@@ -29,33 +29,31 @@ const PdfRenderer = ({
 
   return (
     <div className="w-full">
-      <div className="flex-1 max-h-screen">
-        <div ref={ref}>
-          <Document
-            file={url}
-            onLoadSuccess={({ numPages }) => {
-              setTimeout(() => {
-                setNumPages(numPages);
-              }, 200);
-            }}
+      <div ref={ref}>
+        <Document
+          file={url}
+          onLoadSuccess={({ numPages }) => {
+            setTimeout(() => {
+              setNumPages(numPages);
+            }, 200);
+          }}
+          loading={
+            <div className="flex justify-center items-center h-full">
+              <Loader2 className="my-24 h-6 w-6 animate-spin text-primary" />
+            </div>
+          }
+        >
+          <Page
             loading={
-              <div className="flex justify-center items-center h-full">
-                <Loader2 className="my-24 h-6 w-6 animate-spin text-primary" />
+              <div className="flex justify-center z-10">
+                <Loader2 className="my-24 h-6 w-6 animate-spin text-primary z-[9999]" />
               </div>
             }
-          >
-            <Page
-              loading={
-                <div className="flex justify-center z-10">
-                  <Loader2 className="my-24 h-6 w-6 animate-spin text-primary z-[9999]" />
-                </div>
-              }
-              pageNumber={currentPage}
-              scale={scale}
-              width={width ? width : 1}
-            />
-          </Document>
-        </div>
+            pageNumber={currentPage}
+            scale={scale}
+            width={width ? width : 1}
+          />
+        </Document>
       </div>
     </div>
   );

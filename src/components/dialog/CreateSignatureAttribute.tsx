@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment, useCallback, useRef, useState } from 'react';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -8,9 +8,10 @@ import SignaturePad from 'react-signature-canvas';
 
 import localFont from 'next/font/local';
 
+import html2canvas from 'html2canvas';
+
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogFooter,
@@ -77,7 +78,7 @@ interface Props {
   subtitle?: string;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  continueCallback: () => void;
+  continueCallback: (image: string) => void;
   showtrigger: boolean;
   children?: React.ReactNode;
 }
@@ -96,6 +97,8 @@ const CreateSignatureAttribute = (props: Props) => {
     signatures: ''
   });
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [form, setForm] = React.useState<{
     signature: string;
     initial: string;
@@ -112,6 +115,8 @@ const CreateSignatureAttribute = (props: Props) => {
     initial: ''
   });
 
+  const signatureRef = useRef<any>();
+
   const signatureCanvasRef = React.useRef<SignaturePad | null>();
   const initialCanvasRef = React.useRef<SignaturePad | null>();
 
@@ -121,6 +126,20 @@ const CreateSignatureAttribute = (props: Props) => {
 
   const onToggleChange = (value: SignatureFontType['type']) => {
     setFontTypeValue(value);
+  };
+
+  const convertToDataURL = async () => {
+    setIsLoading(true);
+    await html2canvas(signatureRef.current, {
+      height: 60,
+      backgroundColor: 'rgba(0, 0, 0, 0)'
+    }).then((e) => {
+      setIsLoading(false);
+      e.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      const image = e.toDataURL('image/png');
+      props.continueCallback(image);
+      props.setOpen(false);
+    });
   };
 
   const onStopDraw = (name: 'signature' | 'initial') => {
@@ -141,11 +160,6 @@ const CreateSignatureAttribute = (props: Props) => {
       ...prev,
       [name]: ''
     }));
-  };
-
-  const convertFile = async (file: File) => {
-    const base64String = await fileToBase64(file);
-    return base64String;
   };
 
   const onDropSignature = useCallback((acceptedFile: File[]) => {
@@ -220,6 +234,11 @@ const CreateSignatureAttribute = (props: Props) => {
     }
     return fontType;
   };
+
+  const IS_DISABLED =
+    (tabsValue === 'create-signature' &&
+      signatureCanvasRef.current?.isEmpty()) ||
+    (tabsValue === 'upload-image' && images.signatures.length < 1);
 
   return (
     <AlertDialog open={props.open} onOpenChange={props.setOpen}>
@@ -319,58 +338,64 @@ const CreateSignatureAttribute = (props: Props) => {
                     adine.className
                   )}
                   value="Adine-Kirnberg"
+                  id="Adine-Kirnberg"
                 >
-                  {form.signature}
+                  <span>{form.signature}</span>
                 </ToggleGroupItem>
                 <ToggleGroupItem
                   size="lg"
                   value="champignonaltswash"
+                  id="champignonaltswash"
                   className={cn(
                     'data-[state=on]:bg-[#F8FBFF] hover:bg-white hover:text-black border border-input data-[state=on]:border-primary md:text-lg',
                     champignonaltswash.className
                   )}
                 >
-                  {form.signature}
+                  <span>{form.signature}</span>
                 </ToggleGroupItem>
                 <ToggleGroupItem
                   size="lg"
                   value="FormalScript"
+                  id="FormalScript"
                   className={cn(
                     'data-[state=on]:bg-[#F8FBFF] hover:bg-white hover:text-black border border-input data-[state=on]:border-primary md:text-lg',
                     formalScript.className
                   )}
                 >
-                  {form.signature}
+                  <span>{form.signature}</span>
                 </ToggleGroupItem>
                 <ToggleGroupItem
                   size="lg"
                   value="HerrVonMuellerhoff-Regular"
+                  id="HerrVonMuellerhoff-Regular"
                   className={cn(
                     'data-[state=on]:bg-[#F8FBFF] hover:bg-white hover:text-black border border-input data-[state=on]:border-primary md:text-lg',
                     hervon.className
                   )}
                 >
-                  {form.signature}
+                  <span>{form.signature}</span>
                 </ToggleGroupItem>
                 <ToggleGroupItem
                   size="lg"
                   value="MrsSaintDelafield-Regular"
+                  id="MrsSaintDelafield-Regular"
                   className={cn(
                     'data-[state=on]:bg-[#F8FBFF] hover:bg-white hover:text-black border border-input data-[state=on]:border-primary md:text-lg',
                     mrSaint.className
                   )}
                 >
-                  {form.signature}
+                  <span>{form.signature}</span>
                 </ToggleGroupItem>
                 <ToggleGroupItem
                   size="lg"
                   value="SCRIPTIN"
+                  id="SCRIPTIN"
                   className={cn(
                     'data-[state=on]:bg-[#F8FBFF] hover:bg-white hover:text-black border border-input data-[state=on]:border-primary md:text-lg',
                     scriptin.className
                   )}
                 >
-                  {form.signature}
+                  <span>{form.signature}</span>
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
@@ -379,7 +404,7 @@ const CreateSignatureAttribute = (props: Props) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
                 <div className="bg-white rounded-xl p-3">
                   <h3 className={cn('text-center', getFontType())}>
-                    {form.signature}
+                    <span ref={signatureRef}>{form.signature}</span>
                   </h3>
                   <p className="text-center text-sm mt-2 text-[#272B30]">
                     Tanda Tangan
@@ -546,6 +571,7 @@ const CreateSignatureAttribute = (props: Props) => {
                           </p>
                         </section>
                         <input
+                          accept="image/png"
                           className="bg-black z-10"
                           type="file"
                           {...getInputProps()}
@@ -561,18 +587,31 @@ const CreateSignatureAttribute = (props: Props) => {
         </Tabs>
 
         <AlertDialogFooter className="flex justify-center items-center">
-          <AlertDialogCancel className="custom-shadow w-full md:w-6/12">
+          <AlertDialogCancel
+            disabled={isLoading}
+            className="custom-shadow w-full md:w-6/12"
+          >
             Cancel
           </AlertDialogCancel>
-          <AlertDialogAction
+          <Button
+            disabled={isLoading || IS_DISABLED}
             onClick={() => {
-              props.setOpen(false);
-              props.continueCallback();
+              if (tabsValue === 'text') {
+                convertToDataURL();
+              } else if (tabsValue === 'create-signature') {
+                const image =
+                  signatureCanvasRef.current?.toDataURL() as unknown;
+                props.continueCallback(image as string);
+                props.setOpen(false);
+              } else {
+                props.continueCallback(images.signatures);
+                props.setOpen(false);
+              }
             }}
             className="sign-button-shadow w-full md:w-6/12"
           >
             Continue
-          </AlertDialogAction>
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
