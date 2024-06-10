@@ -37,19 +37,19 @@ const PdfPagination = ({
     <div className="sticky bottom-5 mt-5 flex justify-center left-0 right-0 z-10">
       <div className="custom-shadow bg-white rounded-2xl flex items-center gap-2 px-2 py-2">
         <Button
-          onClick={() => setScale(scale + 0.2)}
-          variant="ghost"
-          className="p-0 h-5 w-5 hidden md:flex"
-        >
-          <ZoomIn className="h-5 w-5" />
-        </Button>
-        <p className="text-sm hidden md:block">{Math.round(scale * 100)}%</p>
-        <Button
           onClick={() => setScale(scale - 0.2)}
           variant="ghost"
           className="p-0 h-5 w-5 hidden md:flex"
         >
           <ZoomOut className="h-5 w-5" />
+        </Button>
+        <p className="text-sm hidden md:block">{Math.round(scale * 100)}%</p>
+        <Button
+          onClick={() => setScale(scale + 0.2)}
+          variant="ghost"
+          className="p-0 h-5 w-5 hidden md:flex"
+        >
+          <ZoomIn className="h-5 w-5" />
         </Button>
         <Button
           disabled={currentPage === 1}

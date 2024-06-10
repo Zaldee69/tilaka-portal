@@ -145,7 +145,7 @@ const Step2: React.FC<Step2Props> = () => {
                 ) : (
                   <>
                     {' '}
-                    <p className="font-bold text-base mt-3">
+                    <p className="text-sm mt-3">
                       {t('signDocConfirmationModal.subtitle')}
                     </p>
                     <div className="flex flex-col lg:flex-row gap-2 items-center mt-6">

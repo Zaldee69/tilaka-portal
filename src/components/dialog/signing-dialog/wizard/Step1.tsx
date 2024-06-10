@@ -312,10 +312,14 @@ const RecipientCollapsible = ({
 
   const randomid = (Math.random() + 1).toString(36).substring(7);
 
-  const onAddSigner = () => {
-    addSigner(randomid, signer, 'signer');
-    setForm('');
-    setSigner('');
+  const onAddSigner = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (emailRegex.test(signer) || tilakaNameRegex.test(signer)) {
+      addSigner(randomid, signer, 'signer');
+      setForm('');
+      setSigner('');
+    }
   };
 
   return (
@@ -338,7 +342,7 @@ const RecipientCollapsible = ({
         </div>
         {is_only_for_me ? null : (
           <div className="my-4">
-            <form>
+            <form onSubmit={onAddSigner}>
               <Label htmlFor="add-signer" className="font-normal text-gray-1">
                 {t('addSigner')}
               </Label>
@@ -359,7 +363,6 @@ const RecipientCollapsible = ({
               />
               {signer.length > 1 ? (
                 <Button
-                  onClick={onAddSigner}
                   variant="ghost"
                   type="submit"
                   size="lg"
