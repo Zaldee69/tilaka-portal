@@ -441,6 +441,7 @@ import SigningVerificationDialog from '../../SigningVerification';
 import CreateSignatureAttribute from '../../CreateSignatureAttribute';
 import { useTranslations } from 'next-intl';
 import PdfPagination from '@/components/PdfPagination';
+import { pdfFile } from '@/constants';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Step3 = () => {
@@ -534,7 +535,7 @@ const Step3 = () => {
               />
               <Document
                 className="relative"
-                file={'https://www.sldttc.org/allpdf/21583473018.pdf'}
+                file={pdfFile}
                 onLoadSuccess={({ numPages }) => {
                   setTimeout(() => {
                     setNumPages(numPages);

@@ -1,4 +1,4 @@
-import { Signer } from '@/types';
+import { Signature, Signer } from '@/types';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
@@ -121,8 +121,16 @@ const useSigningStore = create<SigningState>()(
                   x: 0,
                   y: 0
                 },
-                height: 60,
-                width: 128,
+                height:
+                  updatedSigners[signerIndex].signature_settings.show_qr &&
+                  !updatedSigners[signerIndex].signature_settings.show_signature
+                    ? 60
+                    : 50,
+                width:
+                  updatedSigners[signerIndex].signature_settings.show_qr &&
+                  !updatedSigners[signerIndex].signature_settings.show_signature
+                    ? 50
+                    : 128,
                 image: ''
               }; // Create new signature
               if (!updatedSigners[signerIndex].signatures) {
@@ -150,8 +158,12 @@ const useSigningStore = create<SigningState>()(
               }
 
               // Automatically set the 'Tampilkan Tanda Tangan' radio button to active when add signature
-              updatedSigners[signerIndex].signature_settings.show_signature =
-                true;
+              if (
+                type === 'signature' &&
+                !updatedSigners[signerIndex].signature_settings.show_qr
+              )
+                updatedSigners[signerIndex].signature_settings.show_signature =
+                  true;
 
               return { ...state, signers: updatedSigners };
             }
@@ -269,7 +281,46 @@ const useSigningStore = create<SigningState>()(
 
               // If show_signature is false, set show_name to false as well
               if (type === 'show_signature' && !value) {
+                console.log(value);
                 updatedSigner.signature_settings['show_name'] = false;
+              }
+
+              // Function to update signature dimensions
+              const updateSignatureDimensions = (signatures: Signature[]) => {
+                return signatures.map((signature) => ({
+                  ...signature,
+                  height: 50, // New height value
+                  width: 50 // New width value
+                }));
+              };
+
+              if (
+                type === 'show_qr' &&
+                value &&
+                !updatedSigner.signature_settings.show_signature
+              ) {
+                updatedSigner.signatures.signature = updateSignatureDimensions(
+                  updatedSigner.signatures.signature
+                );
+              } else if (
+                type === 'show_signature' &&
+                value &&
+                updatedSigner.signature_settings.show_qr
+              ) {
+                updatedSigner.signatures.signature =
+                  updatedSigner.signatures.signature.map((signature) => ({
+                    ...signature,
+                    height: 60, // New height value
+                    width: 128 // New width value
+                  }));
+              } else if (
+                type === 'show_signature' &&
+                !value &&
+                updatedSigner.signature_settings.show_qr
+              ) {
+                updatedSigner.signatures.signature = updateSignatureDimensions(
+                  updatedSigner.signatures.signature
+                );
               }
 
               // Update the signer in the array
