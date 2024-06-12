@@ -516,7 +516,7 @@ const Step3 = () => {
     <Fragment>
       <Navbar />
       <div
-        className={cn('w-full relative min-h-screen', {
+        className={cn('w-full relative min-h-screen overflow-y-scroll', {
           'overflow-hidden': openOverlay
         })}
       >
