@@ -256,7 +256,7 @@
     },
     "signingDoneDrawer": {
       "title": "All done!",
-      "subtitle": "Double check your document and signature, and click 'Done to complete signing process",
+      "subtitle": "Double check your document and signature, and click 'Signing' to complete signing process",
       "done": "Done",
       "signing": "Signing",
       "cancel": "Cancel"
@@ -264,7 +264,7 @@
     "otpDialog": {
       "title": "Signing Confirmation",
       "subtitle": "Input 6-digit OTP code that has been sent to <br></br>isuwinxxx@gmail.com",
-      "didntReceiveOTP": "Did't receive OTP?",
+      "didntReceiveOTP": "Didn't receive OTP?",
       "send": "Send",
       "resend": "Resend",
       "cancel": "Cancel",

@@ -256,7 +256,7 @@
     },
     "signingDoneDrawer": {
       "title": "Semua selesai!",
-      "subtitle": "Periksa lagi dokumen dan tanda tangan anda, kemudian pilih <br></br> 'Selesai' untuk menyelesaikan proses tandatangan",
+      "subtitle": "Periksa lagi dokumen dan tanda tangan anda, kemudian pilih <br></br> 'Tanda tangan' untuk menyelesaikan proses tanda tangan",
       "done": "Selesai",
       "signing": "Tanda tangan",
       "cancel": "Batal"
