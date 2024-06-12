@@ -247,7 +247,7 @@
     },
     "reviewDoc": "Silahkan review dokumen dan tandatangan sesuai tempat yang tersedia",
     "viewDoc": "Lihat Dokumen",
-    "startSigning": "Mulai Tandatangan",
+    "startSigning": "Tandatangan Dokumen",
     "signingOptionModal": {
       "title": "Pilihan Tandatangan",
       "subtitle": "Berikut ringkasan yang perlu diselesaikan pada dokumen ini",
@@ -257,7 +257,9 @@
     "signingDoneDrawer": {
       "title": "Semua selesai!",
       "subtitle": "Periksa lagi dokumen dan tanda tangan anda, kemudian pilih <br></br> 'Selesai' untuk menyelesaikan proses tandatangan",
-      "done": "Selesai"
+      "done": "Selesai",
+      "signing": "Tanda tangan",
+      "cancel": "Batal"
     },
     "otpDialog": {
       "title": "Konfirmasi Tandatangan",

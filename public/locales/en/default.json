@@ -257,7 +257,9 @@
     "signingDoneDrawer": {
       "title": "All done!",
       "subtitle": "Double check your document and signature, and click 'Done to complete signing process",
-      "done": "Done"
+      "done": "Done",
+      "signing": "Signing",
+      "cancel": "Cancel"
     },
     "otpDialog": {
       "title": "Signing Confirmation",

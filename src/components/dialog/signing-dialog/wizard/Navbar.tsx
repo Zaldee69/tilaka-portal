@@ -68,7 +68,11 @@ const Navbar = () => {
               <p className="hidden min-[700px]:block">{t('uploadDocument')}</p>
             </BreadcrumbItem>
             <BreadcrumbSeparator className="[&>svg]:size-7">
-              <MoveRight className="text-gray-4" />
+              <MoveRight
+                className={cn('text-gray-4', {
+                  'text-primary': activeStep >= 1
+                })}
+              />
             </BreadcrumbSeparator>
             <BreadcrumbItem
               className={cn('text-gray-4', {
@@ -89,7 +93,11 @@ const Navbar = () => {
             {loggedSigner?.privilege === 'signer' && (
               <>
                 <BreadcrumbSeparator className="[&>svg]:size-7">
-                  <MoveRight className="text-gray-4" />
+                  <MoveRight
+                    className={cn('text-gray-4', {
+                      'text-primary': activeStep >= 2
+                    })}
+                  />
                 </BreadcrumbSeparator>
                 <BreadcrumbItem
                   className={cn('text-gray-4', {
