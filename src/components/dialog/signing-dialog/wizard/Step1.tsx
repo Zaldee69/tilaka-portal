@@ -64,11 +64,14 @@ const Step1 = () => {
     (signer) => signer.name === 'johndoe21'
   )[0];
 
+  const isAllViewOnly = signers.every((el) => el.privilege === 'read_only');
+
   useEffect(() => {
     if (
       signers.length >= 1 &&
       (loggedSigner.privilege !== 'read_only' || signers.length > 1) &&
-      pdf_file.length >= 1
+      pdf_file.length >= 1 &&
+      !isAllViewOnly
     ) {
       setIsShouldDisabled(false);
     } else {
