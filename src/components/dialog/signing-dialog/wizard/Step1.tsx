@@ -56,7 +56,7 @@ const Step1 = () => {
 
   const [isShouldDisabled, setIsShouldDisabled] = useState<boolean>(false);
 
-  const { signers, pdf_file } = useSigningStore();
+  const { signers, pdf_file, is_only_for_me } = useSigningStore();
 
   const t = useTranslations('SigningDialog');
 
@@ -64,20 +64,20 @@ const Step1 = () => {
     (signer) => signer.name === 'johndoe21'
   )[0];
 
-  const isAllViewOnly = signers.every((el) => el.privilege === 'read_only');
-
   useEffect(() => {
+    const viewOnlySigner = signers.filter((el) => el.privilege === 'read_only');
+
     if (
-      signers.length >= 1 &&
-      (loggedSigner.privilege !== 'read_only' || signers.length > 1) &&
-      pdf_file.length >= 1 &&
-      !isAllViewOnly
+      (signers.length >= 1 &&
+        pdf_file.length >= 1 &&
+        viewOnlySigner.length !== signers.length) ||
+      is_only_for_me
     ) {
       setIsShouldDisabled(false);
     } else {
       setIsShouldDisabled(true);
     }
-  }, [signers.length, pdf_file.length, loggedSigner?.privilege]);
+  }, [signers, pdf_file, loggedSigner]);
 
   return (
     <div className="w-full flex flex-col items-center h-[calc(100vh-3.5rem) gap-10 pb-32 overflow-scroll">
