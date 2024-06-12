@@ -60,9 +60,13 @@ const Step1 = () => {
 
   const t = useTranslations('SigningDialog');
 
+  const t = useTranslations('SigningDialog');
+
   const loggedSigner = signers.filter(
     (signer) => signer.name === 'johndoe21'
   )[0];
+
+  const isAllViewOnly = signers.every((el) => el.privilege === 'read_only');
 
   useEffect(() => {
     const viewOnlySigner = signers.filter((el) => el.privilege === 'read_only');
