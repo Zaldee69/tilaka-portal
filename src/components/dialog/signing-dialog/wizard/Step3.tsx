@@ -516,7 +516,7 @@ const Step3 = () => {
     <Fragment>
       <Navbar />
       <div
-        className={cn('w-full relative min-h-screen', {
+        className={cn('w-full relative min-h-screen overflow-y-scroll', {
           'overflow-hidden': openOverlay
         })}
       >
@@ -590,11 +590,6 @@ const Step3 = () => {
                         </div>
                       </div>
                       <div className="flex justify-center items-center md:flex-row flex-col w-full md:w-fit gap-5 md:gap-10">
-                        <SigningVerificationDialog>
-                          <Button className="font-semibold h-12 text-base w-full md:px-10 md:w-fit">
-                            {t('signingDoneDrawer.signing')}
-                          </Button>
-                        </SigningVerificationDialog>
                         <Button
                           onClick={() => {
                             resetSignatureDraft();
@@ -606,6 +601,11 @@ const Step3 = () => {
                         >
                           {t('signingDoneDrawer.cancel')}
                         </Button>
+                        <SigningVerificationDialog>
+                          <Button className="font-semibold h-12 text-base w-full md:px-10 md:w-fit">
+                            {t('signingDoneDrawer.signing')}
+                          </Button>
+                        </SigningVerificationDialog>
                       </div>
                     </div>
                   </DrawerContent>

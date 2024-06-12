@@ -58,15 +58,20 @@ const Step1 = () => {
 
   const { signers, pdf_file } = useSigningStore();
 
+  const t = useTranslations('SigningDialog');
+
   const loggedSigner = signers.filter(
     (signer) => signer.name === 'johndoe21'
   )[0];
+
+  const isAllViewOnly = signers.every((el) => el.privilege === 'read_only');
 
   useEffect(() => {
     if (
       signers.length >= 1 &&
       (loggedSigner.privilege !== 'read_only' || signers.length > 1) &&
-      pdf_file.length >= 1
+      pdf_file.length >= 1 &&
+      !isAllViewOnly
     ) {
       setIsShouldDisabled(false);
     } else {
@@ -91,7 +96,7 @@ const Step1 = () => {
           className="!font-bold sign-button-shadow w-full md:w-fit"
           onClick={() => nextStep()}
         >
-          Lanjut
+          {t('step2.continue')}
         </Button>
       </div>
     </div>
@@ -119,30 +124,41 @@ const UploadDropZone = () => {
         });
       }
 
-      const convertFile = async (file: File) => {
-        const base64String = await fileToBase64(file);
-        return base64String;
-      };
-
       acceptedFile.map(async (file) => {
-        const SIZE = getFileSize(file.size);
-        const SplittedSize = SIZE.split(' ');
-        if (file.type !== 'application/pdf') {
-          toast.error('Gagal mengunggah file', {
-            description: `File ${file.name} bukan PDF`
-          });
-        } else if (Number(SplittedSize[0]) > 30 && SplittedSize[1] === 'MB') {
-          toast.error('Gagal mengunggah file', {
-            description: `Ukuran File ${file.name} lebih dari 30MB`
-          });
-        } else {
-          const NAME = file.name;
-          const ID = randomid;
-          const FILE = await convertFile(file);
+        file.text().then((x) => {
+          if (
+            x.includes('Encrypt') ||
+            x
+              .substring(x.lastIndexOf('<<'), x.lastIndexOf('>>'))
+              .includes('/Encrypt')
+          ) {
+            return toast.error('Gagal mengunggah file', {
+              description: `File ${file.name} terproteksi`
+            });
+          } else {
+            const SIZE = getFileSize(file.size);
+            const SplittedSize = SIZE.split(' ');
+            if (file.type !== 'application/pdf') {
+              toast.error('Gagal mengunggah file', {
+                description: `File ${file.name} bukan PDF`
+              });
+            } else if (
+              Number(SplittedSize[0]) > 30 &&
+              SplittedSize[1] === 'MB'
+            ) {
+              toast.error('Gagal mengunggah file', {
+                description: `Ukuran File ${file.name} lebih dari 30MB`
+              });
+            } else {
+              const FILE = URL.createObjectURL(file);
+              const NAME = file.name;
+              const ID = randomid;
 
-          // Update state to include the new document
-          addDocuments(ID, NAME, FILE, SIZE);
-        }
+              // Update state to include the new document
+              addDocuments(ID, NAME, FILE, SIZE);
+            }
+          }
+        });
         setIsUploading(false);
       });
     },

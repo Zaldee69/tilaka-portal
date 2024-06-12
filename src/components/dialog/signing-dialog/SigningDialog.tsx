@@ -86,6 +86,7 @@ const SigningDialog = ({ children }: { children?: React.ReactNode }) => {
       </DialogTrigger>
       <DialogContent
         onCloseCallback={() => {
+          localStorage.removeItem('activeStep');
           window.history.pushState(null, '', '?' + '');
           resetSignatureDraft();
         }}
@@ -94,7 +95,12 @@ const SigningDialog = ({ children }: { children?: React.ReactNode }) => {
       >
         <div className="flex flex-col gap-10 items-center w-full overflow-y-scroll no-scrollbar">
           <OpenDialogContext.Provider value={{ open, setOpen: setOpenHandler }}>
-            <Wizard>
+            <Wizard
+              startIndex={Number(localStorage.getItem('activeStep'))}
+              onStepChange={(stepIndex) =>
+                localStorage.setItem('activeStep', stepIndex.toString())
+              }
+            >
               <Step1 />
               <Step2 />
               <Step3 />

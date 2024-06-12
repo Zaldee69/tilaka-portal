@@ -65,6 +65,7 @@ const OTPVerification = (props: Props) => {
     setTimeout(() => {
       resetSignatureDraft();
       setOpen();
+      localStorage.removeItem('activeStep');
       router.push('/dashboard/documents');
       toast.success('Tandatangan Berhasil', {
         description: 'Dokumen telah ditandatangi dan dibagikan ke email tujuan'
