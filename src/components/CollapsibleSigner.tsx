@@ -155,13 +155,7 @@ const CollapsibleSigner = (props: CollapsibleSignerProps) => {
             <p className="text-gray-2 text-xs">{t('signature')}</p>
             <div className="flex items-center gap-2 mt-2 lg:mt-3">
               <PlaceTTEIcon2 />{' '}
-              <p
-                className={cn('font-semibold', {
-                  'text-destructive': props.signature === 0
-                })}
-              >
-                {props.signature}
-              </p>
+              <p className={cn('font-semibold')}>{props.signature}</p>
             </div>
           </div>
           {/* Stamps */}

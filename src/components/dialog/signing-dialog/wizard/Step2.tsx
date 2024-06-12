@@ -192,7 +192,7 @@ const Step2: React.FC<Step2Props> = () => {
           {/* Signature Setting Section */}
           <div className="flex flex-col lg:flex-row justify-between">
             {/* Left sidebar */}
-            <div className="bg-white lg:sticky px-4 py-6 border-r w-full lg:max-w-xs border-r-gray-6 lg:h-[calc(100vh-3.5rem)] overflow-y-auto lg:pb-32">
+            <div className="bg-white lg:sticky px-4 py-6 border-r w-full lg:max-w-xs border-r-gray-6 lg:h-[calc(100vh-3.5rem)] overflow-y-auto lg:pb-32 mr-20">
               <div className=" items-center justify-between gap-20 hidden lg:flex">
                 <h5 className="whitespace-nowrap">{t('setSignature')}</h5>
                 <div className="flex items-center gap-x-3">
@@ -249,28 +249,30 @@ const Step2: React.FC<Step2Props> = () => {
             </div>
 
             {/* PDF Viewer Section */}
-            <div className="lg:h-[calc(100vh-3.5rem)] overflow-y-scroll lg:pb-24 scrollbar-hide lg:px-20 px-4 pb-20 w-full lg:max-w-3xl">
+            <div className="lg:h-[calc(100vh-3.5rem)] overflow-y-scroll lg:pb-24 lg:px-0 px-4 pb-20 w-full lg:max-w-3xl">
               <div className="lg:mt-10 lg:pb-10 relative">
-                <div className="border canvas-wrapper">
-                  <PdfRenderer
-                    currentPage={currentPage}
-                    numPages={numPages}
-                    scale={scale}
-                    setNumPages={setNumPages}
-                    url={pdf_file[0]?.file}
-                  />
-                  {/* Signature Render */}
-                  {signers.map((signer) => (
-                    <SignatureRender
-                      key={signer.id}
-                      signer={signer}
+                <div className="overflow-x-auto">
+                  <div className="border canvas-wrapper">
+                    <PdfRenderer
                       currentPage={currentPage}
                       numPages={numPages}
-                      changeSignaturePosition={changeSignaturePosition}
-                      changeSignatureSize={changeSignatureSize}
-                      deleteSignature={deleteSignature}
+                      scale={scale}
+                      setNumPages={setNumPages}
+                      url={pdf_file[0]?.file}
                     />
-                  ))}
+                    {/* Signature Render */}
+                    {signers.map((signer) => (
+                      <SignatureRender
+                        key={signer.id}
+                        signer={signer}
+                        currentPage={currentPage}
+                        numPages={numPages}
+                        changeSignaturePosition={changeSignaturePosition}
+                        changeSignatureSize={changeSignatureSize}
+                        deleteSignature={deleteSignature}
+                      />
+                    ))}
+                  </div>
                 </div>
                 {/* Pagination */}
                 <PdfPagination
@@ -284,7 +286,7 @@ const Step2: React.FC<Step2Props> = () => {
             </div>
 
             {/* Right sidebar */}
-            <div className="bg-white px-4 py-6 border-r sticky border-r-gray-6 h-[calc(100vh-3.5rem)] overflow-y-scroll pb-44 max-w-[15rem] min-w-[15rem] ml-20 hidden lg:block">
+            <div className="bg-white px-4 py-6 border-r sticky border-r-gray-6 h-[calc(100vh-3.5rem)] overflow-y-scroll pb-44 max-w-[15rem] min-w-[15rem] ml-40 hidden lg:block">
               {pdf_file.map((pdf, idx) => (
                 <Collapsible
                   key={pdf.id}

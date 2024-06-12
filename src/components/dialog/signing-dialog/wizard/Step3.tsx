@@ -406,7 +406,7 @@
 
 // For simulation
 
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import Navbar from './Navbar';
 import { Button } from '@/components/ui/button';
 import useSigningStore from '@/zustand/store';
@@ -420,6 +420,23 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog';
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+
+import {
+  ChevronFirst,
+  ChevronLast,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
@@ -442,10 +459,12 @@ import CreateSignatureAttribute from '../../CreateSignatureAttribute';
 import { useTranslations } from 'next-intl';
 import PdfPagination from '@/components/PdfPagination';
 import { pdfFile } from '@/constants';
+import { OpenDialogContext } from '../SigningDialog';
+import { useRouter } from '@/navigation';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Step3 = () => {
-  const { pdf_file, signers, changeSignatureImage } = useSigningStore();
+  const { pdf_file, signers, resetSignatureDraft } = useSigningStore();
   const [numPages, setNumPages] = useState<number>(1);
   const [openOverlay, setOpenOverlay] = useState<boolean>(true);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -460,6 +479,10 @@ const Step3 = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [scale, setScale] = useState<number>(1);
+
+  const { setOpen } = useContext(OpenDialogContext);
+
+  const router = useRouter();
 
   //for simulation
   const [signatures, setSignatures] = useState([
@@ -533,8 +556,8 @@ const Step3 = () => {
                 open={openSetSignatureAttribute}
                 setOpen={setOpenSetSignatureAttribute}
               />
+
               <Document
-                className="relative"
                 file={pdfFile}
                 onLoadSuccess={({ numPages }) => {
                   setTimeout(() => {
@@ -548,10 +571,7 @@ const Step3 = () => {
                 }
               >
                 <Drawer open={openDrawer}>
-                  <DrawerContent
-                    drawerClassName="bg-transparent"
-                    className="py-5 px-2 md:px-0 rounded-none drawer-shadow"
-                  >
+                  <DrawerContent className="py-5 px-2 md:px-0 rounded-none drawer-shadow">
                     <div className="flex flex-col md:flex-row justify-center items-center gap-10">
                       <div className="flex flex-col md:flex-row items-center max-w-xl gap-4">
                         <Image
@@ -569,11 +589,24 @@ const Step3 = () => {
                           </p>
                         </div>
                       </div>
-                      <SigningVerificationDialog>
-                        <Button className="font-semibold h-12 text-base w-full md:w-fit">
-                          {t('signingDoneDrawer.done')}
+                      <div className="flex justify-center items-center md:flex-row flex-col w-full md:w-fit gap-5 md:gap-10">
+                        <SigningVerificationDialog>
+                          <Button className="font-semibold h-12 text-base w-full md:px-10 md:w-fit">
+                            {t('signingDoneDrawer.signing')}
+                          </Button>
+                        </SigningVerificationDialog>
+                        <Button
+                          onClick={() => {
+                            resetSignatureDraft();
+                            setOpen();
+                            router.push('/dashboard/documents');
+                          }}
+                          variant="ghost"
+                          className="text-primary font-semibold w-fit px-0"
+                        >
+                          {t('signingDoneDrawer.cancel')}
                         </Button>
-                      </SigningVerificationDialog>
+                      </div>
                     </div>
                   </DrawerContent>
                 </Drawer>
@@ -667,8 +700,9 @@ const Step3 = () => {
 
                 {Array.from(Array(numPages).keys()).map((_, idx) => (
                   <Page
+                    scale={scale}
                     width={width ? width : 1}
-                    className={`border relative border-input md:mt-5 mt-44 canvas-wrapper-${idx + 1}`}
+                    className={`border relative border-input md:mt-5 mt-44 canvas-wrapper-${idx + 1} curss`}
                     key={idx}
                     loading={
                       <div className="flex justify-center z-10">
@@ -749,13 +783,105 @@ const Step3 = () => {
                 ))}
               </Document>
             </div>
-            <PdfPagination
-              currentPage={currentPage}
-              numPages={numPages}
-              scale={scale}
-              setCurrentPage={setCurrentPage}
-              setScale={setScale}
-            />
+            <div className="sticky bottom-5 mt-5 flex justify-center left-0 right-0 z-10">
+              <div className="custom-shadow bg-white rounded-2xl flex items-center gap-2 px-2 py-2">
+                <Button
+                  onClick={() => setScale(scale - 0.2)}
+                  variant="ghost"
+                  className="p-0 h-5 w-5 hidden md:flex"
+                >
+                  <ZoomOut className="h-5 w-5" />
+                </Button>
+                <p className="text-sm hidden md:block">
+                  {Math.round(scale * 100)}%
+                </p>
+                <Button
+                  onClick={() => setScale(scale + 0.2)}
+                  variant="ghost"
+                  className="p-0 h-5 w-5 hidden md:flex"
+                >
+                  <ZoomIn className="h-5 w-5" />
+                </Button>
+                <Button
+                  disabled={currentPage === 1}
+                  // onClick={() => {
+                  //   setCurrentPage(1);
+                  //   const element = document.getElementById(`signature1`);
+                  //   element?.scrollIntoView();
+                  // }}
+                  variant="ghost"
+                  className="p-0 h-5 w-5"
+                >
+                  <ChevronFirst className="h-5 w-5" />
+                </Button>
+                <Button
+                  // onClick={() => {
+                  //   setCurrentPage(currentPage - 1);
+                  //   const element = document.getElementById(
+                  //     `signature${currentPage - 1}`
+                  //   );
+                  //   element?.scrollIntoView();
+                  // }}
+                  disabled={currentPage === 1}
+                  variant="ghost"
+                  className="p-0 h-5 w-5"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </Button>
+                <Select
+                  value={currentPage.toString()}
+                  // onValueChange={(value) => {
+                  //   console.log(value);
+                  //   setCurrentPage(Number(value));
+                  //   const element = document.getElementById(
+                  //     `signature${value}`
+                  //   );
+                  //   element?.scrollIntoView();
+                  // }}
+                >
+                  <SelectTrigger className="h-8 border-none !w-[30px] font-semibold p-0">
+                    <SelectValue placeholder="1" />
+                  </SelectTrigger>
+                  <SelectContent className="!w-[50px] ">
+                    {Array.from(Array(numPages).keys()).map((_, idx) => (
+                      <SelectItem key={idx + 1} value={(idx + 1).toString()}>
+                        {idx + 1}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-sm hidden md:block">of {numPages} Page(s)</p>
+
+                <Button
+                  disabled={currentPage === numPages}
+                  // onClick={() => {
+                  //   setCurrentPage(currentPage + 1);
+                  //   const element = document.getElementById(
+                  //     `signature${currentPage + 1}`
+                  //   );
+                  //   element?.scrollIntoView();
+                  // }}
+                  variant="ghost"
+                  className="p-0 h-5 w-5"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </Button>
+                <Button
+                  disabled={currentPage === numPages}
+                  // onClick={() => {
+                  //   setCurrentPage(numPages);
+                  //   const element = document.getElementById(
+                  //     `signature${numPages}`
+                  //   );
+                  //   element?.scrollIntoView();
+                  // }}
+                  variant="ghost"
+                  className="p-0 h-5 w-5"
+                >
+                  <ChevronLast className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
