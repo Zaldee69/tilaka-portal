@@ -589,7 +589,7 @@ const Step3 = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="flex justify-center items-center md:flex-row flex-col w-full md:w-fit gap-5 md:gap-10">
+                      <div className="flex justify-center items-center md:flex-row flex-col-reverse w-full md:w-fit gap-5 md:gap-10">
                         <Button
                           onClick={() => {
                             resetSignatureDraft();
@@ -602,7 +602,7 @@ const Step3 = () => {
                           {t('signingDoneDrawer.cancel')}
                         </Button>
                         <SigningVerificationDialog>
-                          <Button className="font-semibold h-12 text-base w-full md:px-10 md:w-fit">
+                          <Button className="font-semibold md:h-12 text-base w-full max-w-[260px] md:px-10 md:w-fit">
                             {t('signingDoneDrawer.signing')}
                           </Button>
                         </SigningVerificationDialog>
@@ -617,7 +617,7 @@ const Step3 = () => {
                     </Button>
                   </DialogTrigger>
                   <DialogContent
-                    className="px-6 max-w-[460px]"
+                    className="px-6 max-w-md justify-center"
                     closeIconClassName="top-7 right-6"
                     showCloseIcon={false}
                   >
@@ -672,14 +672,14 @@ const Step3 = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full mt-3">
+                    <div className="md:w-full flex items-center flex-col mt-3">
                       <ScrollIntoView
                         alignToTop={false}
                         selector={`#signature1`}
                       >
                         <Button
                           onClick={() => setOpenDialog(false)}
-                          className="w-full font-semibold sign-button-shadow"
+                          className="max-[767px]:max-w-[260px] md:px-auto font-semibold sign-button-shadow"
                         >
                           {t('signingOptionModal.button1')}
                         </Button>
@@ -689,7 +689,7 @@ const Step3 = () => {
                           setOpenDrawer(true);
                           setOpenDialog(false);
                         }}
-                        className="mt-4 w-full custom-shadow text-primary font-semibold"
+                        className="mt-4 max-[767px]:max-w-[260px] w-full custom-shadow text-primary font-semibold"
                         variant="ghost"
                       >
                         {t('signingOptionModal.button2')}

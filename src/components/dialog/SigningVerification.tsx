@@ -178,11 +178,14 @@ const SigningVerificationDialog = ({
             <Switch id="airplane-mode" />
           </div>
         </div>
-        <AlertDialogFooter className="!justify-between">
-          <AlertDialogCancel className="custom-shadow">
+        <AlertDialogFooter className="!justify-between gap-2 w-full items-center">
+          <AlertDialogCancel className="custom-shadow  w-full max-[767px]:max-w-[200px]">
             {s('dialog.authMethod.cancelButton')}
           </AlertDialogCancel>
-          <AlertDialogAction className="!m-0" onClick={onSaveHandler}>
+          <AlertDialogAction
+            className="!m-0 w-full max-[767px]:max-w-[200px]"
+            onClick={onSaveHandler}
+          >
             {d('step2.continue')}
           </AlertDialogAction>
         </AlertDialogFooter>

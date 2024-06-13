@@ -19,7 +19,7 @@ const PdfViewer = ({ file }: { file: string }) => {
       <div className="mx-auto w-full max-w-8xl grow flex flex-col lg:flex-row">
         <div className="flex-1 xl:flex">
           <div className="relative w-full">
-            <div className="px-4 py-6 sm:px-6 bg-gray-6 lg:pl-8 xl:flex-1 xl:pl-6 max-h-[calc(100vh-5rem)] overflow-y-scroll no-scrollbar max-w-2xl">
+            <div className="px-4 py-6 sm:px-6 bg-gray-6 lg:pl-8 xl:flex-1 xl:pl-6 max-h-[calc(100vh-5rem)] overflow-y-scroll max-w-2xl">
               <PdfRenderer
                 currentPage={currentPage}
                 numPages={numPages}
@@ -29,6 +29,7 @@ const PdfViewer = ({ file }: { file: string }) => {
               />
             </div>
             <PdfPagination
+              className="max-[768px]:bottom-10 max-[768px]:absolute bottom-20"
               currentPage={currentPage}
               numPages={numPages}
               scale={scale}
@@ -80,15 +81,15 @@ const PdfViewer = ({ file }: { file: string }) => {
                 {[
                   {
                     name: 'Wahab',
-                    role: 'PEMILIK',
+                    role: 'owner',
                     pages: '1,2,4',
-                    status: 'Ditandatangani'
+                    status: 'signed'
                   },
                   {
                     name: 'Wahono',
-                    role: 'Penandatangan',
+                    role: 'signer',
                     pages: '1,2,4',
-                    status: 'Ditandatangani'
+                    status: 'signed'
                   }
                 ].map((signer, index) => (
                   <div
@@ -104,8 +105,8 @@ const PdfViewer = ({ file }: { file: string }) => {
                           <p className="font-semibold text-sm text-[#1B4782]">
                             {signer.name}
                           </p>
-                          <span className="text-[10px] bg-[#BFDFFF] text-primary px-1 rounded">
-                            {signer.role}
+                          <span className="text-[10px] bg-[#BFDFFF] text-primary uppercase text-center px-1 rounded">
+                            {d(signer.role)}
                           </span>
                         </div>
                       </div>
@@ -115,7 +116,7 @@ const PdfViewer = ({ file }: { file: string }) => {
                     </div>
                     <div className="col-span-3 md:col-span-2 flex justify-end">
                       <Badge className="md:text-xs bg-accent">
-                        {signer.status}
+                        {d(signer.status)}
                       </Badge>
                     </div>
                   </div>
@@ -128,7 +129,7 @@ const PdfViewer = ({ file }: { file: string }) => {
               </h6>
               <div className="px-2 mt-3">
                 <div className="grid-cols-7 hidden md:grid">
-                  <p className="text-xs col-span-3 text-gray-3">Nama</p>
+                  <p className="text-xs col-span-3 text-gray-3">{d('name')}</p>
                   <p className="text-xs col-span-2 text-gray-3">
                     {d('action')}
                   </p>
@@ -137,26 +138,26 @@ const PdfViewer = ({ file }: { file: string }) => {
                 {[
                   {
                     name: 'Wahab',
-                    role: 'PEMILIK',
-                    action: 'Menandatangani',
+                    role: 'owner',
+                    action: 'sign',
                     time: '08 Mei 2023 16:47:31'
                   },
                   {
                     name: 'Wahab',
-                    role: 'PEMILIK',
-                    action: 'Membuka',
+                    role: 'owner',
+                    action: 'open',
                     time: '08 Mei 2023 16:47:31'
                   },
                   {
                     name: 'Wahono',
-                    role: 'Penandatangan',
-                    action: 'Menandatangani',
+                    role: 'signer',
+                    action: 'sign',
                     time: '08 Mei 2023 16:47:31'
                   },
                   {
                     name: 'Wahono',
-                    role: 'Penandatangan',
-                    action: 'Membuka',
+                    role: 'signer',
+                    action: 'open',
                     time: '08 Mei 2023 16:47:31'
                   }
                 ].map((history, index) => (
@@ -175,20 +176,20 @@ const PdfViewer = ({ file }: { file: string }) => {
                           </p>
                           <span
                             className={cn(
-                              'text-[10px] bg-[#BFDFFF] text-primary px-1 rounded',
+                              'text-[10px] bg-[#BFDFFF] text-primary uppercase text-center px-1 rounded',
                               {
                                 'bg-[#E0E0E0] text-gray-2':
-                                  history.role === 'Penandatangan'
+                                  history.role === 'signer'
                               }
                             )}
                           >
-                            {history.role}
+                            {d(history.role)}
                           </span>
                         </div>
                       </div>
                     </div>
                     <div className="col-span-4 md:col-span-2 !m-0">
-                      <div className="text-xs">{history.action}</div>
+                      <div className="text-xs">{d(history.action)}</div>
                       <div className="text-xs md:hidden">{history.time}</div>
                     </div>
                     <div className="md:col-span-2 hidden md:block text-xs !m-0">

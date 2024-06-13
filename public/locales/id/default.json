@@ -306,6 +306,10 @@
     "action": "Aksi",
     "time": "Waktu",
     "download": "Unduh Dokumen",
-    "document": "Dokumen"
+    "document": "Dokumen",
+    "owner": "Pemilik",
+    "sign": "Menandatangani",
+    "open": "Membuka",
+    "signed": "Ditandatangani"
   }
 }
