@@ -133,13 +133,13 @@ const Navbar = () => {
               <p className="hidden min-[700px]:block">{t('completed')}</p>
             </BreadcrumbItem>
           </BreadcrumbList>
-          <p className="min-[700px]:hidden text-xs font-medium mt-1 text-gray-2">
+          <p className="min-[700px]:hidden text-xs font-bold mt-1 text-gray-2">
             {activeStep === 0
-              ? 'Upload Dokumen'
+              ? t('uploadDocument')
               : activeStep === 1
-                ? 'Atur Posisi Tanda Tangan'
+                ? t('setSignature')
                 : activeStep === 2
-                  ? 'Tandatangan'
+                  ? t('sign')
                   : 'Selesai'}
           </p>
         </Breadcrumb>

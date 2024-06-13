@@ -164,15 +164,15 @@ const OTPVerification = (props: Props) => {
           )}
         </p>
 
-        <AlertDialogFooter className="!justify-center gap-3">
+        <AlertDialogFooter className="!justify-center items-center md:gap-2 gap-1">
           <AlertDialogCancel
             disabled={isLoading}
-            className="custom-shadow font-semibold md:w-6/12 px-2"
+            className="custom-shadow font-semibold max-[767px]:max-w-[200px] w-full px-2"
           >
             {d('otpDialog.cancel')}
           </AlertDialogCancel>
           <Button
-            className="md:w-6/12 px-2 font-semibold"
+            className="max-[767px]:max-w-[200px] w-full px-2 font-semibold"
             onClick={processVerification}
             disabled={isLoading || value.length < 6}
           >
