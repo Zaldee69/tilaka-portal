@@ -77,14 +77,24 @@ const UploadDropZone = () => {
       </Dialog>
 
       {uploadProgress === 100 && (
-        <Button
-          onClick={() => setUploadProgress(0)}
-          className={cn(
-            'absolute right-5 md:top-[84px] top-[100px] max-[767px]:px-10 font-semibold sign-button-shadow'
-          )}
-        >
-          {d('sidebar.verifyPdf')}
-        </Button>
+        <>
+          <Button
+            onClick={() => setUploadProgress(0)}
+            className={cn(
+              'absolute right-5 top-[84px] hidden md:flex font-semibold sign-button-shadow'
+            )}
+          >
+            {d('sidebar.verifyPdf')}
+          </Button>
+          <Button
+            onClick={() => setUploadProgress(0)}
+            className={cn(
+              'absolute right-5 md:top-[84px] top-[100px] max-[767px]:px-5 font-semibold sign-button-shadow md:hidden'
+            )}
+          >
+            {d('sidebar.verifyPdf').split(' ')[0]}
+          </Button>
+        </>
       )}
 
       {uploadProgress === 100 ? (
