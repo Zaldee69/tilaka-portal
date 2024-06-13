@@ -64,8 +64,6 @@ const Step1 = () => {
     (signer) => signer.name === 'johndoe21'
   )[0];
 
-  const isAllViewOnly = signers.every((el) => el.privilege === 'read_only');
-
   useEffect(() => {
     const viewOnlySigner = signers.filter((el) => el.privilege === 'read_only');
 
@@ -113,8 +111,6 @@ const UploadDropZone = () => {
 
   const { addDocuments, deleteDocument, pdf_file } = useSigningStore();
 
-  const randomid = (Math.random() + 1).toString(36).substring(7);
-
   const onDrop = useCallback(
     async (acceptedFile: File[]) => {
       setIsUploading(true);
@@ -126,8 +122,13 @@ const UploadDropZone = () => {
         });
       }
 
+      const convertFile = async (file: File) => {
+        const base64String = await fileToBase64(file);
+        return base64String;
+      };
+
       acceptedFile.map(async (file) => {
-        file.text().then((x) => {
+        file.text().then(async (x) => {
           if (
             x.includes('Encrypt') ||
             x
@@ -152,9 +153,9 @@ const UploadDropZone = () => {
                 description: `Ukuran File ${file.name} lebih dari 30MB`
               });
             } else {
-              const FILE = URL.createObjectURL(file);
+              const FILE = await convertFile(file);
               const NAME = file.name;
-              const ID = randomid;
+              const ID = (Math.random() + 1).toString(36).substring(7);
 
               // Update state to include the new document
               addDocuments(ID, NAME, FILE, SIZE);

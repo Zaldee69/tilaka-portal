@@ -227,7 +227,7 @@
       "page": "Page",
       "button": {
         "signature": "Add Signature",
-        "initials": "Initial",
+        "initials": "Add Initial",
         "stamp": "Add E-Meterai"
       },
       "back": "Back",
@@ -306,6 +306,10 @@
     "action": "Action",
     "time": "Time",
     "download": "Download Document",
-    "document": "Document"
+    "document": "Document",
+    "owner": "Owner",
+    "sign": "Sign",
+    "open": "Open",
+    "signed": "Signed"
   }
 }

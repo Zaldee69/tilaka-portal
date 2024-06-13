@@ -112,7 +112,7 @@ const PdfViewer = ({ file }: { file: string }) => {
     <div className="flex flex-col flex-1 justify-between mt-5 bg-gray-6 h-[calc(100vh-3.5rem)]">
       <div className="mx-auto w-full max-w-8xl grow flex flex-col-reverse lg:flex-row">
         <div className="flex-1 xl:flex">
-          <div className="px-4 pt-6 sm:px-6 border border-gray-6 bg-gray-6 lg:pl-8 xl:flex-1 xl:pl-6 max-h-[calc(100vh-5rem)] overflow-y-scroll no-scrollbar relative max-w-3xl">
+          <div className="px-4 pt-6 sm:px-6 border border-gray-6 bg-gray-6 lg:pl-8 xl:flex-1 xl:pl-6 max-h-[calc(100vh-5rem)] overflow-y-scroll relative max-w-3xl">
             <PdfRenderer
               currentPage={currentPage}
               numPages={numPages}

@@ -17,6 +17,7 @@ import {
   ZoomIn,
   ZoomOut
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface PdfPaginationProps {
   currentPage: number;
@@ -24,6 +25,7 @@ interface PdfPaginationProps {
   numPages: number;
   scale: number;
   setScale: React.Dispatch<React.SetStateAction<number>>;
+  className?: string;
 }
 
 const PdfPagination = ({
@@ -31,10 +33,16 @@ const PdfPagination = ({
   numPages,
   scale,
   setCurrentPage,
-  setScale
+  setScale,
+  className
 }: PdfPaginationProps) => {
   return (
-    <div className="sticky bottom-5 mt-5 flex justify-center left-0 right-0 z-10">
+    <div
+      className={cn(
+        'sticky bottom-5 mt-5 flex justify-center left-0 right-0 z-10',
+        className
+      )}
+    >
       <div className="custom-shadow bg-white rounded-2xl flex items-center gap-2 px-2 py-2">
         <Button
           onClick={() => setScale(scale - 0.2)}

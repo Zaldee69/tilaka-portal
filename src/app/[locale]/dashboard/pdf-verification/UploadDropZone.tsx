@@ -17,6 +17,7 @@ const UploadDropZone = () => {
   const [base64, setBase64] = useState<string>('');
 
   const t = useTranslations('VerifyPdf');
+  const d = useTranslations('Dashboard');
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
@@ -79,10 +80,10 @@ const UploadDropZone = () => {
         <Button
           onClick={() => setUploadProgress(0)}
           className={cn(
-            'absolute right-5 top-[84px] hidden md:block font-semibold sign-button-shadow'
+            'absolute right-5 md:top-[84px] top-[100px] max-[767px]:px-10 font-semibold sign-button-shadow'
           )}
         >
-          {t('newPdfValidation')}
+          {d('sidebar.verifyPdf')}
         </Button>
       )}
 
@@ -114,6 +115,7 @@ const UploadDropZone = () => {
                           <p className="text-center">
                             {t('uploadZone.unuploading.title')}
                             <span className="p-0 text-primary font-bold md:text-start inline">
+                              {' '}
                               {t('uploadZone.unuploading.upload')}
                             </span>
                           </p>
