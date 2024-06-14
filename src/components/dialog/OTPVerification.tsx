@@ -61,14 +61,11 @@ const OTPVerification = (props: Props) => {
 
   const { resetSignatureDraft } = useSigningStore();
 
-  const { state, stateSetter } = useContext(SidebarContext);
-
   const processVerification = () => {
     setIsLoading(true);
     setTimeout(() => {
       resetSignatureDraft();
       setOpen();
-      stateSetter({ isOpen: false });
       localStorage.removeItem('activeStep');
       router.push('/dashboard/documents');
       toast.success('Tandatangan Berhasil', {

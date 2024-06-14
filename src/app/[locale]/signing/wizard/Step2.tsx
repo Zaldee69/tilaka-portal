@@ -51,7 +51,6 @@ import {
 } from '@/components/ui/tooltip';
 
 import Image from 'next/image';
-import { OpenDialogContext } from '../SigningDialog';
 import { useTranslations } from 'next-intl';
 import { useResizeDetector } from 'react-resize-detector';
 import { useRouter } from '@/navigation';
@@ -67,8 +66,6 @@ const Step2: React.FC<Step2Props> = () => {
   const [scale, setScale] = useState<number>(1);
   const [openSignConfirmationDialog, setOpenSignConfirmationDialog] =
     useState<boolean>(false);
-
-  const { setOpen } = useContext(OpenDialogContext);
 
   const router = useRouter();
 
@@ -105,7 +102,9 @@ const Step2: React.FC<Step2Props> = () => {
   )[0];
 
   return (
-    <Fragment>
+    <div className="w-full flex flex-col items-center h-[calc(100vh-3.5rem)">
+      <Navbar />
+
       <Dialog
         open={openSignConfirmationDialog}
         onOpenChange={setOpenSignConfirmationDialog}
@@ -133,7 +132,7 @@ const Step2: React.FC<Step2Props> = () => {
                   <Button
                     onClick={() => {
                       setOpenSignConfirmationDialog(false);
-                      setOpen();
+                      // setOpen();
                       router.push('/dashboard?');
                       resetSignatureDraft();
                     }}
@@ -169,7 +168,6 @@ const Step2: React.FC<Step2Props> = () => {
                           setOpenSignConfirmationDialog(false);
                           localStorage.removeItem('activeStep');
                           resetSignatureDraft();
-                          setOpen();
                           router.push('/dashboard?');
                         }}
                         size="lg"
@@ -187,10 +185,9 @@ const Step2: React.FC<Step2Props> = () => {
         </DialogContent>
       </Dialog>
 
-      <Navbar />
       <div className="w-full lg:overflow-hidden">
         {/* Main Content */}
-        <div className="flex flex-col flex-1 justify-between bg-[#F9F9F9] h-[calc(100vh-3.5rem)] lg:mt-20 mt-32">
+        <div className="flex flex-col flex-1 justify-between bg-[#F9F9F9] h-[calc(100vh-3.5rem)]">
           {/* Signature Setting Section */}
           <div className="flex flex-col lg:flex-row justify-between">
             {/* Left sidebar */}
@@ -288,7 +285,7 @@ const Step2: React.FC<Step2Props> = () => {
             </div>
 
             {/* Right sidebar */}
-            <div className="bg-white px-4 py-6 border-r sticky border-r-gray-6 h-[calc(100vh-10.4rem)] overflow-y-auto max-w-[15rem] min-w-[15rem] ml-40 hidden lg:block">
+            <div className="bg-white px-4 py-6 border-r sticky border-r-gray-6  overflow-y-auto max-w-[15rem] min-w-[15rem] ml-40 hidden lg:block">
               {pdf_file.map((pdf, idx) => (
                 <Collapsible
                   key={pdf.id}
@@ -334,10 +331,7 @@ const Step2: React.FC<Step2Props> = () => {
       {/* Footer Buttons */}
       <div
         className={cn(
-          'custom-shadow p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center lg:justify-end gap-4 z-40 w-full',
-          {
-            'bottom-[3.58rem]': getMobileOperatingSystem() === 'iOS'
-          }
+          'custom-shadow p-5 h-20 fixed bottom-0 left-0 right-0 bg-white flex justify-center lg:justify-end gap-4 z-40 w-full'
         )}
       >
         <Button
@@ -390,7 +384,7 @@ const Step2: React.FC<Step2Props> = () => {
           </AlertDialogContent>
         </AlertDialog>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

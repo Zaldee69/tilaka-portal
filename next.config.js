@@ -7,5 +7,6 @@ module.exports = withNextIntl({
     config.resolve.alias.canvas = false;
 
     return config;
-  }
+  },
+  reactStrictMode: false
 });

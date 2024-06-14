@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useId, useState } from 'react';
 
 import { Switch } from '@/components/ui/switch';
 
-import { Button } from '../../../ui/button';
+import { Button } from '@/components/ui/button';
 import {
   ContactIcon,
   DeleteIcon,
@@ -85,7 +85,7 @@ const Step1 = () => {
   }, [signers, pdf_file, loggedSigner]);
 
   return (
-    <div className="w-full flex flex-col items-center gap-10 pb-32">
+    <div className="w-full flex flex-col items-center h-full gap-10 pb-32">
       <Navbar />
       <UploadDropZone />
       <RecipientCollapsible
@@ -97,7 +97,7 @@ const Step1 = () => {
       <MessageCollapsible />
       <div
         className={cn(
-          'custom-shadow border p-5 h-20 fixed bottom-0 left-0 right-0 bg-white flex justify-center md:justify-end'
+          'custom-shadow border p-5 h-20 left-0 right-0 bg-white flex justify-center md:justify-end fixed bottom-0'
         )}
       >
         <Button
@@ -180,9 +180,9 @@ const UploadDropZone = () => {
 
   return (
     <Collapsible
-      autoOpen
+      autoOpen={false}
       header={<h4 className="text-gray-2">{s('uploadDocument')}</h4>}
-      className="md:w-6/12 w-11/12 border pb-2 rounded-2xl md:mt-24 mt-36"
+      className="md:w-6/12 w-11/12 border pb-2 rounded-2xl"
       headerClassName="justify-start gap-2 px-4 pt-4"
     >
       <div
