@@ -33,6 +33,11 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.8rem;
+
+    --sat: env(safe-area-inset-top);
+    --sar: env(safe-area-inset-right);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
   }
 
   .dark {
@@ -102,6 +107,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    min-height: -webkit-fill-available;
   }
 
   h1 {
@@ -127,11 +133,6 @@
   h6 {
     @apply text-xs md:text-sm leading-[18px] font-bold;
   }
-}
-
-
-body {
-  min-height: -webkit-fill-available;
 }
 
 .custom-shadow {
