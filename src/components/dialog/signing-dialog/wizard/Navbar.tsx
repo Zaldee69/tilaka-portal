@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={cn('pt-4 absolute top-0 left-0 right-0 z-40 bg-white', {
+      className={cn('pt-4 absolute top-sat left-0 right-0 z-40 bg-white', {
         'border-b pb-2': activeStep !== 1
       })}
     >

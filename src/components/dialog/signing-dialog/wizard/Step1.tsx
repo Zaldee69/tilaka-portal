@@ -97,10 +97,10 @@ const Step1 = () => {
       <MessageCollapsible />
       <div
         className={cn(
-          'custom-shadow border p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center md:justify-end',
-          {
-            'bottom-[3.58rem]': getMobileOperatingSystem() === 'iOS'
-          }
+          'custom-shadow border p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center md:justify-end bottom-sab'
+          // {
+          //   'bottom-[3.58rem]': getMobileOperatingSystem() === 'iOS'
+          // }
         )}
       >
         <Button
