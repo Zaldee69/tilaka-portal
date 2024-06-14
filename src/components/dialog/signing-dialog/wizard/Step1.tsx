@@ -348,7 +348,7 @@ const RecipientCollapsible = ({
       className="md:w-6/12 w-11/12 border pb-2 rounded-2xl"
       headerClassName="justify-start gap-2 px-4 pt-4"
     >
-      <div className="px-4">
+      <div className="px-4 pb-2">
         <div className="flex items-center gap-5 mt-2">
           <Switch
             checked={is_only_for_me}

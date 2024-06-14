@@ -602,7 +602,7 @@ const Step3 = () => {
                           {t('signingDoneDrawer.cancel')}
                         </Button>
                         <SigningVerificationDialog>
-                          <Button className="font-semibold md:h-12 text-base w-full max-w-[260px] md:px-10 md:w-fit">
+                          <Button className="font-semibold md:h-12 text-base w-full max-w-[100px] md:px-10 md:w-fit">
                             {t('signingDoneDrawer.signing')}
                           </Button>
                         </SigningVerificationDialog>
@@ -629,7 +629,7 @@ const Step3 = () => {
                       </DialogDescription>
                     </DialogHeader>
                     <div className="border border-gray-6 rounded-xl p-3">
-                      <div className="flex justify-start gap-16">
+                      <div className="flex md:justify-start justify-between md:gap-16">
                         {/* Pages */}
                         <div>
                           <p className="text-gray-2 text-xs">
@@ -676,10 +676,11 @@ const Step3 = () => {
                       <ScrollIntoView
                         alignToTop={false}
                         selector={`#signature1`}
+                        className="w-full flex justify-center"
                       >
                         <Button
                           onClick={() => setOpenDialog(false)}
-                          className="max-[767px]:max-w-[260px] md:px-auto font-semibold sign-button-shadow"
+                          className="max-[767px]:max-w-[260px] w-full md:px-auto font-semibold sign-button-shadow"
                         >
                           {t('signingOptionModal.button1')}
                         </Button>
