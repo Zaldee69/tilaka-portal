@@ -44,7 +44,7 @@ const PdfViewer = ({ file }: { file: string }) => {
             <div className="border-b pb-3">
               <h6 className="font-semibold text-gray-2 text-sm">Detail</h6>
               <div className="flex flex-col md:flex-row md:items-center justify-between mt-3 gap-y-3">
-                <div className="flex">
+                <div className="flex gap-3">
                   <div>
                     <p className="text-xs">{d('document')}</p>
                     <h6 className="font-medium text-sm mt-2">BAST Kasuari</h6>
@@ -163,7 +163,7 @@ const PdfViewer = ({ file }: { file: string }) => {
                 ].map((history, index) => (
                   <div
                     key={index}
-                    className="grid grid-cols-7 bg-[#F9F9F9] space-y-2 p-2 rounded-lg mt-2 space-x-10"
+                    className="grid grid-cols-7 bg-[#F9F9F9] space-y-2 p-2 rounded-lg mt-2 space-x-10 max-[768px]:gap-5"
                   >
                     <div className="col-span-3">
                       <div className="flex items-center gap-3 col-span-3">

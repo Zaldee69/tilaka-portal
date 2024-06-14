@@ -258,7 +258,7 @@
       "title": "All done!",
       "subtitle": "Double check your document and signature, and click 'Signing' to complete signing process",
       "done": "Done",
-      "signing": "Signing",
+      "signing": "Sign",
       "cancel": "Cancel"
     },
     "otpDialog": {

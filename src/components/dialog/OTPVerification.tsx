@@ -28,6 +28,7 @@ import useSigningStore from '@/zustand/store';
 import { useRouter } from '@/navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { SidebarContext } from '../sidebar/SidebarContextProvider';
 
 interface Props {
   callbackCaptureProcessor: (base64Img: string | null | undefined) => void;
@@ -60,11 +61,14 @@ const OTPVerification = (props: Props) => {
 
   const { resetSignatureDraft } = useSigningStore();
 
+  const { state, stateSetter } = useContext(SidebarContext);
+
   const processVerification = () => {
     setIsLoading(true);
     setTimeout(() => {
       resetSignatureDraft();
       setOpen();
+      stateSetter({ isOpen: false });
       localStorage.removeItem('activeStep');
       router.push('/dashboard/documents');
       toast.success('Tandatangan Berhasil', {

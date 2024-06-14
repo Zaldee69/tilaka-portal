@@ -155,11 +155,12 @@ const Step2: React.FC<Step2Props> = () => {
                           nextStep();
                         }}
                         size="lg"
-                        className="!font-bold sign-button-shadow px-8 gap-2 w-full lg:w-auto"
+                        className="!font-bold sign-button-shadow px-8 gap-2 lg:w-auto max-[767px]:max-w-[230px] w-full"
                       >
                         <BrushIcon
                           pathClassName="fill-white"
                           strokeClassName="stroke-white"
+                          svgClassName="flex-none"
                         />
                         {t('signDocConfirmationModal.signNow')}
                       </Button>
@@ -367,12 +368,12 @@ const Step2: React.FC<Step2Props> = () => {
                 })}
               </AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter className="mt-4 !justify-center gap-3">
-              <AlertDialogCancel className="custom-shadow h-[50px]">
+            <AlertDialogFooter className="mt-4 !justify-center items-center gap-3">
+              <AlertDialogCancel className="custom-shadow h-[50px] max-[767px]:max-w-[100px] max-[767px]:px-5 w-full">
                 {t('sendDocModal.cancel')}
               </AlertDialogCancel>
               <AlertDialogAction
-                className="h-[50px]"
+                className="h-[50px] max-[767px]:max-w-[100px] max-[767px]:px-5 w-full"
                 onClick={() => setOpenSignConfirmationDialog(true)}
               >
                 {t('sendDocModal.send')}
