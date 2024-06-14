@@ -7,7 +7,7 @@ import PdfRenderer from '@/components/PdfRenderer';
 import PdfPagination from '@/components/PdfPagination';
 import { Rnd } from 'react-rnd';
 import useSigningStore from '@/zustand/store';
-import { cn } from '@/lib/utils';
+import { cn, getMobileOperatingSystem } from '@/lib/utils';
 import { Signer } from '@/types';
 import CollapsibleSigner from '@/components/CollapsibleSigner';
 import {
@@ -330,8 +330,16 @@ const Step2: React.FC<Step2Props> = () => {
           </div>
         </div>
       </div>
+
       {/* Footer Buttons */}
-      <div className="custom-shadow p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center lg:justify-end gap-4 z-40 w-full">
+      <div
+        className={cn(
+          'custom-shadow p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center lg:justify-end gap-4 z-40 w-full',
+          {
+            'bottom-[3.58rem]': getMobileOperatingSystem() === 'iOS'
+          }
+        )}
+      >
         <Button
           variant="secondary"
           className="!font-bold custom-shadow bg-white max-[460px]:px-14"

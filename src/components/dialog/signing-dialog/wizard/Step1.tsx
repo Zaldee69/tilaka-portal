@@ -15,7 +15,12 @@ import { toast } from 'sonner';
 import Image from 'next/image';
 import Dropzone from 'react-dropzone';
 import Collapsible from '@/components/Collapsible';
-import { cn, fileToBase64, getFileSize } from '@/lib/utils';
+import {
+  cn,
+  fileToBase64,
+  getFileSize,
+  getMobileOperatingSystem
+} from '@/lib/utils';
 import PdfRenderer from '@/components/PdfRenderer';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -90,10 +95,17 @@ const Step1 = () => {
         setForm={setForm}
       />
       <MessageCollapsible />
-      <div className="custom-shadow border p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-end">
+      <div
+        className={cn(
+          'custom-shadow border p-5 h-20 absolute bottom-0 left-0 right-0 bg-white flex justify-center md:justify-end',
+          {
+            'bottom-[3.58rem]': getMobileOperatingSystem() === 'iOS'
+          }
+        )}
+      >
         <Button
           disabled={isShouldDisabled}
-          className="!font-bold sign-button-shadow w-full md:w-fit"
+          className="!font-bold sign-button-shadow max-[768px]:max-w-[120px]"
           onClick={() => nextStep()}
         >
           {t('step2.continue')}

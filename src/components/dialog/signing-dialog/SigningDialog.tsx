@@ -15,6 +15,7 @@ import Step3 from './wizard/Step3';
 import Step4 from './wizard/Step4';
 import { useSearchParams, useRouter } from 'next/navigation';
 import useSigningStore from '@/zustand/store';
+import { getMobileOperatingSystem } from '@/lib/utils';
 
 interface IOpenDialog {
   open: boolean;
