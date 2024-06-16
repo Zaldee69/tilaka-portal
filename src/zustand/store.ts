@@ -63,32 +63,43 @@ const useSigningStore = create<SigningState>()(
     persist(
       (set) => ({
         addSigner: (id, name, privilege) =>
-          set((state) => ({
-            signers: [
-              ...(state.signers || []),
-              {
-                id,
-                name,
-                privilege,
-                color:
-                  state.signers.length % 2 !== 0
-                    ? 'bg-[#A7C0FF]/90'
-                    : 'bg-[#F4EA89]/90',
-                signature_settings: {
-                  show_logo: false,
-                  show_name: false,
-                  show_qr: false,
-                  show_signature: false
-                },
-                signatures: {
-                  initial: [],
-                  signature: [],
-                  stamp: [],
-                  pages: []
+          set((state) => {
+            // Check if a signer with the name "johndoe" already exists
+            const existingSigner = state.signers.find(
+              (signer) => signer.name === 'johndoe21'
+            );
+            if (existingSigner) {
+              // Do not add the new signer if "johndoe" exists
+              return state;
+            }
+
+            return {
+              signers: [
+                ...(state.signers || []),
+                {
+                  id,
+                  name,
+                  privilege,
+                  color:
+                    state.signers.length % 2 !== 0
+                      ? 'bg-[#A7C0FF]/90'
+                      : 'bg-[#F4EA89]/90',
+                  signature_settings: {
+                    show_logo: false,
+                    show_name: false,
+                    show_qr: false,
+                    show_signature: false
+                  },
+                  signatures: {
+                    initial: [],
+                    signature: [],
+                    stamp: [],
+                    pages: []
+                  }
                 }
-              }
-            ]
-          })),
+              ]
+            };
+          }),
         addDocuments: (id: string, name: string, file: string, size: string) =>
           set((state) => ({
             ...state,

@@ -522,7 +522,7 @@ const Step3 = () => {
       >
         {openOverlay ? (
           <div
-            className="absolute z-50 left-0 right-0 bottom-0 top-[100px] md:top-[62px] w-full min-h-screen"
+            className="absolute z-50 left-0 right-0 bottom-0 top-0 w-full min-h-screen"
             style={{ backgroundColor: 'rgba(0, 0, 0, .5)' }}
           >
             <div className=" p-3 bg-[#F8FFE9]">
@@ -539,7 +539,7 @@ const Step3 = () => {
         ) : null}
         <div className="flex flex-1 justify-center h-[calc(100vh-3.5rem)]">
           <div className="sticky max-w-3xl w-full h-[calc(100vh-3.5rem)]">
-            <div ref={ref} className="flex-1 relative mt-24 pb-5">
+            <div ref={ref} className="flex-1 relative pb-5">
               <CreateSignatureAttribute
                 continueCallback={(image) => {
                   setSignatures((prevSignatures) =>
@@ -593,7 +593,6 @@ const Step3 = () => {
                         <Button
                           onClick={() => {
                             resetSignatureDraft();
-                            // setOpen();
                             router.push('/dashboard/documents');
                           }}
                           variant="ghost"
@@ -602,7 +601,7 @@ const Step3 = () => {
                           {t('signingDoneDrawer.cancel')}
                         </Button>
                         <SigningVerificationDialog>
-                          <Button className="font-semibold md:h-12 text-base w-full max-w-[100px] md:px-10 md:w-fit">
+                          <Button className="font-semibold md:h-12 text-base px-8 !w-fit">
                             {t('signingDoneDrawer.signing')}
                           </Button>
                         </SigningVerificationDialog>
@@ -611,7 +610,7 @@ const Step3 = () => {
                   </DrawerContent>
                 </Drawer>
                 <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-                  <DialogTrigger className="absolute md:top-5 -top-10 z-10 md:-left-[200px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <DialogTrigger className="absolute md:top-5 -top-10 z-10 md:-left-[166px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <Button className="custom-shadow font-semibold gap-4 px-6 bg-accent">
                       {t('startSigning')} <ArrowDown />
                     </Button>
@@ -703,7 +702,7 @@ const Step3 = () => {
                   <Page
                     scale={scale}
                     width={width ? width : 1}
-                    className={`border relative border-input md:mt-5 mt-44 canvas-wrapper-${idx + 1} curss`}
+                    className={`border relative border-input md:mt-5 mt-20 canvas-wrapper-${idx + 1} curss`}
                     key={idx}
                     loading={
                       <div className="flex justify-center z-10">

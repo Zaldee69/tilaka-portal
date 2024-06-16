@@ -6,14 +6,14 @@ import {
   StampIcon,
   TilakaIcon
 } from '../../../public/icons/icons';
-import { Button } from '../ui/button';
+import { Button, buttonVariants } from '../ui/button';
 import Image from 'next/image';
 import SidebarLinks from './SidebarLinks';
 import { SidebarContext } from './SidebarContextProvider';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import { useSpring, animated } from '@react-spring/web';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { ExternalLink } from 'lucide-react';
 import SigningModal from '../dialog/signing-dialog/SigningDialog';
 
@@ -129,29 +129,30 @@ const Sidebar = () => {
             'my-5 mx-auto': !state.isOpen
           })}
         >
-          <SigningModal>
-            <Button
-              className={cn(
-                'rounded-full w-full flex justify-center gap-3 font-semibold sign-button-shadow',
+          <Link
+            href="/signing"
+            className={buttonVariants({
+              className: cn(
+                '!rounded-full w-full flex justify-center gap-3 font-semibold sign-button-shadow',
                 {
-                  'p-3 w-fit': !state.isOpen
+                  '!p-3 !w-fit': !state.isOpen
                 }
-              )}
+              )
+            })}
+          >
+            <TilakaIcon
+              svgClassName={cn('flex-none', {
+                'h-5 w-5': !state.isOpen
+              })}
+            />{' '}
+            <h5
+              className={cn({
+                hidden: !state.isOpen
+              })}
             >
-              <TilakaIcon
-                svgClassName={cn('flex-none', {
-                  'h-5 w-5': !state.isOpen
-                })}
-              />{' '}
-              <h5
-                className={cn({
-                  hidden: !state.isOpen
-                })}
-              >
-                {t('sidebar.signPdfButton')}
-              </h5>
-            </Button>
-          </SigningModal>
+              {t('sidebar.signPdfButton')}
+            </h5>
+          </Link>
         </div>
         <div
           className={cn('px-5', {

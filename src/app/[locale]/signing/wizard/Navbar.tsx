@@ -12,18 +12,22 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
-import { MoveRight } from 'lucide-react';
+import { MoveRight, X } from 'lucide-react';
 
 import { useWizard } from 'react-use-wizard';
 import { cn } from '@/lib/utils';
 import useSigningStore from '@/zustand/store';
 import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/button';
+import { useRouter } from '@/navigation';
 
 const Navbar = () => {
   const { activeStep } = useWizard();
 
   const t = useTranslations('SigningDialog.navbar');
   const s = useTranslations('SigningDialog.step2');
+
+  const router = useRouter();
 
   const { signers } = useSigningStore();
 
@@ -46,7 +50,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={cn('pt-4 bg-white w-full', {
+      className={cn('pt-4 bg-white w-full relative', {
         'border-b pb-2': activeStep !== 1
       })}
     >
@@ -146,6 +150,13 @@ const Navbar = () => {
         <div className="hidden invisible min-[700px]:block text-base font-semibold">
           Tanda Tangan Dokumen
         </div>
+        <Button
+          className="!w-fit p-0 h-0 top-6 md:top-8 absolute right-5"
+          variant="ghost"
+          onClick={() => router.back()}
+        >
+          <X />
+        </Button>
       </div>
       {activeStep === 1 && (
         <div className="bg-[#F2F2F2] px-4 py-2 mt-2 md:mt-0">
