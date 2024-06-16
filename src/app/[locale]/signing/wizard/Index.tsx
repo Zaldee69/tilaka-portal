@@ -14,19 +14,21 @@ const Index = () => {
     const signerNames = signers.map((signer) => signer.name);
     const newSignerName = 'johndoe21';
 
+    console.log(signers.map((signer) => signer.name));
+
     const randomid = (Math.random() + 1).toString(36).substring(7);
 
     // Check if the new signer's name already exists
     if (!signerNames.includes(newSignerName)) {
       addSigner(randomid, newSignerName, 'signer');
     }
-  }, [signers]);
+  }, []);
 
   return (
     <div>
       {' '}
       <Wizard
-        // startIndex={Number(localStorage.getItem('activeStep'))}
+        startIndex={Number(localStorage.getItem('activeStep'))}
         onStepChange={(stepIndex) =>
           localStorage.setItem('activeStep', stepIndex.toString())
         }

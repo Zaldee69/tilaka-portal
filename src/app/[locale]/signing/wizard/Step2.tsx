@@ -132,7 +132,6 @@ const Step2: React.FC<Step2Props> = () => {
                   <Button
                     onClick={() => {
                       setOpenSignConfirmationDialog(false);
-                      // setOpen();
                       router.push('/dashboard?');
                       resetSignatureDraft();
                     }}

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Sheet,
   SheetClose,
@@ -18,6 +18,7 @@ import {
 import SidebarLinks from './SidebarLinks';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { Link as CustomLink } from '@/navigation';
 import SigningModal from '../dialog/signing-dialog/SigningDialog';
 
 export function MobileSidebar() {
@@ -54,7 +55,16 @@ export function MobileSidebar() {
           </div>
         </SheetHeader>
         <div className="flex justify-center mt-5 mb-10 mx-5">
-          <SigningModal />
+          <CustomLink
+            href="/signing"
+            className={buttonVariants({
+              className:
+                '!rounded-full w-full flex justify-center gap-3 font-semibold sign-button-shadow'
+            })}
+          >
+            <TilakaIcon svgClassName="flex-none" />
+            <h5>{t('sidebar.signPdfButton')}</h5>
+          </CustomLink>
         </div>
 
         <SidebarLinks setOpen={setOpen} />
