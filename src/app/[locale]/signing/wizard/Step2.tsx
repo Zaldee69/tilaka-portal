@@ -284,7 +284,7 @@ const Step2: React.FC<Step2Props> = () => {
             </div>
 
             {/* Right sidebar */}
-            <div className="bg-white px-4 py-6 border-r sticky border-r-gray-6  overflow-y-auto max-w-[15rem] min-w-[15rem] ml-40 hidden lg:block">
+            <div className="bg-white lg:h-[calc(100vh-3.5rem)] pb-44 px-4 border-r sticky border-r-gray-6  min-h-screen overflow-y-scroll max-w-[15rem] min-w-[15rem] ml-40 hidden lg:block">
               {pdf_file.map((pdf, idx) => (
                 <Collapsible
                   key={pdf.id}

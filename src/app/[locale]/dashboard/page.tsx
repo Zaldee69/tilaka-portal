@@ -21,7 +21,7 @@ import Collapsible from '@/components/Collapsible';
 import DataTable from '@/components/DataTable';
 import { Link as CustomLink, Link } from '@/navigation';
 import NextLink from 'next/link';
-import { CircleArrowRight, SquareArrowOutUpRight } from 'lucide-react';
+import { SquareArrowOutUpRight } from 'lucide-react';
 import ChangeAutheticationModeDialog from '@/components/dialog/ChangeAutheticationMode';
 import SigningDialog from '@/components/dialog/signing-dialog/SigningDialog';
 
@@ -310,12 +310,17 @@ const Page: React.FC = () => {
         <MainAccountSection t={t} />
       </div>
       <div className="sticky bottom-5 flex justify-center md:hidden">
-        <SigningDialog>
-          <Button className="rounded-full w-fit flex justify-center px-7 gap-3 font-semibold sign-button-shadow">
-            <TilakaIcon svgClassName="flex-none" />
-            <h5>{t('floatingCTA')}</h5>
-          </Button>
-        </SigningDialog>
+        <Link
+          href="/signing"
+          className={buttonVariants({
+            className:
+              '!rounded-full !w-fit flex justify-center !px-7 gap-3 font-semibold sign-button-shadow',
+            variant: 'default'
+          })}
+        >
+          <TilakaIcon svgClassName="flex-none" />
+          <h5>{t('floatingCTA')}</h5>
+        </Link>
       </div>
     </div>
   );
