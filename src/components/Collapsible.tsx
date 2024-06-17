@@ -26,15 +26,11 @@ const Collapsible = ({
 }: Props) => {
   const [isExpand, setIsExpand] = useState<boolean>(autoOpen);
 
-  const [measureRef, { height }] = useMeasure();
+  const [measureRef, { height: measuredHeight }] = useMeasure();
 
   const collpaseProps = useSpring({
-    from: {
-      height: 0
-    },
-    to: {
-      height: isExpand ? height + 10 : 0
-    }
+    height: isExpand ? measuredHeight : 0,
+    config: { tension: 250, friction: 30 }
   });
 
   return (
@@ -61,7 +57,7 @@ const Collapsible = ({
         className={cn('', {
           'overflow-hidden': !isExpand
         })}
-        style={collpaseProps}
+        style={{ ...collpaseProps, overflow: 'hidden' }}
       >
         <div ref={measureRef}>{children}</div>
       </animated.div>

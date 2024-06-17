@@ -166,10 +166,8 @@ const Step2: React.FC<Step2Props> = () => {
                       </Button>
                       <Button
                         onClick={() => {
-                          setOpenSignConfirmationDialog(false);
                           localStorage.removeItem('activeStep');
                           resetSignatureDraft();
-                          setOpen();
                           router.push('/dashboard?');
                         }}
                         size="lg"

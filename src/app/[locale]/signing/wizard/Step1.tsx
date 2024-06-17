@@ -180,7 +180,7 @@ const UploadDropZone = () => {
 
   return (
     <Collapsible
-      autoOpen={false}
+      autoOpen
       header={<h4 className="text-gray-2">{s('uploadDocument')}</h4>}
       className="md:w-6/12 w-11/12 border pb-2 rounded-2xl"
       headerClassName="justify-start gap-2 px-4 pt-4"
@@ -352,7 +352,7 @@ const RecipientCollapsible = ({
 
   return (
     <Collapsible
-      autoOpen={false}
+      autoOpen
       header={<h4 className="text-gray-2">{t('recipient')}</h4>}
       className="md:w-6/12 w-11/12 border pb-2 rounded-2xl"
       headerClassName="justify-start gap-2 px-4 pt-4"
@@ -535,7 +535,7 @@ const MessageCollapsible = () => {
 
   return (
     <Collapsible
-      autoOpen={false}
+      autoOpen
       header={<h4 className="text-gray-2">{t('message')}</h4>}
       className="md:w-6/12 w-11/12 border pb-2 rounded-2xl"
       headerClassName="justify-start gap-2 px-4 pt-4"

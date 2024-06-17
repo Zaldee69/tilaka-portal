@@ -68,7 +68,7 @@ const useSigningStore = create<SigningState>()(
             const existingSigner = state.signers.find(
               (signer) => signer.name === 'johndoe21'
             );
-            if (existingSigner) {
+            if (existingSigner && name === 'johndoe21') {
               // Do not add the new signer if "johndoe" exists
               return state;
             }
