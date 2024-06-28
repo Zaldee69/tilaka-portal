@@ -21,9 +21,9 @@ import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { DeleteIcon } from '../../../../../../public/icons/icons';
 import { ArrowDownToLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import RevokeCertDialog from './RevokeCertDialog';
 
 const certificates = [
   {
@@ -120,17 +120,7 @@ const Page = () => {
               <TableCell className="">
                 {cert.status === 'active' ? (
                   <div className="flex gap-2">
-                    <Button
-                      className="border-destructive text-destructive font-semibold group hover:bg-destructive"
-                      variant="outline"
-                      size="sm"
-                    >
-                      <DeleteIcon
-                        pathClassName="fill-destructive transition-colors group-hover:fill-white"
-                        svgClassName="mr-1"
-                      />
-                      {s('revoke')}
-                    </Button>
+                    <RevokeCertDialog />
                     <Button
                       variant="outline"
                       size="sm"
@@ -196,16 +186,7 @@ const Page = () => {
               </h5>
               {cert.status === 'active' ? (
                 <div className="flex gap-2">
-                  <Button
-                    className="border-destructive text-destructive font-semibold group hover:bg-destructive w-6/12"
-                    variant="outline"
-                  >
-                    <DeleteIcon
-                      pathClassName="fill-destructive transition-colors group-hover:fill-white"
-                      svgClassName="mr-1 flex-none"
-                    />
-                    {s('revoke')}
-                  </Button>
+                  <RevokeCertDialog />
                   <Button
                     variant="outline"
                     className="font-semibold group w-6/12"

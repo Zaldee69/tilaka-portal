@@ -22,13 +22,11 @@ import Image from 'next/image';
 import { useCountdown } from 'usehooks-ts';
 import { CameraFrontIcon, LoaderIcon } from '../../../public/icons/icons';
 import { Button } from '../ui/button';
-import { OpenDialogContext } from './signing-dialog/SigningDialog';
 import { toast } from 'sonner';
 import useSigningStore from '@/zustand/store';
 import { useRouter } from '@/navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { SidebarContext } from '../sidebar/SidebarContextProvider';
 
 interface Props {
   callbackCaptureProcessor: (base64Img: string | null | undefined) => void;
@@ -51,8 +49,6 @@ const OTPVerification = (props: Props) => {
 
   const d = useTranslations('SigningDialog');
 
-  const { setOpen } = useContext(OpenDialogContext);
-
   const router = useRouter();
 
   const [value, setValue] = React.useState('');
@@ -65,7 +61,6 @@ const OTPVerification = (props: Props) => {
     setIsLoading(true);
     setTimeout(() => {
       resetSignatureDraft();
-      setOpen();
       localStorage.removeItem('activeStep');
       router.push('/dashboard/documents');
       toast.success('Tandatangan Berhasil', {

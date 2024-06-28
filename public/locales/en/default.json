@@ -40,7 +40,7 @@
     "table": {
       "date": "Date",
       "document": "Document Name",
-      "initiator": "Initiator",
+      "initfiator": "Initiator",
       "signer": "Signer",
       "status": "Status",
       "from": "from",
@@ -159,7 +159,27 @@
       "fr": {
         "title": "Change MFA Confirmation",
         "subtitle": "Face towards the camera"
+      },
+      "revokeConfirmation": {
+        "title": "Revoke Certificate?",
+        "subtitle": "By revoking the certificate, your certificate will be removed from the Tilaka system. To perform digital signatures, you must undergo re-enroll process to issue a new certificate",
+        "revoke": "Revoke",
+        "cancel": "Cancel"
       }
+    },
+    "revokeCertificate": {
+      "title": "Revoke Certificate",
+      "subtitle": "Certificate Revocation Information",
+      "revokeReason": {
+        "title": "Revoke Reason",
+        "placeholder": "Choose Reason",
+        "reason1": "Laid Off",
+        "reason2": "Contract Ends",
+        "reason3": "Mutation",
+        "reason4": "Department Transfer",
+        "reason5": "Change Division"
+      },
+      "submit": "Next"
     },
     "certificateContent": {
       "title": "Linked Account",
@@ -311,5 +331,66 @@
     "sign": "Sign",
     "open": "Open",
     "signed": "Signed"
+  },
+  "certExpiredDialog": {
+    "content": "Your certificate is valid until 29 Feb 2024. Click the button below to create a new certificate",
+    "submit": "Create New Certificate"
+  },
+  "issuanceOnProcessDialog": {
+    "content": "Certificate issuance is in progress. Please check your email periodically for issuance",
+    "submit": "Close"
+  },
+  "certRevokedDialog": {
+    "content": "Your certificate is revoked/expired. Click the button below to create a new certificate",
+    "submit": "Create New Certificate"
+  },
+  "offlineDialog": {
+    "title": "You are offline",
+    "subtitle": "Recheck the connection used to access the Tilaka system",
+    "submit": "Close"
+  },
+  "cannotAccessCameraDialog": {
+    "title": "Cannot Access Camera",
+    "subtitle": "Tilaka requires access to your camera. Click the camera <icon></icon> in your browser to grant camera access.",
+    "submit": "Retry"
+  },
+  "deviceNotSupportedDialog": {
+    "title": "Device Not Supported",
+    "subtitle": "Camera not found or not allowed. Continue the liveness process by using the provided link on antoher device",
+    "link": "Liveness Link ",
+    "copy": "Copy"
+  },
+  "autoLoggedOutDialog": {
+    "title": "You Are Logged Out",
+    "subtitle": "Your login session has expired. Please enter your password to re-login",
+    "submit": "Close"
+  },
+  "changeSignatureDialog": {
+    "title": "Change Signature",
+    "subtitle": "For good quality signatures, upload images in PNG format with a transparent or white background",
+    "createSignature": "Create Signature",
+    "uploadImage": "Upload Image",
+    "nameInput": "Full Name",
+    "initialsInput": "Initials",
+    "fontType": "Font Type",
+    "signature": "Signature",
+    "initial": "Paraf",
+    "cancel": "Cancel",
+    "submit": "Save",
+    "drawSignature": "Draw Signature",
+    "drawInitials": "Draw Initial",
+    "uploadSignature": "Upload Signature",
+    "uploadInitial": "Upload Initial",
+    "chooseImage": "Choose Image"
+  },
+  "auditTrail": {
+    "title": "Document Name",
+    "name": "Name",
+    "owner": "Owner",
+    "signer": "Signer",
+    "action": "Action",
+    "sign": "Sign",
+    "time": "Time",
+    "open": "Open"
   }
 }

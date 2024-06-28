@@ -98,7 +98,7 @@ export const sidebarLinks = [
     title: 'sidebar.document',
     Icons: DocumentIcon,
     path: '/dashboard/documents',
-    subPath: '/detail'
+    subPath: ['/detail']
   },
   {
     title: 'sidebar.verifyPdf',
@@ -109,7 +109,7 @@ export const sidebarLinks = [
     title: 'sidebar.settings',
     Icons: SettingsIcon,
     path: '/dashboard/settings',
-    subPath: '/certificate'
+    subPath: ['/certificate', '/revoke-certificate', '/audit-trail']
   }
 ];
 

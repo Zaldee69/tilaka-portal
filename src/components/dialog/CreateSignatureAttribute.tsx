@@ -32,6 +32,7 @@ import { toast } from 'sonner';
 import { Button } from '../ui/button';
 import Dropzone from 'react-dropzone';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface SignatureFontType {
   type:
@@ -88,6 +89,8 @@ const CreateSignatureAttribute = (props: Props) => {
 
   const [fontTypeValue, setFontTypeValue] =
     React.useState<SignatureFontType['type']>('Adine-Kirnberg');
+
+  const t = useTranslations('changeSignatureDialog');
 
   const [images, setImages] = React.useState<{
     initial: string;
@@ -256,7 +259,7 @@ const CreateSignatureAttribute = (props: Props) => {
         )}
       >
         <AlertDialogHeader>
-          <AlertDialogTitle>Tentukan Atribut Tandatangan</AlertDialogTitle>
+          <AlertDialogTitle>{t('title')}</AlertDialogTitle>
         </AlertDialogHeader>
         <Tabs
           onValueChange={onTabsValueChange}
@@ -280,7 +283,7 @@ const CreateSignatureAttribute = (props: Props) => {
               <GestureIcon
                 pathClassName={`${tabsValue === 'create-signature' ? 'fill-primary' : 'fill-gray-2'}`}
               />{' '}
-              <p className="max-[460px]:hidden">Buat Tandatangan</p>
+              <p className="max-[460px]:hidden">{t('createSignature')}</p>
             </TabsTrigger>
             <TabsTrigger
               className="md:py-2.5 md:px-5 data-[state=active]:bg-[#DFEFFF] data-[state=active]:text-primary gap-2 text-gray-2 border border-transparent hover:border-input box-border"
@@ -289,14 +292,14 @@ const CreateSignatureAttribute = (props: Props) => {
               <ImageIcon
                 pathClassName={`${tabsValue === 'upload-image' ? 'fill-primary' : 'fill-gray-2'}`}
               />{' '}
-              <p className="max-[460px]:hidden">Upload Gambar</p>
+              <p className="max-[460px]:hidden">{t('uploadImage')}</p>
             </TabsTrigger>
           </TabsList>
           <TabsContent className="flex flex-col gap-10" value="text">
             <div className="flex flex-col md:flex-row w-full md:items-center justify-between gap-5 mt-10">
               <div className="grid w-full items-center gap-1.5">
                 <Label className="text-gray-2 mb-1" htmlFor="signature">
-                  Nama Lengkap
+                  {t('nameInput')}
                 </Label>
                 <Input
                   disabled
@@ -310,7 +313,7 @@ const CreateSignatureAttribute = (props: Props) => {
               </div>
               <div className="grid w-full items-center gap-1.5">
                 <Label className="text-gray-2 mb-1" htmlFor="initial">
-                  Inisial Paraf
+                  {t('initialsInput')}
                 </Label>
                 <Input
                   defaultValue="MJ"
@@ -324,7 +327,7 @@ const CreateSignatureAttribute = (props: Props) => {
               </div>
             </div>
             <div>
-              <Label className="text-gray-2">Jenis font</Label>
+              <Label className="text-gray-2">{t('fontType')}</Label>
               <ToggleGroup
                 onValueChange={onToggleChange}
                 defaultValue="Adine-Kirnberg"
@@ -407,7 +410,7 @@ const CreateSignatureAttribute = (props: Props) => {
                     <span ref={signatureRef}>{form.signature}</span>
                   </h3>
                   <p className="text-center text-sm mt-2 text-[#272B30]">
-                    Tanda Tangan
+                    {t('signature')}
                   </p>
                 </div>
                 <div className="bg-white rounded-xl p-3">
@@ -415,7 +418,7 @@ const CreateSignatureAttribute = (props: Props) => {
                     {form.initial}
                   </h3>
                   <p className="text-center text-sm mt-2 text-[#272B30]">
-                    Paraf
+                    {t('initial')}
                   </p>
                 </div>
               </div>
@@ -423,7 +426,7 @@ const CreateSignatureAttribute = (props: Props) => {
           </TabsContent>
           <TabsContent className="w-full" value="create-signature">
             <div className="p-3 bg-[#F8F9FF] rounded-lg mt-10 w-full">
-              <p className="font-semibold text-sm">Gambar Tanda Tangan</p>
+              <p className="font-semibold text-sm">{t('drawSignature')}</p>
               <div className="relative group w-full">
                 <SignaturePad
                   onEnd={() => onStopDraw('signature')}
@@ -449,7 +452,7 @@ const CreateSignatureAttribute = (props: Props) => {
                   </Button>
                 )}
               </div>
-              <p className="font-semibold text-sm mt-3">Gambar Paraf</p>
+              <p className="font-semibold text-sm mt-3">{t('drawInitials')}</p>
               <div className="relative w-full sm:w-6/12 group">
                 <SignaturePad
                   onEnd={() => onStopDraw('initial')}
@@ -478,14 +481,11 @@ const CreateSignatureAttribute = (props: Props) => {
             </div>
           </TabsContent>
           <TabsContent value="upload-image">
-            <p className="text-gray-2 text-sm mt-10">
-              Untuk kualitas tandatangan yang baik, unggah gamber dengan format
-              PNG dengan background transparan atau putih
-            </p>
+            <p className="text-gray-2 text-sm mt-10">{t('subtitle')}</p>
             <div className="p-3 bg-[#F8F9FF] rounded-lg mt-8">
               <Fragment>
                 <p className="font-semibold text-sm">
-                  Upload Tandatangan (Max. file size 2MB)
+                  {t('uploadSignature')} (Max. file size 2MB)
                 </p>
                 {images.signatures.length > 1 ? (
                   <div className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px] relative">
@@ -518,7 +518,7 @@ const CreateSignatureAttribute = (props: Props) => {
                           className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px]"
                         >
                           <p className="text-sm font-semibold text-primary">
-                            Pilih Gambar
+                            {t('chooseImage')}
                           </p>
                         </section>
                         <input
@@ -534,7 +534,7 @@ const CreateSignatureAttribute = (props: Props) => {
               </Fragment>
               <Fragment>
                 <p className="font-semibold text-sm mt-5">
-                  Upload Paraf (Max. file size 2MB)
+                  {t('uploadInitial')} (Max. file size 2MB)
                 </p>
                 {images.initial.length > 1 ? (
                   <div className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px] w-full sm:w-6/12 relative">
@@ -567,7 +567,7 @@ const CreateSignatureAttribute = (props: Props) => {
                           className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px] w-full sm:w-6/12"
                         >
                           <p className="text-sm font-semibold text-primary">
-                            Pilih Gambar
+                            {t('chooseImage')}
                           </p>
                         </section>
                         <input
@@ -591,7 +591,7 @@ const CreateSignatureAttribute = (props: Props) => {
             disabled={isLoading}
             className="custom-shadow w-full md:w-6/12"
           >
-            Cancel
+            {t('cancel')}
           </AlertDialogCancel>
           <Button
             disabled={isLoading || IS_DISABLED}
@@ -610,7 +610,7 @@ const CreateSignatureAttribute = (props: Props) => {
             }}
             className="sign-button-shadow w-full md:w-6/12"
           >
-            Continue
+            {t('submit')}
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

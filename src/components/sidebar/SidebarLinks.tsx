@@ -25,19 +25,23 @@ const SidebarLinks: React.FC<{
   const checkPathname = (href: string) => {
     const lastPathSegment = path?.split('/').pop();
     const hrefLastSegment = href?.split('/').pop();
+
+    // Check if the last path segment is part of the href's last segment
     const isSubPath =
       lastPathSegment &&
       hrefLastSegment &&
       lastPathSegment.includes(hrefLastSegment);
+
+    // Check if the href matches the path or any of the subPaths
     const isMatchingSubPath = sidebarLinks.find(
       (link) =>
         link.path === href &&
         link.subPath &&
-        `/${lastPathSegment}` === link.subPath
+        link.subPath.some((sub) => `/${lastPathSegment}` === sub)
     );
+
     return !isSubPath && !isMatchingSubPath;
   };
-
   return (
     <div className="flex flex-col gap-3 items-start">
       {sidebarLinks.map((item) => (

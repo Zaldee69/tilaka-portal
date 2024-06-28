@@ -62,7 +62,7 @@ const DialogContent = React.forwardRef<
         {...props}
       >
         {children}
-        {showCloseIcon ? null : (
+        {showCloseIcon ? (
           <DialogPrimitive.Close
             onClick={() => onCloseCallback()}
             className={cn(
@@ -73,7 +73,7 @@ const DialogContent = React.forwardRef<
             <X className="h-6 w-6" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
-        )}
+        ) : null}
       </DialogPrimitive.Content>
     </DialogPortal>
   )
