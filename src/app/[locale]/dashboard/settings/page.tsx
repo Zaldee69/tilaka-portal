@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import { CertIcon, EditIcon } from '../../../../../public/icons/icons';
@@ -7,6 +7,7 @@ import { Check, Dot } from 'lucide-react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ChangePasswordDialog from '@/components/dialog/ChangePassword';
 import ChangeAutheticationModeDialog from '@/components/dialog/ChangeAutheticationMode';
+import ChangeSignatureAttribute from '@/components/dialog/ChangeSignatureAttribute';
 
 interface UserProfileProps {
   name: string;
@@ -72,13 +73,18 @@ const SignatureOptions: React.FC<SignatureOptionsProps> = ({ t, s }) => (
   <div className="bg-[#F8F9FF] rounded-xl px-3 py-4">
     <div className="flex gap-2 items-center justify-between">
       <h5>{t('signing')}</h5>
-      <Button
-        variant="ghost"
-        className="items-center gap-2 font-semibold text-primary p-0 h-0 hidden xl:flex"
-      >
-        <EditIcon fill="#0D5FB3" svgClassName="flex-none" />
-        {s('certificateContent.changeSignature')}
-      </Button>
+      <ChangeSignatureAttribute>
+        <span
+          className={buttonVariants({
+            className:
+              'items-center gap-2 font-semibold text-primary p-0 h-0 !px-0 hidden  xl:flex',
+            variant: 'ghost'
+          })}
+        >
+          <EditIcon fill="#0D5FB3" svgClassName="flex-none" />
+          {s('certificateContent.changeSignature')}
+        </span>
+      </ChangeSignatureAttribute>
     </div>
     <div className="grid grid-cols-2 gap-3 mt-3">
       <div className="bg-white rounded-xl p-3">
@@ -122,14 +128,18 @@ const SignatureOptions: React.FC<SignatureOptionsProps> = ({ t, s }) => (
         </p>
       </div>
     </div>
-    <Button
-      size="lg"
-      className="mt-3 w-full xl:hidden custom-shadow text-primary hover:text-primary bg-white font-semibold gap-2 py-5 lg:hover:scale-105 transition-transform"
-      variant="ghost"
-    >
-      <EditIcon fill="#0D5FB3" />
-      {t('changeSignature')}
-    </Button>
+    <ChangeSignatureAttribute triggerClassName="w-full">
+      <span
+        className={buttonVariants({
+          className:
+            'mt-3 w-full xl:hidden custom-shadow text-primary hover:text-primary bg-white font-semibold gap-2 py-5 lg:hover:scale-105 transition-transform',
+          variant: 'ghost'
+        })}
+      >
+        <EditIcon fill="#0D5FB3" />
+        {t('changeSignature')}
+      </span>
+    </ChangeSignatureAttribute>
   </div>
 );
 

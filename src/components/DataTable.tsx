@@ -158,7 +158,7 @@ const DataTable = ({
     <div>
       <RejectConfirmationModal isOpen={isOpen} setIsOpen={setIsOpen} d={d} />
 
-      <div className="md:hidden ">
+      <div className="md:hidden">
         {data.length
           ? data.map((row) => (
               <div

@@ -19,7 +19,6 @@ import SidebarLinks from './SidebarLinks';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Link as CustomLink } from '@/navigation';
-import SigningModal from '../dialog/signing-dialog/SigningDialog';
 
 export function MobileSidebar() {
   const [open, setOpen] = React.useState(false);

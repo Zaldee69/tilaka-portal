@@ -29,7 +29,7 @@ const Navbar = () => {
 
   const router = useRouter();
 
-  const { signers } = useSigningStore();
+  const { signers, resetSignatureDraft } = useSigningStore();
 
   const loggedSigner = signers.filter(
     (signer) => signer.name === 'johndoe21'
@@ -153,7 +153,11 @@ const Navbar = () => {
         <Button
           className="!w-fit p-0 h-0 top-6 md:top-8 absolute right-5"
           variant="ghost"
-          onClick={() => router.back()}
+          onClick={() => {
+            localStorage.removeItem('activeStep');
+            resetSignatureDraft();
+            router.back();
+          }}
         >
           <X />
         </Button>

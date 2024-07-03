@@ -23,7 +23,7 @@ import { Link as CustomLink, Link } from '@/navigation';
 import NextLink from 'next/link';
 import { SquareArrowOutUpRight } from 'lucide-react';
 import ChangeAutheticationModeDialog from '@/components/dialog/ChangeAutheticationMode';
-import SigningDialog from '@/components/dialog/signing-dialog/SigningDialog';
+import ChangeSignatureAttribute from '@/components/dialog/ChangeSignatureAttribute';
 
 const ImportantTodayTable = ({ t }: { t: (key: string) => string }) => (
   <div className="bg-white custom-shadow rounded-2xl mt-10 p-3 border border-gray-6">
@@ -168,14 +168,18 @@ const MainAccountSection = ({ t }: { t: (key: string) => string }) => (
           </p>
         </div>
       </div>
-      <Button
-        size="lg"
-        className="mt-3 w-full custom-shadow text-[#272B30] hover:text-[#272B30] bg-white font-semibold gap-2 py-5 lg:hover:scale-105 transition-transform"
-        variant="ghost"
-      >
-        <EditIcon />
-        {t('changeSignature')}
-      </Button>
+      <ChangeSignatureAttribute subtitle="apa" title="apa">
+        <span
+          className={buttonVariants({
+            variant: 'ghost',
+            className:
+              'mt-3 w-full custom-shadow text-[#272B30] hover:!text-[#272B30] bg-white font-semibold gap-2 py-5 lg:hover:scale-105 transition-transform'
+          })}
+        >
+          <EditIcon />
+          {t('changeSignature')}
+        </span>
+      </ChangeSignatureAttribute>
     </div>
     <div className="px-3">
       <CustomLink

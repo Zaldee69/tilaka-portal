@@ -22,7 +22,6 @@ import Image from 'next/image';
 import { useCountdown } from 'usehooks-ts';
 import { CameraFrontIcon, LoaderIcon } from '../../../public/icons/icons';
 import { Button } from '../ui/button';
-import { OpenDialogContext } from './signing-dialog/SigningDialog';
 import { toast } from 'sonner';
 import useSigningStore from '@/zustand/store';
 import { useRouter } from '@/navigation';
@@ -51,8 +50,6 @@ const OTPVerification = (props: Props) => {
 
   const d = useTranslations('SigningDialog');
 
-  const { setOpen } = useContext(OpenDialogContext);
-
   const router = useRouter();
 
   const [value, setValue] = React.useState('');
@@ -61,11 +58,12 @@ const OTPVerification = (props: Props) => {
 
   const { resetSignatureDraft } = useSigningStore();
 
+  const { state, stateSetter } = useContext(SidebarContext);
+
   const processVerification = () => {
     setIsLoading(true);
     setTimeout(() => {
       resetSignatureDraft();
-      setOpen();
       localStorage.removeItem('activeStep');
       router.push('/dashboard/documents');
       toast.success('Tandatangan Berhasil', {

@@ -159,7 +159,27 @@
         },
         "confirm": "Simpan",
         "cancel": "Batal"
+      },
+      "revokeConfirmation": {
+        "title": "Hapus Sertifikat?",
+        "subtitle": "Dengan melakukan pencabutan sertifikat, Maka \n sertifikat anda akan dicabut dari sistem Tilaka. \n Anda harus menerbitkan sertifikat baru jika ingin melakukan tanda tangan digital",
+        "revoke": "Cabut",
+        "cancel": "Batal"
       }
+    },
+    "revokeCertificate": {
+      "title": "Cabut Sertifikat",
+      "subtitle": "Informasi Pencabutan Sertifikat",
+      "revokeReason": {
+        "title": "Alasan Pencabutan",
+        "placeholder": "Pilih Alasan",
+        "reason1": "PHK",
+        "reason2": "Habis Kontrak",
+        "reason3": "Mutasi",
+        "reason4": "Pemindahan Departemen",
+        "reason5": "Pindah Divisi"
+      },
+      "submit": "Lanjut"
     },
     "certificateContent": {
       "title": "Akun Tertaut",
@@ -311,5 +331,66 @@
     "sign": "Menandatangani",
     "open": "Membuka",
     "signed": "Ditandatangani"
+  },
+  "certExpiredDialog": {
+    "content": "Masa berlaku sertifikat Anda akan berakhir pada tanggal 28 Januari 2024. Silahkan klik tombol dibawah untuk membuat sertifikat baru",
+    "submit": "Buat Sertifikat Baru"
+  },
+  "issuanceOnProcessDialog": {
+    "content": "Penerbitan sertifikat Anda sedang dalam proses. Mohon periksa email secara berkala untuk informasi penerbitan sertifikat",
+    "submit": "Tutup",
+    "frTitle": "Konfirmasi Data Sertifikat Baru"
+  },
+  "certRevokedDialog": {
+    "content": "Sertifikat Anda telah direvoke / expired. \n Silahkan klik tombol di bawah untuk membuat \n sertifikat baru.",
+    "submit": "Buat Sertifikat Baru"
+  },
+  "offlineDialog": {
+    "title": "Anda sedang offline",
+    "subtitle": "Periksa kembali koneksi yang Anda gunakan untuk menggunakan layanan Tilaka",
+    "submit": "Tutup"
+  },
+  "cannotAccessCameraDialog": {
+    "title": "Tidak dapat mengakses kamera",
+    "subtitle": "Tilaka memerlukan akses ke kamera Anda. \n klik ikon kamera <icon></icon> pada browser Anda \n untuk memberikan akses kamera",
+    "submit": "Coba Lagi"
+  },
+  "deviceNotSupportedDialog": {
+    "title": "Perangkat Tidak Mendukung",
+    "subtitle": "Kamera tidak terdeteksi atau tidak diizinkan. Lanjutkan proses Liveness dengan mengakses link berikut pada perangkat lain.",
+    "link": "Link Liveness",
+    "copy": "Salin"
+  },
+  "autoLoggedOutDialog": {
+    "title": "Anda Keluar Otomatis",
+    "subtitle": "Batas waktu login Anda telah habis. Mohon lakukan login ulang dengan mengisi Tilaka Name dan \n Kata Sandi",
+    "submit": "Tutup"
+  },
+  "changeSignatureDialog": {
+    "title": "Ubah Tanda Tangan",
+    "subtitle": "Untuk kualitas tandatangan yang baik, unggah gambar dengan format PNG dengan background transparan atau putih",
+    "createSignature": "Buat Tanda Tangan",
+    "uploadImage": "Upload Gambar",
+    "nameInput": "Nama Lengkap",
+    "initialsInput": "Inisial Paraf",
+    "fontType": "Jenis Font",
+    "signature": "Tanda Tangan",
+    "initial": "Initial",
+    "cancel": "Batal",
+    "submit": "Simpan",
+    "drawSignature": "Gambar Tanda Tangan",
+    "drawInitials": "Gambar Paraf",
+    "uploadSignature": "Upload Tanda Tangan",
+    "uploadInitial": "Upload Paraf",
+    "chooseImage": "Pilih Gambar"
+  },
+  "auditTrail": {
+    "title": "Nama Dokumen",
+    "name": "Nama",
+    "owner": "Pemilik",
+    "signer": "Penandatangan",
+    "action": "Aksi",
+    "sign": "Menandatangani",
+    "time": "Waktu"
   }
 }

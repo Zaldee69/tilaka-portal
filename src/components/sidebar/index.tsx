@@ -15,7 +15,6 @@ import { useTranslations } from 'next-intl';
 import { useSpring, animated } from '@react-spring/web';
 import { Link } from '@/navigation';
 import { ExternalLink } from 'lucide-react';
-import SigningModal from '../dialog/signing-dialog/SigningDialog';
 
 const Sidebar = () => {
   const { state } = useContext(SidebarContext);
