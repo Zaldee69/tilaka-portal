@@ -40,7 +40,7 @@
     "table": {
       "date": "Date",
       "document": "Document Name",
-      "initfiator": "Initiator",
+      "initiator": "Initiator",
       "signer": "Signer",
       "status": "Status",
       "from": "from",
