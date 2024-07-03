@@ -23,7 +23,7 @@ import { Link } from '@/navigation';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const Page = () => {
@@ -59,7 +59,7 @@ const Page = () => {
             <div className="md:w-10/12">
               <Label>{s('serialNumber')}</Label>
               <Input
-                className="w-full h-11 bg-[#EEEEEE]"
+                className="w-full h-10 bg-[#EEEEEE]"
                 defaultValue="98389u34834y21220394875y8y4"
                 disabled
               />
@@ -74,7 +74,7 @@ const Page = () => {
           <div>
             <Label>{r('revokeReason.title')}</Label>
             <Select onValueChange={(value) => setReason(value)}>
-              <SelectTrigger className=" w-full h-11 rounded-md">
+              <SelectTrigger className=" w-full h-10 rounded-md">
                 <SelectValue placeholder={r('revokeReason.placeholder')} />
               </SelectTrigger>
               <SelectContent className="w-full">
@@ -101,14 +101,13 @@ const Page = () => {
           <Link
             href="https://dev-api.tilaka.id/personal-webview/kyc/revoke?revoke_id=rev90ec960c-e6b3-4643-bad5-1f136fc4d03d"
             target="_blank"
-            className={buttonVariants({
-              variant: 'default',
-              className: cn('font-semibold !px-10 w-fit', {
-                'pointer-events-none opacity-85': reason.length < 1
-              })
-            })}
           >
-            {r('submit')}
+            <Button
+              disabled={reason.length < 1}
+              className="font-semibold !px-10 w-fit"
+            >
+              {r('submit')}
+            </Button>
           </Link>
         </div>
       </div>

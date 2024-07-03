@@ -47,6 +47,7 @@ const TnCDialog = () => {
 
   const handleScroll = () => {
     const { scrollTop, scrollHeight, clientHeight } = contentRef.current!;
+    console.log({ scrollTop, scrollHeight, clientHeight });
     if (scrollTop + clientHeight >= scrollHeight) {
       setIsScrolledToBottom(true);
     }
@@ -73,7 +74,7 @@ const TnCDialog = () => {
             <div
               ref={contentRef}
               onScroll={handleScroll}
-              className="md:max-h-[370px] max-h-[300px] overflow-y-scroll text-sm px-2 pb-3"
+              className="md:max-h-[400px] max-h-[300px] overflow-y-scroll text-sm px-2 pb-3"
             >
               <div>
                 <p className="mt-3 mb-0 text-lg leading-6 font-bold">
