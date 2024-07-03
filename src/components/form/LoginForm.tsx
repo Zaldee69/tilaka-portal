@@ -11,13 +11,14 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '../ui/input';
-import { ChevronRight, EyeIcon, EyeOffIcon, X } from 'lucide-react';
+import { ChevronRight, EyeIcon, EyeOffIcon, Loader2, X } from 'lucide-react';
 import { Button, buttonVariants } from '../ui/button';
 import { MailIcon, UserIcon } from '../../../public/icons/icons';
 import { useTranslations } from 'next-intl';
 import useSchema, { tilakaNameRegex } from '@/hooks/useSchema';
 import { z } from 'zod';
-import { Link } from '@/navigation';
+import { Link, useRouter } from '@/navigation';
+import { toast } from 'sonner';
 
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -32,8 +33,11 @@ const LoginForm = () => {
   const t = useTranslations('Login');
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const watchTilakaName = form.watch('tilakaName');
+
+  const router = useRouter();
 
   const { height, marginTop } = useSpring<{
     height: number;
@@ -57,7 +61,23 @@ const LoginForm = () => {
     }
   });
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    setIsLoading(true);
+    if (
+      form.getValues('tilakaName') === 'johndoe1' &&
+      form.getValues('password') === 'Password123#'
+    ) {
+      setTimeout(() => {
+        toast.success('Login Berhasil');
+        router.push('/dashboard');
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+        toast.error('Kata Sandi atau Tilaka Name salah');
+      }, 3000);
+    }
+  };
 
   const toggleShowPassword = () => {
     setShowPassword((prev) => !prev);
@@ -196,8 +216,8 @@ const LoginForm = () => {
   function renderButtons() {
     return (
       <>
-        <Button type="submit" className="w-full mb-4 mt-6">
-          {t('form.submit')}
+        <Button disabled={isLoading} type="submit" className="w-full mb-4 mt-6">
+          {isLoading ? <Loader2 className="animate-spin" /> : t('form.submit')}
         </Button>
         {renderClaimIdentityButton()}
       </>
@@ -207,6 +227,7 @@ const LoginForm = () => {
   function renderClaimIdentityButton() {
     return (
       <Button
+        disabled={isLoading}
         type="button"
         onClick={toggleShowPassword}
         variant="outline"

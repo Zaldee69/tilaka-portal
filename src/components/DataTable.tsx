@@ -218,7 +218,9 @@ const DataTable = ({
                             )}
                           </>
                         )}
-                        <DropdownMenuItem>Audit Trail</DropdownMenuItem>
+                        <Link href="/dashboard/documents/audit-trail">
+                          <DropdownMenuItem>Audit Trail</DropdownMenuItem>
+                        </Link>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   )}
@@ -420,7 +422,14 @@ const DataTable = ({
                               )}
                             </>
                           )}
-                          <DropdownMenuItem>Audit Trail</DropdownMenuItem>
+                          <Link
+                            className="cursor-pointer"
+                            href="/dashboard/documents/audit-trail"
+                          >
+                            <DropdownMenuItem className="!cursor-pointer">
+                              Audit Trail
+                            </DropdownMenuItem>
+                          </Link>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     )}
