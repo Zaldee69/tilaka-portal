@@ -73,7 +73,7 @@ const TnCDialog = () => {
             <div
               ref={contentRef}
               onScroll={handleScroll}
-              className="md:max-h-[500px] max-h-[300px] overflow-y-scroll text-sm px-2 pb-3"
+              className="md:max-h-[370px] max-h-[300px] overflow-y-scroll text-sm px-2 pb-3"
             >
               <div>
                 <p className="mt-3 mb-0 text-lg leading-6 font-bold">
@@ -637,20 +637,20 @@ const TnCDialog = () => {
           setOpenCertInformation(true);
         }}
         subtitle={t('subtitle')}
-        title="Konfirmasi Data Sertifikat Baru"
+        title={i('frTitle')}
       />
 
       <AlertDialog
         open={openCertInformation}
         onOpenChange={setOpenCertInformation}
       >
-        <AlertDialogContent className="max-w-sm">
+        <AlertDialogContent className="max-w-sm py-4">
           <AlertDialogHeader>
-            <AlertDialogDescription className="text-black">
+            <AlertDialogDescription className="text-black text-center py-4">
               {i('content')}
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="!items-center mt-3 !justify-center">
+          <AlertDialogFooter className="!items-center mt-3 !justify-center pb-4">
             <AlertDialogCancel className="bg-primary text-white !px-10 !w-fit">
               {i('submit')}
             </AlertDialogCancel>

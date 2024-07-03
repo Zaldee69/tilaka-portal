@@ -37,12 +37,14 @@ const AutoLoggedOutDialog = () => {
             />
           </div>
 
-          <AlertDialogDescription className="text-center">
+          <AlertDialogDescription className="text-center whitespace-pre-line">
             {t('subtitle')}
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter className="!items-center !justify-center">
-          <AlertDialogCancel>{t('submit')}</AlertDialogCancel>
+        <AlertDialogFooter className="!items-center !justify-center my-3">
+          <AlertDialogCancel className="bg-primary text-white !px-10">
+            {t('submit')}
+          </AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

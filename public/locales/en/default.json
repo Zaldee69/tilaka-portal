@@ -162,7 +162,7 @@
       },
       "revokeConfirmation": {
         "title": "Revoke Certificate?",
-        "subtitle": "By revoking the certificate, your certificate will be removed from the Tilaka system. To perform digital signatures, you must undergo re-enroll process to issue a new certificate",
+        "subtitle": "By revoking the certificate, your certificate will be \n removed from the Tilaka system. To perform digital \n signatures, you must undergo re-enroll process to \n issue a new certificate",
         "revoke": "Revoke",
         "cancel": "Cancel"
       }
@@ -179,7 +179,7 @@
         "reason4": "Department Transfer",
         "reason5": "Change Division"
       },
-      "submit": "Next"
+      "submit": "Continue"
     },
     "certificateContent": {
       "title": "Linked Account",
@@ -338,10 +338,11 @@
   },
   "issuanceOnProcessDialog": {
     "content": "Certificate issuance is in progress. Please check your email periodically for issuance",
-    "submit": "Close"
+    "submit": "Close",
+    "frTitle": "New Certificate Data Confirmation"
   },
   "certRevokedDialog": {
-    "content": "Your certificate is revoked/expired. Click the button below to create a new certificate",
+    "content": "Your certificate is revoked/expired. \n Click the button below to create \n a new certificate",
     "submit": "Create New Certificate"
   },
   "offlineDialog": {
@@ -351,7 +352,7 @@
   },
   "cannotAccessCameraDialog": {
     "title": "Cannot Access Camera",
-    "subtitle": "Tilaka requires access to your camera. Click the camera <icon></icon> in your browser to grant camera access.",
+    "subtitle": "Tilaka requires access to your camera. \n Click the camera <icon></icon> in your browser \n to grant camera access.",
     "submit": "Retry"
   },
   "deviceNotSupportedDialog": {
@@ -362,7 +363,7 @@
   },
   "autoLoggedOutDialog": {
     "title": "You Are Logged Out",
-    "subtitle": "Your login session has expired. Please enter your password to re-login",
+    "subtitle": "Your login session has expired. Please enter your Tilaka Name and Password to re-login",
     "submit": "Close"
   },
   "changeSignatureDialog": {

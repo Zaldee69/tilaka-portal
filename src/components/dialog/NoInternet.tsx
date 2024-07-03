@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import {
   AlertDialog,
@@ -27,10 +28,10 @@ const NoInternetDialog = () => {
 
   return (
     <AlertDialog open={show} onOpenChange={setShow}>
-      <AlertDialogContent className="max-w-sm">
-        <AlertDialogHeader>
-          <AlertDialogTitle className="flex gap-3">
-            <Image
+      <AlertDialogContent className="max-w-sm !gap-10">
+        <AlertDialogHeader className="gap-3">
+          <AlertDialogTitle className="flex justify-center items-center gap-3">
+            <img
               src="/images/danger.jpg"
               alt="danger"
               className="w-[22px] h-[20px]"
@@ -39,9 +40,11 @@ const NoInternetDialog = () => {
             />{' '}
             {t('title')}
           </AlertDialogTitle>
-          <AlertDialogDescription>{t('subtitle')}</AlertDialogDescription>
+          <AlertDialogDescription className="text-center">
+            {t('subtitle')}
+          </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
+        <AlertDialogFooter className="!justify-center">
           <AlertDialogAction className="px-10 w-fit">
             {t('submit')}
           </AlertDialogAction>

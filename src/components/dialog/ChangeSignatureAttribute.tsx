@@ -1,3 +1,4 @@
+'use client';
 import React, { Fragment, useCallback, useRef, useState } from 'react';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -77,15 +78,14 @@ const scriptin = localFont({
 interface Props {
   title?: string;
   subtitle?: string;
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  continueCallback: (image: string) => void;
-  showtrigger: boolean;
+  //   continueCallback: (image: string) => void;
+  triggerClassName?: string;
   children?: React.ReactNode;
 }
 
-const CreateSignatureAttribute = (props: Props) => {
+const ChangeSignatureAttribute = (props: Props) => {
   const [tabsValue, setTabsValue] = React.useState<string>('text');
+  const [open, setOpen] = useState(false);
 
   const [fontTypeValue, setFontTypeValue] =
     React.useState<SignatureFontType['type']>('Adine-Kirnberg');
@@ -140,8 +140,8 @@ const CreateSignatureAttribute = (props: Props) => {
       setIsLoading(false);
       e.style.backgroundColor = 'rgba(0, 0, 0, 0)';
       const image = e.toDataURL('image/png');
-      props.continueCallback(image);
-      props.setOpen(false);
+      //   props.continueCallback(image);
+      setOpen(false);
     });
   };
 
@@ -244,12 +244,11 @@ const CreateSignatureAttribute = (props: Props) => {
     (tabsValue === 'upload-image' && images.signatures.length < 1);
 
   return (
-    <AlertDialog open={props.open} onOpenChange={props.setOpen}>
-      {props.showtrigger ? (
-        <AlertDialogTrigger>Open</AlertDialogTrigger>
-      ) : (
-        props.children
-      )}
+    <AlertDialog>
+      <AlertDialogTrigger className={props.triggerClassName}>
+        {props.children}
+      </AlertDialogTrigger>
+
       <AlertDialogContent
         className={cn(
           'max-w-2xl w-full overflow-y-scroll h-screen md:overflow-hidden md:!h-[672px]',
@@ -601,11 +600,11 @@ const CreateSignatureAttribute = (props: Props) => {
               } else if (tabsValue === 'create-signature') {
                 const image =
                   signatureCanvasRef.current?.toDataURL() as unknown;
-                props.continueCallback(image as string);
-                props.setOpen(false);
+                // props.continueCallback(image as string);
+                setOpen(false);
               } else {
-                props.continueCallback(images.signatures);
-                props.setOpen(false);
+                // props.continueCallback(images.signatures);
+                setOpen(false);
               }
             }}
             className="sign-button-shadow w-full md:w-6/12"
@@ -618,4 +617,4 @@ const CreateSignatureAttribute = (props: Props) => {
   );
 };
 
-export default CreateSignatureAttribute;
+export default ChangeSignatureAttribute;

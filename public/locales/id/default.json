@@ -162,7 +162,7 @@
       },
       "revokeConfirmation": {
         "title": "Hapus Sertifikat?",
-        "subtitle": "Dengan melakukan pencabutan sertifikat, maka sertifikat anda akan dicabut dari sistem Tilaka. Anda harus menerbitkan sertifikat baru jika ingin melakukan tanda tangan digital",
+        "subtitle": "Dengan melakukan pencabutan sertifikat, Maka \n sertifikat anda akan dicabut dari sistem Tilaka. \n Anda harus menerbitkan sertifikat baru jika ingin melakukan tanda tangan digital",
         "revoke": "Cabut",
         "cancel": "Batal"
       }
@@ -179,7 +179,7 @@
         "reason4": "Pemindahan Departemen",
         "reason5": "Pindah Divisi"
       },
-      "submit": "Next"
+      "submit": "Lanjut"
     },
     "certificateContent": {
       "title": "Akun Tertaut",
@@ -338,10 +338,11 @@
   },
   "issuanceOnProcessDialog": {
     "content": "Penerbitan sertifikat Anda sedang dalam proses. Mohon periksa email secara berkala untuk informasi penerbitan sertifikat",
-    "submit": "Tutup"
+    "submit": "Tutup",
+    "frTitle": "Konfirmasi Data Sertifikat Baru"
   },
   "certRevokedDialog": {
-    "content": "Sertifikat Anda telah direvoke / expired. Silahkan klik tombol di bawah untuk membuat sertifikat baru.",
+    "content": "Sertifikat Anda telah direvoke / expired. \n Silahkan klik tombol di bawah untuk membuat \n sertifikat baru.",
     "submit": "Buat Sertifikat Baru"
   },
   "offlineDialog": {
@@ -351,7 +352,7 @@
   },
   "cannotAccessCameraDialog": {
     "title": "Tidak dapat mengakses kamera",
-    "subtitle": "Tilaka memerlukan akses ke kamera Anda, klik ikon kamera <icon></icon> pada browser Anda untuk memberikan akses kamera",
+    "subtitle": "Tilaka memerlukan akses ke kamera Anda. \n klik ikon kamera <icon></icon> pada browser Anda \n untuk memberikan akses kamera",
     "submit": "Coba Lagi"
   },
   "deviceNotSupportedDialog": {
@@ -362,7 +363,7 @@
   },
   "autoLoggedOutDialog": {
     "title": "Anda Keluar Otomatis",
-    "subtitle": "Batas waktu login Anda telah habis. Mohon lakukan login ulang dengan mengisi Kata Sandi",
+    "subtitle": "Batas waktu login Anda telah habis. Mohon lakukan login ulang dengan mengisi Tilaka Name dan \n Kata Sandi",
     "submit": "Tutup"
   },
   "changeSignatureDialog": {

@@ -45,7 +45,7 @@ const Page = () => {
       </Breadcrumb>
       <div className="mt-10 px-5 md:px-0">
         <h5 className="font-normal">
-          {a('title')} <span className="font-bold">PKS Tilaka x PT.ABC</span>
+          {a('title')}: <span className="font-bold">PKS Tilaka x PT.ABC</span>
         </h5>
         <div className=" hidden md:block">
           <Table className="mt-5">

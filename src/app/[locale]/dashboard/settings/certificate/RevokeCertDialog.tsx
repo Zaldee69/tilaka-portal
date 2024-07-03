@@ -33,7 +33,7 @@ const RevokeCertDialog = () => {
             pathClassName="fill-destructive transition-colors group-hover:fill-white"
             svgClassName="mr-1 flex-none"
           />
-          Cabut
+          {t('revoke')}
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="max-w-md">
@@ -43,7 +43,9 @@ const RevokeCertDialog = () => {
           </div>
           <AlertDialogDescription className="text-center">
             <h4 className="mb-1 mt-4 text-black">{t('title')}</h4>
-            <p className="mb-3 text-gray-2">{t('subtitle')}</p>
+            <p className="my-5 text-gray-2 whitespace-pre-line">
+              {t('subtitle')}
+            </p>
           </AlertDialogDescription>
           <AlertDialogFooter className="gap-3 justify-center">
             <Button
