@@ -54,7 +54,7 @@ const Page = () => {
 
       <div className="max-w-3xl">
         <h4>{r('subtitle')}</h4>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-5 md:gap-7 mt-5">
           <div className="col-span-2 flex flex-col md:flex-row md:gap-0 gap-5  justify-between">
             <div className="md:w-10/12">
               <Label>{s('serialNumber')}</Label>
