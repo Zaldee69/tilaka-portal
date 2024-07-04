@@ -166,8 +166,10 @@ const ChangeSignatureAttribute = (props: Props) => {
   };
 
   const onDropSignature = useCallback((acceptedFile: File[]) => {
-    const typeNotAllowed = acceptedFile[0].type !== 'image/png';
-    const fileSizeTooBig = acceptedFile[0].size / 1024 / 1024 > 2;
+    const typeNotAllowed = !['image/png', 'image/jpeg', 'image/jpg'].includes(
+      acceptedFile[0].type
+    );
+    const fileSizeTooBig = acceptedFile[0].size / 1024 / 1024 > 10;
     if (typeNotAllowed || fileSizeTooBig) {
       return toast.error('Failed to upload', {
         description: typeNotAllowed
@@ -185,8 +187,10 @@ const ChangeSignatureAttribute = (props: Props) => {
   }, []);
 
   const onDropInitial = useCallback((acceptedFile: File[]) => {
-    const typeNotAllowed = acceptedFile[0].type !== 'image/png';
-    const fileSizeTooBig = acceptedFile[0].size / 1024 / 1024 > 2;
+    const typeNotAllowed = !['image/png', 'image/jpeg', 'image/jpg'].includes(
+      acceptedFile[0].type
+    );
+    const fileSizeTooBig = acceptedFile[0].size / 1024 / 1024 > 10;
     if (typeNotAllowed || fileSizeTooBig) {
       return toast.error('Failed to upload', {
         description: typeNotAllowed
@@ -241,7 +245,9 @@ const ChangeSignatureAttribute = (props: Props) => {
   const IS_DISABLED =
     (tabsValue === 'create-signature' &&
       signatureCanvasRef.current?.isEmpty()) ||
-    (tabsValue === 'upload-image' && images.signatures.length < 1);
+    initialCanvasRef.current?.isEmpty() ||
+    (tabsValue === 'upload-image' &&
+      (images.signatures.length < 1 || images.initial.length < 1));
 
   return (
     <AlertDialog>
@@ -484,7 +490,7 @@ const ChangeSignatureAttribute = (props: Props) => {
             <div className="p-3 bg-[#F8F9FF] rounded-lg mt-8">
               <Fragment>
                 <p className="font-semibold text-sm">
-                  {t('uploadSignature')} (Max. file size 2MB)
+                  {t('uploadSignature')} (Max. file size 10MB)
                 </p>
                 {images.signatures.length > 1 ? (
                   <div className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px] relative">
@@ -533,7 +539,7 @@ const ChangeSignatureAttribute = (props: Props) => {
               </Fragment>
               <Fragment>
                 <p className="font-semibold text-sm mt-5">
-                  {t('uploadInitial')} (Max. file size 2MB)
+                  {t('uploadInitial')} (Max. file size 10MB)
                 </p>
                 {images.initial.length > 1 ? (
                   <div className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px] w-full sm:w-6/12 relative">
@@ -607,7 +613,7 @@ const ChangeSignatureAttribute = (props: Props) => {
                 setOpen(false);
               }
             }}
-            className="sign-button-shadow w-full md:w-6/12"
+            className="sign-button-shadow w-full md:w-6/12 disabled:cursor-not-allowed"
           >
             {t('submit')}
           </Button>

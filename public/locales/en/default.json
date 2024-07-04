@@ -347,7 +347,7 @@
   },
   "offlineDialog": {
     "title": "You are offline",
-    "subtitle": "Recheck the connection used to access the Tilaka system",
+    "subtitle": "Recheck the connection used \n to access the Tilaka system",
     "submit": "Close"
   },
   "cannotAccessCameraDialog": {
@@ -368,20 +368,20 @@
   },
   "changeSignatureDialog": {
     "title": "Change Signature",
-    "subtitle": "For good quality signatures, upload images in PNG format with a transparent or white background",
+    "subtitle": "For good quality signatures, upload images in .JPG/.JPEG/.PNG format with a transparent or white background",
     "createSignature": "Create Signature",
     "uploadImage": "Upload Image",
     "nameInput": "Full Name",
     "initialsInput": "Initials",
     "fontType": "Font Type",
     "signature": "Signature",
-    "initial": "Paraf",
+    "initial": "Initials",
     "cancel": "Cancel",
     "submit": "Save",
     "drawSignature": "Draw Signature",
-    "drawInitials": "Draw Initial",
+    "drawInitials": "Draw Initials",
     "uploadSignature": "Upload Signature",
-    "uploadInitial": "Upload Initial",
+    "uploadInitial": "Upload Initials",
     "chooseImage": "Choose Image"
   },
   "auditTrail": {

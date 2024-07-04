@@ -650,7 +650,7 @@ const TnCDialog = () => {
       >
         <AlertDialogContent className="max-w-sm py-4">
           <AlertDialogHeader>
-            <AlertDialogDescription className="text-black text-center py-4">
+            <AlertDialogDescription className="text-black text-center pt-4">
               {i('content')}
             </AlertDialogDescription>
           </AlertDialogHeader>
