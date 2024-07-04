@@ -40,7 +40,7 @@ const CertRevokedDialog = () => {
                   confirmationType: 'liveness'
                 });
               }}
-              className="font-semibold w-fit px-10"
+              className="font-semibold w-fit px-6"
             >
               {t('submit')}
             </Button>

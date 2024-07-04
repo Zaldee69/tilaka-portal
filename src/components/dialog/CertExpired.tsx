@@ -40,7 +40,7 @@ const CertExpiredDialog = () => {
                   confirmationType: 'fr'
                 });
               }}
-              className="font-semibold !px-10"
+              className="font-semibold !px-6"
             >
               {t('submit')}
             </Button>
