@@ -244,8 +244,10 @@ const ChangeSignatureAttribute = (props: Props) => {
 
   const IS_DISABLED =
     (tabsValue === 'create-signature' &&
-      signatureCanvasRef.current?.isEmpty()) ||
-    initialCanvasRef.current?.isEmpty() ||
+      (signatureCanvasRef.current?.isEmpty() ||
+        signatureCanvasRef.current?.isEmpty() === undefined ||
+        initialCanvasRef.current?.isEmpty() ||
+        initialCanvasRef.current?.isEmpty())) ||
     (tabsValue === 'upload-image' &&
       (images.signatures.length < 1 || images.initial.length < 1));
 
