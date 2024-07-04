@@ -162,7 +162,7 @@
       },
       "revokeConfirmation": {
         "title": "Hapus Sertifikat?",
-        "subtitle": "Dengan melakukan pencabutan sertifikat, Maka \n sertifikat anda akan dicabut dari sistem Tilaka. \n Anda harus menerbitkan sertifikat baru jika ingin melakukan tanda tangan digital",
+        "subtitle": "Dengan melakukan pencabutan sertifikat, Maka \n sertifikat anda akan dicabut dari sistem Tilaka. \n Anda harus menerbitkan sertifikat baru jika ingin \n melakukan tanda tangan digital",
         "revoke": "Cabut",
         "cancel": "Batal"
       }
@@ -368,14 +368,14 @@
   },
   "changeSignatureDialog": {
     "title": "Ubah Tanda Tangan",
-    "subtitle": "Untuk kualitas tandatangan yang baik, unggah gambar dengan format PNG dengan background transparan atau putih",
+    "subtitle": "Untuk kualitas tandatangan yang baik, unggah gambar dengan format .JPG/.JPEG/.PNG dengan background transparan atau putih",
     "createSignature": "Buat Tanda Tangan",
     "uploadImage": "Upload Gambar",
     "nameInput": "Nama Lengkap",
     "initialsInput": "Inisial Paraf",
     "fontType": "Jenis Font",
     "signature": "Tanda Tangan",
-    "initial": "Initial",
+    "initial": "Paraf",
     "cancel": "Batal",
     "submit": "Simpan",
     "drawSignature": "Gambar Tanda Tangan",

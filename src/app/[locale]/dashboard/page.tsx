@@ -168,7 +168,11 @@ const MainAccountSection = ({ t }: { t: (key: string) => string }) => (
           </p>
         </div>
       </div>
-      <ChangeSignatureAttribute subtitle="apa" title="apa">
+      <ChangeSignatureAttribute
+        triggerClassName="w-full"
+        subtitle="apa"
+        title="apa"
+      >
         <span
           className={buttonVariants({
             variant: 'ghost',

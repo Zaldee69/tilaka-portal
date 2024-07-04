@@ -28,7 +28,7 @@ const NoInternetDialog = () => {
 
   return (
     <AlertDialog open={show} onOpenChange={setShow}>
-      <AlertDialogContent className="max-w-sm !gap-10">
+      <AlertDialogContent className="max-w-sm !gap-7">
         <AlertDialogHeader className="gap-3">
           <AlertDialogTitle className="flex justify-center items-center gap-3">
             <img
@@ -40,7 +40,7 @@ const NoInternetDialog = () => {
             />{' '}
             {t('title')}
           </AlertDialogTitle>
-          <AlertDialogDescription className="text-center">
+          <AlertDialogDescription className="text-center whitespace-pre-line">
             {t('subtitle')}
           </AlertDialogDescription>
         </AlertDialogHeader>

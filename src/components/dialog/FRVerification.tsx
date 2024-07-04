@@ -151,7 +151,7 @@ const FRVerification = ({
               </div>
               <div
                 id="countdown-timer-fr"
-                className="absolute text-white top-5 right-5 md:right-10 flex justify-center"
+                className="absolute text-white bg-black/10 rounded-full top-5 right-5 md:right-10 flex justify-center"
               >
                 <CountdownCircleTimer
                   onComplete={() => {
