@@ -382,7 +382,7 @@
     "drawSignature": "Gambar Tanda Tangan",
     "drawInitials": "Gambar Paraf",
     "uploadSignature": "Upload Tanda Tangan (Ukuran max. 10 MB)",
-    "uploadInitial": "Upload Paraf",
+    "uploadInitial": "Upload Paraf (Ukuran max. 10 MB)",
     "chooseImage": "Pilih Gambar"
   },
   "auditTrail": {
