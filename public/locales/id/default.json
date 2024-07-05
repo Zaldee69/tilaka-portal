@@ -162,7 +162,8 @@
       },
       "revokeConfirmation": {
         "title": "Hapus Sertifikat?",
-        "subtitle": "Dengan melakukan pencabutan sertifikat, Maka \n sertifikat anda akan dicabut dari sistem Tilaka. \n Anda harus menerbitkan sertifikat baru jika ingin \n melakukan tanda tangan digital",
+        "subtitle": "Dengan melakukan pencabutan sertifikat, \n Sertifikat anda akan dicabut dari sistem Tilaka. \n Anda harus menerbitkan sertifikat baru jika ingin \n melakukan tanda tangan digital",
+        "subtitle1": "Dengan melakukan pencabutan sertifikat, Sertifikat anda akan dicabut dari sistem Tilaka. \n Anda harus menerbitkan sertifikat baru \n jika ingin melakukan tanda tangan digital",
         "revoke": "Cabut",
         "cancel": "Batal"
       }
