@@ -27,7 +27,7 @@ const CertRevokedDialog = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="!pt-[54px] !justify-center max-w-sm">
           <DialogHeader>
-            <DialogDescription className="text-center whitespace-pre-line text-black">
+            <DialogDescription className="text-center md:whitespace-pre-line text-black">
               {t('content')}
             </DialogDescription>
           </DialogHeader>

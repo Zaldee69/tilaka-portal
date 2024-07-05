@@ -346,12 +346,12 @@
     "submit": "Buat Sertifikat Baru"
   },
   "offlineDialog": {
-    "title": "Anda sedang offline",
+    "title": "Anda Sedang Offline",
     "subtitle": "Periksa kembali koneksi yang Anda gunakan untuk menggunakan layanan Tilaka",
     "submit": "Tutup"
   },
   "cannotAccessCameraDialog": {
-    "title": "Tidak dapat mengakses kamera",
+    "title": "Tidak Dapat Mengakses Kamera",
     "subtitle": "Tilaka memerlukan akses ke kamera Anda. \n klik ikon kamera <icon></icon> pada browser Anda \n untuk memberikan akses kamera",
     "submit": "Coba Lagi"
   },
@@ -364,6 +364,7 @@
   "autoLoggedOutDialog": {
     "title": "Anda Keluar Otomatis",
     "subtitle": "Batas waktu login Anda telah habis. Mohon lakukan login ulang dengan mengisi Tilaka Name dan \n Kata Sandi",
+    "subtitle1": "Batas waktu login Anda telah habis. Mohon lakukan login ulang dengan mengisi \n Tilaka Name dan Kata Sandi",
     "submit": "Tutup"
   },
   "changeSignatureDialog": {
@@ -380,7 +381,7 @@
     "submit": "Simpan",
     "drawSignature": "Gambar Tanda Tangan",
     "drawInitials": "Gambar Paraf",
-    "uploadSignature": "Upload Tanda Tangan",
+    "uploadSignature": "Upload Tanda Tangan (Ukuran max. 10 MB)",
     "uploadInitial": "Upload Paraf",
     "chooseImage": "Pilih Gambar"
   },

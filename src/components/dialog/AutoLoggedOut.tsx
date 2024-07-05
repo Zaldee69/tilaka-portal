@@ -37,8 +37,11 @@ const AutoLoggedOutDialog = () => {
             />
           </div>
 
-          <AlertDialogDescription className="text-center whitespace-pre-line">
+          <AlertDialogDescription className="text-center whitespace-pre-line hidden md:block">
             {t('subtitle')}
+          </AlertDialogDescription>
+          <AlertDialogDescription className="text-center whitespace-pre-line md:hidden">
+            {t('subtitle1')}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="!items-center !justify-center my-3">
