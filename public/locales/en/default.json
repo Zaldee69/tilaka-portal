@@ -382,7 +382,7 @@
     "drawSignature": "Draw Signature",
     "drawInitials": "Draw Initials",
     "uploadSignature": "Upload Signature (Size max. 10 MB)",
-    "uploadInitial": "Upload Initials",
+    "uploadInitial": "Upload Initials (Size max. 10 MB)",
     "chooseImage": "Choose Image"
   },
   "auditTrail": {
