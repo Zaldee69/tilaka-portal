@@ -491,9 +491,7 @@ const ChangeSignatureAttribute = (props: Props) => {
             <p className="text-gray-2 text-sm mt-10">{t('subtitle')}</p>
             <div className="p-3 bg-[#F8F9FF] rounded-lg mt-8">
               <Fragment>
-                <p className="font-semibold text-sm">
-                  {t('uploadSignature')} (Max. file size 10MB)
-                </p>
+                <p className="font-semibold text-sm">{t('uploadSignature')}</p>
                 {images.signatures.length > 1 ? (
                   <div className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px] relative">
                     <Image
@@ -541,7 +539,7 @@ const ChangeSignatureAttribute = (props: Props) => {
               </Fragment>
               <Fragment>
                 <p className="font-semibold text-sm mt-5">
-                  {t('uploadInitial')} (Max. file size 10MB)
+                  {t('uploadInitial')}
                 </p>
                 {images.initial.length > 1 ? (
                   <div className="flex items-center cursor-pointer justify-center px-5 border border-dashed bg-white mt-2 rounded-lg h-[270px] w-full sm:w-6/12 relative">

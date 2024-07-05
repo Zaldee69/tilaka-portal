@@ -346,7 +346,7 @@
     "submit": "Create New Certificate"
   },
   "offlineDialog": {
-    "title": "You are offline",
+    "title": "You Are Offline",
     "subtitle": "Recheck the connection used \n to access the Tilaka system",
     "submit": "Close"
   },
@@ -364,6 +364,7 @@
   "autoLoggedOutDialog": {
     "title": "You Are Logged Out",
     "subtitle": "Your login session has expired. Please enter your Tilaka Name and Password to re-login",
+    "subtitle1": "Your login session has expired. Please enter your Tilaka Name and Password to re-login",
     "submit": "Close"
   },
   "changeSignatureDialog": {
@@ -380,7 +381,7 @@
     "submit": "Save",
     "drawSignature": "Draw Signature",
     "drawInitials": "Draw Initials",
-    "uploadSignature": "Upload Signature",
+    "uploadSignature": "Upload Signature (Size max. 10 MB)",
     "uploadInitial": "Upload Initials",
     "chooseImage": "Choose Image"
   },
