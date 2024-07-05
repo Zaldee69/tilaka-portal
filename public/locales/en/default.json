@@ -163,7 +163,7 @@
       "revokeConfirmation": {
         "title": "Revoke Certificate?",
         "subtitle": "By revoking the certificate, your certificate will be \n removed from the Tilaka system. To perform digital \n signatures, you must undergo re-enroll process to \n issue a new certificate",
-        "subtitl1": "By revoking the certificate, your certificate will be \n removed from the Tilaka system. To perform digital \n signatures, you must undergo re-enroll process to \n issue a new certificate",
+        "subtitle1": "By revoking the certificate, your certificate will be removed from the Tilaka system. To perform digital signatures, you must undergo re-enroll process to issue a new certificate",
         "revoke": "Revoke",
         "cancel": "Cancel"
       }
