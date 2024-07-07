@@ -614,19 +614,13 @@ const TnCDialog = () => {
                 onClick={() => {
                   stateSetter({ isOpen: false });
                 }}
-                className={buttonVariants({
-                  variant: 'default',
-
-                  className: cn(
-                    'font-semibold !px-10 w-fit md:w-auto md:max-w-none max-w-[136px]',
-                    {
-                      'pointer-events-none opacity-85 ':
-                        !acceptCondition || !acceptTerm
-                    }
-                  )
-                })}
               >
-                Konfirmasi
+                <Button
+                  disabled={!acceptCondition || !acceptTerm}
+                  className="font-semibold !px-10 w-fit md:w-full md:max-w-none max-w-[136px]"
+                >
+                  Konfirmasi
+                </Button>
               </Link>
             )}
           </div>
