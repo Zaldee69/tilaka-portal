@@ -74,7 +74,7 @@ const TnCDialog = () => {
             <div
               ref={contentRef}
               onScroll={handleScroll}
-              className="md:max-h-[400px] max-h-[250px] overflow-y-scroll text-sm px-2 pb-3"
+              className="md:max-h-[400px] max-h-[280px] overflow-y-scroll text-sm px-2 pb-3"
             >
               <div>
                 <p className="mt-3 mb-0 text-lg leading-6 font-bold">
