@@ -112,7 +112,7 @@ const Page = () => {
               <PermIdentityIcon svgClassName="w-5 h-5" />
               <p className="text-xs">wahab@gmail.com</p>
             </div>
-            <p className="text-xs">{a('title')}</p>
+            <p className="text-xs">{a('sign')}</p>
             <p className="text-xs">08 Mei 2023 16:46:31</p>
           </div>
         </div>

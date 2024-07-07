@@ -393,6 +393,7 @@
     "signer": "Penandatangan",
     "action": "Aksi",
     "sign": "Menandatangani",
-    "time": "Waktu"
+    "time": "Waktu",
+    "open": "Membuka"
   }
 }
