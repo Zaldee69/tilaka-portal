@@ -588,7 +588,7 @@ const TnCDialog = () => {
               </div>
             </div>
           </div>
-          <div className="grid md:grid-cols-2 gap-2 justify-center ">
+          <div className="md:grid flex flex-col-reverse items-center md:grid-cols-2 gap-2 justify-center ">
             <Button
               onClick={() => stateSetter({ isOpen: false })}
               variant="ghost"
